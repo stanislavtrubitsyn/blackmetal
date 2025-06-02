@@ -9,6 +9,6 @@ export const usePageTitle = () => {
 	useEffect(() => {
 		if (!routes.length) return
 		const currentRoute = routes.find(route => route.path === location.pathname)
-		document.title = currentRoute ? `${currentRoute.title} | App` : 'App'
+		document.title = currentRoute ? `${currentRoute.title}` : 'App'
 	}, [location.pathname, routes])
 }

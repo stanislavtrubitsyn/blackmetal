@@ -12,8 +12,8 @@ const Root = () => {
 	return (
 		<ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
 			<CssBaseline />
-			<button onClick={toggleTheme}>Сменить тему</button>
 			<App />
+			{/* <button onClick={toggleTheme}>Сменить тему</button> */}
 		</ThemeProvider>
 	)
 }
