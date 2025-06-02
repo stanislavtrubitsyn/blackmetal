@@ -1,0 +1,20 @@
+[
+	{
+		"path": "/",
+		"component": "HomePage",
+		"title": "Главная",
+		"layout": "MainLayout"
+	},
+	{
+		"path": "/dashboard",
+		"component": "DashboardPage",
+		"title": "Панель",
+		"private": true,
+		"layout": "MainLayout"
+	},
+	{
+		"path": "*",
+		"component": "NotFoundPage",
+		"title": "Страница не найдена"
+	}
+]
