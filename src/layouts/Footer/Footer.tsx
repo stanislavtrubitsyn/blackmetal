@@ -8,11 +8,9 @@ import {
 	Divider,
 	Button,
 } from '@mui/material'
-import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import XIcon from '@mui/icons-material/X'
-import YouTubeIcon from '@mui/icons-material/YouTube'
+
 import { Link } from 'react-router-dom'
+import { SocialLinks, UniversalLogo } from '@/components'
 const Footer = () => {
 	const listItemStyle = {
 		width: 'fit-content',
@@ -25,19 +23,11 @@ const Footer = () => {
 		textDecoration: 'none',
 		transition: 'color 0.3s ease',
 		'&:hover': {
-			color: '#89dfeb',
+			color: '#2D7A84',
 		},
 	}
 	const listTypographyStyle = { fontSize: '15px', fontWeight: 400 }
-	const iconsStyle = {
-		width: '28px',
-		height: '28px',
-		color: '#E4E4E4',
-		transition: 'color 0.3s ease',
-		'&:hover': {
-			color: '#89dfeb',
-		},
-	}
+
 	return (
 		<Box
 			sx={{
@@ -88,7 +78,7 @@ const Footer = () => {
 				}}
 			>
 				<Box>
-					<Box component='img' src='/isi.jpg' sx={{ height: '54px' }} />
+					<UniversalLogo size={54} />
 					<MUILink href='' target='_blank' rel='noopener noreferrer'>
 						<Typography sx={{ fontSize: '12px' }}>Карта сайта</Typography>
 					</MUILink>
@@ -193,20 +183,7 @@ const Footer = () => {
 							СОЦ.МЕРЕЖІ
 						</Typography>
 					</Box>
-					<Box sx={{ display: 'flex', gap: '10px' }}>
-						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<FacebookRoundedIcon sx={iconsStyle} />
-						</MUILink>
-						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<InstagramIcon sx={iconsStyle} />
-						</MUILink>
-						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<XIcon sx={iconsStyle} />
-						</MUILink>
-						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<YouTubeIcon sx={iconsStyle} />
-						</MUILink>
-					</Box>
+					<SocialLinks />
 				</Box>
 			</Box>
 		</Box>
