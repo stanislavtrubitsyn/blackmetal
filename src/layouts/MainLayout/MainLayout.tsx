@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { Header } from '@/layouts'
+
 import { Footer } from '@/layouts'
 
 interface MainLayoutProps {

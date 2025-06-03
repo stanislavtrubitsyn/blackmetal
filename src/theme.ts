@@ -19,6 +19,15 @@ export const lightTheme = createTheme({
 		background: { default: '#f4f4f4', paper: '#fff' },
 	},
 	breakpoints,
+	components: {
+		MuiSvgIcon: {
+			styleOverrides: {
+				root: {
+					transition: 'transform 0.2s ease-in-out',
+				},
+			},
+		},
+	},
 })
 
 export const darkTheme = createTheme({
