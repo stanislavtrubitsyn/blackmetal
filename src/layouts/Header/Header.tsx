@@ -1,102 +1,12 @@
 import React, { useState } from 'react'
-import {
-	AppBar,
-	Toolbar,
-	Box,
-	Button,
-	MenuItem,
-	Typography,
-	InputBase,
-	IconButton,
-	styled,
-	alpha,
-	useTheme,
-	Divider,
-	Collapse,
-	Fade,
-} from '@mui/material'
-import SearchIcon from '@mui/icons-material/Search'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
-import { NavItem, NavigationData } from './interface'
-import navigationData from './data.json'
-
+import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
 import { UniversalLogo } from '@/components'
-import SocialLinks from '../../components/SocialLinks/SocialLinks'
-
-const Search = styled('div')(({ theme }) => ({
-	position: 'relative',
-	borderRadius: 0,
-	backgroundColor: alpha(theme.palette.common.white, 0.15),
-	'&:hover': {
-		backgroundColor: alpha(theme.palette.common.white, 0.25),
-	},
-	marginLeft: 0,
-	width: '100%',
-	[theme.breakpoints.up('sm')]: {
-		marginLeft: theme.spacing(1),
-		width: 'auto',
-	},
-}))
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-	padding: theme.spacing(0, 2),
-	height: '100%',
-	position: 'absolute',
-	pointerEvents: 'none',
-	display: 'flex',
-	alignItems: 'center',
-	justifyContent: 'center',
-}))
-
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-	color: 'inherit',
-	'& .MuiInputBase-input': {
-		padding: theme.spacing(1, 1, 1, 0),
-		paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-		transition: theme.transitions.create('width'),
-		width: '100%',
-		[theme.breakpoints.up('sm')]: {
-			width: '12ch',
-			'&:focus': {
-				width: '20ch',
-			},
-		},
-	},
-}))
-
-const LineDivider = () => (
-	<Box
-		sx={{
-			width: '90%',
-			height: '1px',
-			backgroundColor: '#e0e0e0',
-			mx: 'auto',
-			my: 0,
-		}}
-	/>
-)
-
-const DropdownMenu = styled(Box)({
-	position: 'absolute',
-	top: '100%',
-	left: 0,
-	zIndex: 1,
-	backgroundColor: '#fff',
-	boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-	minWidth: '220px',
-	maxWidth: '260px',
-})
-
-const NestedDropdownMenu = styled(Box)({
-	position: 'absolute',
-	top: 0,
-	left: '100%',
-	zIndex: 1,
-	backgroundColor: '#fff',
-	boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
-	minWidth: '240px',
-})
-
+import { SocialLinks } from '@/components'
+import { NavItem } from './components/NavItem'
+import navigationData from './data.json'
+import { NavigationData } from './interface'
+import { Search } from './components/Search'
+import SearchIcon from '@mui/icons-material/Search'
 const Header = () => {
 	const theme = useTheme()
 	const { navItems } = navigationData as NavigationData
@@ -127,175 +37,7 @@ const Header = () => {
 
 	const handleSearchSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
-		console.log('Search query:', searchQuery)
-	}
-
-	const renderNavItem = (item: NavItem, level = 0) => {
-		if (item.href) {
-			return (
-				<Button
-					key={item.id}
-					href={item.href}
-					sx={{
-						overflow: 'hidden',
-						textOverflow: 'ellipsis',
-						whiteSpace: 'nowrap',
-						maxWidth: '100%', // важно
-						color: '#373737',
-						textTransform: 'none',
-						fontSize: '1rem',
-						fontWeight: 'bold',
-						borderRadius: 0,
-						px: 2,
-						'&:hover': {
-							color: '#2D7A84',
-							backgroundColor: 'transparent',
-						},
-					}}
-				>
-					{item.label}
-				</Button>
-			)
-		}
-
-		if (item.items?.length) {
-			const isOpen = hoveredItem === item.id
-
-			return (
-				<Box
-					key={item.id}
-					sx={{ position: 'relative' }}
-					onMouseEnter={() => handleMouseEnter(item.id)}
-					onMouseLeave={handleMouseLeave}
-				>
-					<Button
-						sx={{
-							color: isOpen ? '#2D7A84' : '#373737',
-							textTransform: 'none',
-							fontSize: '1rem',
-							fontWeight: 'bold',
-							borderRadius: 0,
-							px: 2,
-							'&:hover': {
-								color: '#2D7A84',
-								backgroundColor: 'transparent',
-							},
-						}}
-					>
-						{item.label}
-					</Button>
-
-					<Fade in={isOpen} timeout={300}>
-						<DropdownMenu>
-							{item.items.map((subItem, index, arr) => (
-								<React.Fragment key={subItem.id}>
-									{subItem.items?.length ? (
-										<Box
-											sx={{
-												position: 'relative',
-												'&:hover': {
-													backgroundColor: '#4DC3D3',
-													color: '#fff',
-												},
-											}}
-											onMouseEnter={() => handleSubItemMouseEnter(subItem.id)}
-											onMouseLeave={handleSubItemMouseLeave}
-										>
-											<Box
-												sx={{
-													display: 'flex',
-													justifyContent: 'space-between',
-													alignItems: 'center',
-													width: '100%',
-													height: '50px',
-													px: 2,
-												}}
-											>
-												<Typography
-													fontWeight='bold'
-													sx={{
-														overflow: 'hidden',
-														textOverflow: 'ellipsis',
-														whiteSpace: 'nowrap',
-														maxWidth: '100%', // важно
-													}}
-												>
-													{subItem.label}
-												</Typography>
-												<KeyboardArrowRightIcon fontSize='small' />
-											</Box>
-
-											<Fade in={hoveredSubItem === subItem.id} timeout={300}>
-												<NestedDropdownMenu>
-													{subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
-														<React.Fragment key={nestedItem.id}>
-															<MenuItem
-																component='a'
-																href={nestedItem.href}
-																sx={{
-																	height: '50px',
-																	py: 0,
-																	color: '#373737',
-																	'&:hover': {
-																		backgroundColor: '#4DC3D3',
-																		color: '#fff',
-																	},
-																}}
-															>
-																<Typography
-																	fontWeight='bold'
-																	sx={{
-																		overflow: 'hidden',
-																		textOverflow: 'ellipsis',
-																		whiteSpace: 'nowrap',
-																		maxWidth: '100%', // важно
-																	}}
-																>
-																	{nestedItem.label}
-																</Typography>
-															</MenuItem>
-															{nestedIndex < nestedArr.length - 1 && <LineDivider />}
-														</React.Fragment>
-													))}
-												</NestedDropdownMenu>
-											</Fade>
-										</Box>
-									) : (
-										<MenuItem
-											component='a'
-											href={subItem.href}
-											sx={{
-												height: '50px',
-												color: '#373737',
-												'&:hover': {
-													backgroundColor: '#4DC3D3',
-													color: '#fff',
-												},
-											}}
-										>
-											<Typography
-												fontWeight='bold'
-												sx={{
-													overflow: 'hidden',
-													textOverflow: 'ellipsis',
-													whiteSpace: 'nowrap',
-													maxWidth: '100%', // важно
-												}}
-											>
-												{subItem.label}
-											</Typography>
-										</MenuItem>
-									)}
-									{index < arr.length - 1 && <LineDivider />}
-								</React.Fragment>
-							))}
-						</DropdownMenu>
-					</Fade>
-				</Box>
-			)
-		}
-
-		return null
+		// console.log('Search query:', searchQuery)
 	}
 
 	return (
@@ -331,10 +73,8 @@ const Header = () => {
 						width: '1285px',
 					}}
 				>
-					{/* Logo */}
 					<UniversalLogo type='icon-text' />
 
-					{/* Search Box */}
 					<Box
 						component='form'
 						onSubmit={handleSearchSubmit}
@@ -386,7 +126,18 @@ const Header = () => {
 						width: '1310px',
 					}}
 				>
-					{navItems.map(item => renderNavItem(item))}
+					{navItems.map(item => (
+						<NavItem
+							key={item.id}
+							item={item}
+							hoveredItem={hoveredItem}
+							hoveredSubItem={hoveredSubItem}
+							onMouseEnter={handleMouseEnter}
+							onMouseLeave={handleMouseLeave}
+							onSubItemMouseEnter={handleSubItemMouseEnter}
+							onSubItemMouseLeave={handleSubItemMouseLeave}
+						/>
+					))}
 				</Box>
 			</Toolbar>
 		</AppBar>
