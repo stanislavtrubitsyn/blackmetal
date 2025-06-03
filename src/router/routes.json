@@ -1,20 +1,20 @@
-[
-	{
+{
+	"HomePage": {
 		"path": "/",
 		"component": "HomePage",
 		"title": "Інститут чорної металургії",
 		"layout": "MainLayout"
 	},
-	{
+	"DashboardPage": {
 		"path": "/dashboard",
 		"component": "DashboardPage",
 		"title": "Панель",
 		"private": true,
 		"layout": "MainLayout"
 	},
-	{
+	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
 		"title": "Страница не найдена"
 	}
-]
+}
