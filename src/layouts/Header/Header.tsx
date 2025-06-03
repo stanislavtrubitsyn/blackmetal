@@ -4,7 +4,6 @@ import {
 	Toolbar,
 	Box,
 	Button,
-	Menu,
 	MenuItem,
 	Typography,
 	InputBase,
@@ -13,6 +12,8 @@ import {
 	alpha,
 	useTheme,
 	Divider,
+	Collapse,
+	Fade,
 } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
@@ -75,18 +76,49 @@ const LineDivider = () => (
 	/>
 )
 
+const DropdownMenu = styled(Box)({
+	position: 'absolute',
+	top: '100%',
+	left: 0,
+	zIndex: 1,
+	backgroundColor: '#fff',
+	boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+	minWidth: '220px',
+	maxWidth: '260px',
+})
+
+const NestedDropdownMenu = styled(Box)({
+	position: 'absolute',
+	top: 0,
+	left: '100%',
+	zIndex: 1,
+	backgroundColor: '#fff',
+	boxShadow: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+	minWidth: '240px',
+})
+
 const Header = () => {
 	const theme = useTheme()
 	const { navItems } = navigationData as NavigationData
-	const [anchorEls, setAnchorEls] = useState<Record<string, HTMLElement | null>>({})
+	const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
 
-	const handleOpenMenu = (id: string, event: React.MouseEvent<HTMLElement>) => {
-		setAnchorEls(prev => ({ ...prev, [id]: event.currentTarget }))
+	const handleMouseEnter = (id: string) => {
+		setHoveredItem(id)
 	}
 
-	const handleCloseMenu = (id: string) => {
-		setAnchorEls(prev => ({ ...prev, [id]: null }))
+	const handleMouseLeave = () => {
+		setHoveredItem(null)
+		setHoveredSubItem(null)
+	}
+
+	const handleSubItemMouseEnter = (id: string) => {
+		setHoveredSubItem(id)
+	}
+
+	const handleSubItemMouseLeave = () => {
+		setHoveredSubItem(null)
 	}
 
 	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +127,6 @@ const Header = () => {
 
 	const handleSearchSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
-		// Здесь можно добавить логику поиска
 		console.log('Search query:', searchQuery)
 	}
 
@@ -106,6 +137,10 @@ const Header = () => {
 					key={item.id}
 					href={item.href}
 					sx={{
+						overflow: 'hidden',
+						textOverflow: 'ellipsis',
+						whiteSpace: 'nowrap',
+						maxWidth: '100%', // важно
 						color: '#373737',
 						textTransform: 'none',
 						fontSize: '1rem',
@@ -124,14 +159,16 @@ const Header = () => {
 		}
 
 		if (item.items?.length) {
-			const isOpen = Boolean(anchorEls[item.id])
+			const isOpen = hoveredItem === item.id
 
 			return (
-				<Box key={item.id} sx={{ position: 'relative' }}>
+				<Box
+					key={item.id}
+					sx={{ position: 'relative' }}
+					onMouseEnter={() => handleMouseEnter(item.id)}
+					onMouseLeave={handleMouseLeave}
+				>
 					<Button
-						aria-controls={isOpen ? item.id : undefined}
-						aria-haspopup='true'
-						onClick={e => handleOpenMenu(item.id, e)}
 						sx={{
 							color: isOpen ? '#2D7A84' : '#373737',
 							textTransform: 'none',
@@ -148,126 +185,112 @@ const Header = () => {
 						{item.label}
 					</Button>
 
-					<Menu
-						id={item.id}
-						anchorEl={anchorEls[item.id]}
-						open={isOpen}
-						onClose={() => handleCloseMenu(item.id)}
-						anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-						transformOrigin={{ vertical: 'top', horizontal: 'left' }}
-						PaperProps={{
-							sx: {
-								borderRadius: 0,
-								boxShadow: theme.shadows[4],
-								minWidth: '220px',
-								maxWidth: '260px',
-								mt: 0,
-								py: 0,
-							},
-						}}
-						MenuListProps={{ disablePadding: true }} // ← ЭТО ОЧЕНЬ ВАЖНО
-					>
-						{item.items.map((subItem, index, arr) => (
-							<React.Fragment key={subItem.id}>
-								{subItem.items?.length ? (
-									<MenuItem
-										sx={{
-											position: 'relative',
-											p: 0,
-											height: '50px',
-											'&:hover': {
-												backgroundColor: '#4DC3D3',
-												color: '#fff',
-											},
-										}}
-									>
+					<Fade in={isOpen} timeout={300}>
+						<DropdownMenu>
+							{item.items.map((subItem, index, arr) => (
+								<React.Fragment key={subItem.id}>
+									{subItem.items?.length ? (
 										<Box
 											sx={{
-												display: 'flex',
-												justifyContent: 'space-between',
-												alignItems: 'center',
-												width: '100%',
-												height: '100%',
-												px: 2,
+												position: 'relative',
+												'&:hover': {
+													backgroundColor: '#4DC3D3',
+													color: '#fff',
+												},
 											}}
-											onClick={e => {
-												e.stopPropagation()
-												handleOpenMenu(subItem.id, e as React.MouseEvent<HTMLElement>)
-											}}
+											onMouseEnter={() => handleSubItemMouseEnter(subItem.id)}
+											onMouseLeave={handleSubItemMouseLeave}
 										>
-											<Typography fontWeight='bold'>{subItem.label}</Typography>
-											<KeyboardArrowRightIcon fontSize='small' />
-										</Box>
+											<Box
+												sx={{
+													display: 'flex',
+													justifyContent: 'space-between',
+													alignItems: 'center',
+													width: '100%',
+													height: '50px',
+													px: 2,
+												}}
+											>
+												<Typography
+													fontWeight='bold'
+													sx={{
+														overflow: 'hidden',
+														textOverflow: 'ellipsis',
+														whiteSpace: 'nowrap',
+														maxWidth: '100%', // важно
+													}}
+												>
+													{subItem.label}
+												</Typography>
+												<KeyboardArrowRightIcon fontSize='small' />
+											</Box>
 
-										<Menu
-											id={subItem.id}
-											anchorEl={anchorEls[subItem.id]}
-											open={Boolean(anchorEls[subItem.id])}
-											onClose={() => handleCloseMenu(subItem.id)}
-											anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-											transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+											<Fade in={hoveredSubItem === subItem.id} timeout={300}>
+												<NestedDropdownMenu>
+													{subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
+														<React.Fragment key={nestedItem.id}>
+															<MenuItem
+																component='a'
+																href={nestedItem.href}
+																sx={{
+																	height: '50px',
+																	py: 0,
+																	color: '#373737',
+																	'&:hover': {
+																		backgroundColor: '#4DC3D3',
+																		color: '#fff',
+																	},
+																}}
+															>
+																<Typography
+																	fontWeight='bold'
+																	sx={{
+																		overflow: 'hidden',
+																		textOverflow: 'ellipsis',
+																		whiteSpace: 'nowrap',
+																		maxWidth: '100%', // важно
+																	}}
+																>
+																	{nestedItem.label}
+																</Typography>
+															</MenuItem>
+															{nestedIndex < nestedArr.length - 1 && <LineDivider />}
+														</React.Fragment>
+													))}
+												</NestedDropdownMenu>
+											</Fade>
+										</Box>
+									) : (
+										<MenuItem
+											component='a'
+											href={subItem.href}
 											sx={{
-												'& .MuiPaper-root': {
-													ml: 0,
-													mt: '-8px',
-													borderRadius: 0,
+												height: '50px',
+												color: '#373737',
+												'&:hover': {
+													backgroundColor: '#4DC3D3',
+													color: '#fff',
 												},
 											}}
-											PaperProps={{
-												sx: {
-													borderRadius: 0,
-													boxShadow: theme.shadows[4],
-													minWidth: '240px',
-													py: 0,
-												},
-											}}
-											MenuListProps={{ disablePadding: true }} // ← Вот здесь тоже!
 										>
-											{subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
-												<React.Fragment key={nestedItem.id}>
-													<MenuItem
-														component='a'
-														href={nestedItem.href}
-														onClick={() => {
-															handleCloseMenu(item.id)
-															handleCloseMenu(subItem.id)
-														}}
-														sx={{
-															height: '50px',
-															py: 0,
-															'&:hover': {
-																backgroundColor: '#4DC3D3',
-																color: '#fff',
-															},
-														}}
-													>
-														<Typography fontWeight='bold'>{nestedItem.label}</Typography>
-													</MenuItem>
-													{nestedIndex < nestedArr.length - 1 && <LineDivider />}
-												</React.Fragment>
-											))}
-										</Menu>
-									</MenuItem>
-								) : (
-									<MenuItem
-										component='a'
-										href={subItem.href}
-										onClick={() => handleCloseMenu(item.id)}
-										sx={{
-											height: '50px',
-											'&:hover': {
-												backgroundColor: '#4DC3D3',
-												color: '#fff',
-											},
-										}}
-									>
-										<Typography fontWeight='bold'>{subItem.label}</Typography>
-									</MenuItem>
-								)}
-								{index < arr.length - 1 && <LineDivider />}
-							</React.Fragment>
-						))}
-					</Menu>
+											<Typography
+												fontWeight='bold'
+												sx={{
+													overflow: 'hidden',
+													textOverflow: 'ellipsis',
+													whiteSpace: 'nowrap',
+													maxWidth: '100%', // важно
+												}}
+											>
+												{subItem.label}
+											</Typography>
+										</MenuItem>
+									)}
+									{index < arr.length - 1 && <LineDivider />}
+								</React.Fragment>
+							))}
+						</DropdownMenu>
+					</Fade>
 				</Box>
 			)
 		}
