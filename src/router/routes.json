@@ -9,7 +9,42 @@
 		"path": "/dashboard",
 		"component": "DashboardPage",
 		"title": "Панель",
-		"private": true,
+		"layout": "MainLayout"
+	},
+	"ServicesPage": {
+		"path": "/services",
+		"component": "ServicesPage",
+		"title": "Сервіси",
+		"layout": "MainLayout"
+	},
+	"RepositoryPage": {
+		"path": "/repository",
+		"component": "RepositoryPage",
+		"title": "Репозиторій",
+		"layout": "MainLayout"
+	},
+	"RemoteEducationPage": {
+		"path": "/remote-education",
+		"component": "RemoteEducationPage",
+		"title": "Дистанційна освіта",
+		"layout": "MainLayout"
+	},
+	"ApplicantPage": {
+		"path": "/applicant",
+		"component": "ApplicantPage",
+		"title": "Абітурієнту",
+		"layout": "MainLayout"
+	},
+	"EntrantPage": {
+		"path": "/entrant",
+		"component": "EntrantPage",
+		"title": "Вступнику",
+		"layout": "MainLayout"
+	},
+	"LibraryPage": {
+		"path": "/library",
+		"component": "LibraryPage",
+		"title": "Бібліотека",
 		"layout": "MainLayout"
 	},
 	"NotFoundPage": {

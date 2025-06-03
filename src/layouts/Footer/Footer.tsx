@@ -1,4 +1,3 @@
-import React from 'react'
 import {
 	Box,
 	List,
@@ -8,9 +7,10 @@ import {
 	Divider,
 	Button,
 } from '@mui/material'
-
 import { Link } from 'react-router-dom'
 import { SocialLinks, UniversalLogo } from '@/components'
+import routes from '@/router/routes.json'
+
 const Footer = () => {
 	const listItemStyle = {
 		width: 'fit-content',
@@ -26,7 +26,30 @@ const Footer = () => {
 			color: '#2D7A84',
 		},
 	}
+
 	const listTypographyStyle = { fontSize: '15px', fontWeight: 400 }
+
+	const titleStyles = { fontSize: '15px', fontWeight: 700, color: '#363636' }
+
+	const boxStyles = {
+		height: '54px',
+		display: 'flex',
+		alignItems: 'center',
+		mb: '5px',
+	}
+
+	const includedRoutes = [
+		'ServicesPage',
+		'RepositoryPage',
+		'RemoteEducationPage',
+		'ApplicantPage',
+		'EntrantPage',
+		'LibraryPage',
+	]
+
+	const footerLinks = Object.entries(routes)
+		.filter(([key]) => includedRoutes.includes(key))
+		.map(([_, route]) => route)
 
 	return (
 		<Box
@@ -41,24 +64,16 @@ const Footer = () => {
 			}}
 		>
 			<List sx={{ display: 'flex', gap: '60px', p: 0, pt: '20px' }}>
-				<ListItem component={Link} to='/services' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Сервіси</Typography>
-				</ListItem>
-				<ListItem component={Link} to='/repository' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Репозиторій</Typography>
-				</ListItem>
-				<ListItem component={Link} to='/remote-education' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Дистанційна освіта</Typography>
-				</ListItem>
-				<ListItem component={Link} to='/applicant' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Абітурієнту</Typography>
-				</ListItem>
-				<ListItem component={Link} to='/entrant' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Вступнику</Typography>
-				</ListItem>
-				<ListItem component={Link} to='/library' sx={listItemStyle}>
-					<Typography sx={listTypographyStyle}>Бібліотека</Typography>
-				</ListItem>
+				{footerLinks.map(link => (
+					<ListItem
+						key={link.path}
+						component={Link}
+						to={link.path}
+						sx={listItemStyle}
+					>
+						<Typography sx={listTypographyStyle}>{link.title}</Typography>
+					</ListItem>
+				))}
 			</List>
 			<Divider
 				sx={{
@@ -80,78 +95,34 @@ const Footer = () => {
 				<Box>
 					<UniversalLogo size={54} />
 					<MUILink href='' target='_blank' rel='noopener noreferrer'>
-						<Typography sx={{ fontSize: '12px' }}>Карта сайта</Typography>
+						<Typography sx={{ fontSize: '12px' }}>Мапа сайту</Typography>
 					</MUILink>
 					<Typography sx={{ fontSize: '12px' }}>© 2006-2019 О сайте</Typography>
 				</Box>
-				<Box>
-					<Box
-						sx={{
-							height: '54px',
-							display: 'flex',
-							alignItems: 'center',
-							mb: '5px',
-						}}
-					>
-						<Typography
-							sx={{ fontSize: '15px', fontWeight: 700, color: '#363636' }}
-						>
-							МІСЦЕ ЗНАХОДЖЕННЯ
-						</Typography>
-					</Box>
 
+				<Box>
+					<Box sx={boxStyles}>
+						<Typography sx={titleStyles}>МІСЦЕ ЗНАХОДЖЕННЯ</Typography>
+					</Box>
 					<Typography
 						sx={{ fontSize: '15px', fontWeight: 400, color: '#606060' }}
 					>
-						Дніпро, проспект Дмитра
-					</Typography>
-					<Typography
-						sx={{ fontSize: '15px', fontWeight: 400, color: '#606060' }}
-					>
-						Яворницького, 19
+						Дніпро, проспект Дмитра <br /> Яворницького, 19
 					</Typography>
 				</Box>
 				<Box>
-					<Box
-						sx={{
-							height: '54px',
-							display: 'flex',
-							alignItems: 'center',
-							mb: '5px',
-						}}
-					>
-						<Typography
-							sx={{ fontSize: '15px', fontWeight: 700, color: '#363636' }}
-						>
-							КОНТАКТИ
-						</Typography>
+					<Box sx={boxStyles}>
+						<Typography sx={titleStyles}>КОНТАКТИ</Typography>
 					</Box>
-
 					<Typography
 						sx={{ fontSize: '15px', fontWeight: 400, color: '#333333' }}
 					>
-						+38 096 786 77 77
-					</Typography>
-					<Typography
-						sx={{ fontSize: '15px', fontWeight: 400, color: '#333333' }}
-					>
-						ntu@gmail.com
+						+38 096 786 77 77 <br /> ntu@gmail.com
 					</Typography>
 				</Box>
 				<Box>
-					<Box
-						sx={{
-							height: '54px',
-							display: 'flex',
-							alignItems: 'center',
-							mb: '5px',
-						}}
-					>
-						<Typography
-							sx={{ fontSize: '15px', fontWeight: 700, color: '#363636' }}
-						>
-							ЗАДАТИ ПИТАННЯ
-						</Typography>
+					<Box sx={boxStyles}>
+						<Typography sx={titleStyles}>ЗАДАТИ ПИТАННЯ</Typography>
 					</Box>
 					<Button
 						variant='outlined'
@@ -169,19 +140,8 @@ const Footer = () => {
 					</Button>
 				</Box>
 				<Box>
-					<Box
-						sx={{
-							height: '54px',
-							display: 'flex',
-							alignItems: 'center',
-							mb: '5px',
-						}}
-					>
-						<Typography
-							sx={{ fontSize: '15px', fontWeight: 700, color: '#363636' }}
-						>
-							СОЦ.МЕРЕЖІ
-						</Typography>
+					<Box sx={boxStyles}>
+						<Typography sx={titleStyles}>СОЦ.МЕРЕЖІ</Typography>
 					</Box>
 					<SocialLinks />
 				</Box>
