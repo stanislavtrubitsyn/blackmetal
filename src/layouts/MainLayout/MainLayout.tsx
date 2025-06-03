@@ -1,5 +1,8 @@
 import { ReactNode } from 'react'
-import { Header } from '@/layouts/Header'
+import { Header } from '@/layouts'
+
+import { Footer } from '@/layouts'
+
 interface MainLayoutProps {
 	children: ReactNode
 }
@@ -8,8 +11,8 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 	return (
 		<div>
 			<Header />
-			{/* Тут можно добавить Navbar, Sidebar */}
 			{children}
+			<Footer />
 		</div>
 	)
 }

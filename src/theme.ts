@@ -15,7 +15,7 @@ const breakpoints = {
 export const lightTheme = createTheme({
 	palette: {
 		mode: 'light',
-		primary: { main: '#89dfeb' },
+		primary: { main: '#2D7A84' },
 		background: { default: '#f4f4f4', paper: '#fff' },
 	},
 	breakpoints,

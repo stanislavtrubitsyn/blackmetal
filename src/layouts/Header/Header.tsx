@@ -18,11 +18,9 @@ import SearchIcon from '@mui/icons-material/Search'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { NavItem, NavigationData } from './interface'
 import navigationData from './data.json'
-import logo from '../../../public/isi.jpg'
-import InstagramIcon from '@mui/icons-material/Instagram'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import XIcon from '@mui/icons-material/X'
-import RssFeedIcon from '@mui/icons-material/RssFeed'
+
+import { UniversalLogo } from '@/components'
+import SocialLinks from '../../components/SocialLinks/SocialLinks'
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -311,13 +309,7 @@ const Header = () => {
 					}}
 				>
 					{/* Logo */}
-					<Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '7px' }}>
-						<img src={logo} alt='logo' style={{ width: '60px' }} />
-						<Typography style={{ height: '60px', fontWeight: 'bold', fontSize: '13px' }}>
-							Інститут чорної металургії <br /> ім. З.І. Некрасова <br />
-							Національної академії наук України
-						</Typography>
-					</Box>
+					<UniversalLogo type='icon-text' />
 
 					{/* Search Box */}
 					<Box
@@ -351,20 +343,7 @@ const Header = () => {
 						</IconButton>
 					</Box>
 
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'row',
-							alignItems: 'center',
-							justifyContent: 'center',
-							gap: '15px',
-						}}
-					>
-						<InstagramIcon style={{ color: '#2D7A84' }} fontSize='medium' />{' '}
-						<FacebookIcon style={{ color: '#E3E3E3' }} fontSize='medium' />
-						<XIcon style={{ color: '#E3E3E3' }} fontSize='medium' />{' '}
-						<RssFeedIcon style={{ color: '#E3E3E3' }} fontSize='medium' />
-					</Box>
+					<SocialLinks />
 				</Box>
 				<Divider
 					sx={{
