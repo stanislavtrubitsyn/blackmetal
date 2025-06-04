@@ -9,6 +9,7 @@ const breakpoints = {
 		lg: 1281,
 		xl: 1441,
 		xxl: 1921,
+		хххl: 2561,
 	},
 }
 

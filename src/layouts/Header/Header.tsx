@@ -51,7 +51,9 @@ const Header = () => {
 				backgroundColor: '#ffff',
 				color: 'text.primary',
 				boxShadow: 'none',
-				maxWidth: '1920px',
+				width: '100%',
+				maxWidth: 'хххl',
+				minWidth: 'xxs',
 				height: '165px',
 				borderBottom: `1px solid ${theme.palette.divider}`,
 			}}
@@ -70,7 +72,7 @@ const Header = () => {
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'space-between',
-						width: '1285px',
+						width: '98%',
 					}}
 				>
 					<UniversalLogo type='icon-text' />
@@ -110,7 +112,7 @@ const Header = () => {
 				</Box>
 				<Divider
 					sx={{
-						width: '1295px',
+						width: '98%',
 						height: '1px',
 						mx: 'auto',
 						mt: 3,
