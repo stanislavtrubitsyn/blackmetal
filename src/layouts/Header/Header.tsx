@@ -52,8 +52,7 @@ const Header = () => {
 				color: 'text.primary',
 				boxShadow: 'none',
 				width: '100%',
-				maxWidth: 'хххl',
-				minWidth: 'xxs',
+
 				height: '165px',
 				borderBottom: `1px solid ${theme.palette.divider}`,
 			}}
@@ -64,6 +63,8 @@ const Header = () => {
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'space-around',
+					maxWidth: 'ххl',
+					minWidth: 'xxs',
 					height: '140px',
 				}}
 			>
