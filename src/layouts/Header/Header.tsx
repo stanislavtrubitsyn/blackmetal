@@ -1,3 +1,4 @@
+// src/layouts/Header/Header.tsx
 import React, { useState } from 'react'
 import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
 import { UniversalLogo } from '@/components'
@@ -7,6 +8,8 @@ import navigationData from './data.json'
 import { NavigationData } from './interface'
 import { Search } from './components/Search'
 import SearchIcon from '@mui/icons-material/Search'
+import { BurgerMenu } from './components/BurgerMenu'
+
 const Header = () => {
 	const theme = useTheme()
 	const { navItems } = navigationData as NavigationData
@@ -52,8 +55,8 @@ const Header = () => {
 				color: 'text.primary',
 				boxShadow: 'none',
 				width: '100%',
-
-				height: '165px',
+				height: { xxs: 'auto', sm: '165px' },
+				py: { xxs: 2, sm: 0 },
 				borderBottom: `1px solid ${theme.palette.divider}`,
 			}}
 		>
@@ -63,9 +66,11 @@ const Header = () => {
 					flexDirection: 'column',
 					alignItems: 'center',
 					justifyContent: 'space-around',
-					maxWidth: 'ххl',
+					maxWidth: 'xxl',
 					minWidth: 'xxs',
-					height: '140px',
+					width: '90%',
+					height: { xxs: 'auto', sm: '140px' },
+					gap: { xxs: 2, sm: 0 },
 				}}
 			>
 				<Box
@@ -73,19 +78,19 @@ const Header = () => {
 						display: 'flex',
 						alignItems: 'center',
 						justifyContent: 'space-between',
-						width: '98%',
+						width: { xxs: '100%', sm: '98%' },
+						flexDirection: { xxs: 'row', sm: 'row' },
+						gap: { xxs: 2, sm: 0 },
 					}}
 				>
 					<UniversalLogo type='icon-text' />
 
 					<Box
-						component='form'
-						onSubmit={handleSearchSubmit}
 						sx={{
+							display: { xxs: 'none', sm: 'flex' },
 							width: '378px',
 							height: '50px',
 							border: '1px solid #C7C7C7',
-							display: 'flex',
 							alignItems: 'center',
 							justifyContent: 'space-between',
 							pl: '20px',
@@ -104,29 +109,44 @@ const Header = () => {
 								},
 							}}
 						/>
-						<IconButton type='submit' sx={{ color: '#C7C7C7' }}>
+						<IconButton type='submit' onClick={handleSearchSubmit} sx={{ color: '#C7C7C7' }}>
 							<SearchIcon />
 						</IconButton>
 					</Box>
 
-					<SocialLinks />
+					<Box sx={{ display: { xxs: 'none', sm: 'flex' } }}>
+						<SocialLinks />
+					</Box>
+
+					<BurgerMenu
+						navItems={navItems}
+						searchQuery={searchQuery}
+						onSearchChange={handleSearchChange}
+						onSearchSubmit={handleSearchSubmit}
+					/>
 				</Box>
+
 				<Divider
 					sx={{
 						width: '98%',
 						height: '1px',
 						mx: 'auto',
-						mt: 3,
-						mb: 1,
+						mt: { xxs: 0, sm: 3 },
+						mb: { xxs: 0, sm: 1 },
+						display: { xxs: 'none', sm: 'block' },
 					}}
 				/>
 
 				<Box
 					sx={{
-						display: 'flex',
+						display: { xxs: 'none', sm: 'flex' },
 						alignItems: 'center',
 						justifyContent: 'space-between',
-						width: '1310px',
+						flexWrap: 'wrap',
+						width: '100%',
+						maxWidth: 'xxxl',
+						px: 2,
+						boxSizing: 'border-box',
 					}}
 				>
 					{navItems.map(item => (

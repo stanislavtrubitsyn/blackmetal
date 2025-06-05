@@ -3,10 +3,7 @@ import { Box, Typography } from '@mui/material'
 
 import { UniversalLogoProps } from './LogoInterface'
 
-const UniversalLogo: React.FC<UniversalLogoProps> = ({
-	size,
-	type = 'icon',
-}) => {
+const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) => {
 	return (
 		<>
 			{type === 'icon' ? (
@@ -25,10 +22,17 @@ const UniversalLogo: React.FC<UniversalLogoProps> = ({
 							component='img'
 							src='/isi.jpg'
 							alt='logo'
-							sx={{ width: '60px' }}
+							sx={{
+								width: { xxs: '40px', sm: '60px' },
+							}}
 						/>
 						<Typography
-							style={{ height: '60px', fontWeight: 'bold', fontSize: '13px' }}
+							sx={{
+								fontWeight: 'bold',
+								fontSize: { xxs: '10px', sm: '13px' },
+								lineHeight: 1.2,
+								maxWidth: { xxs: '180px', sm: '100%' },
+							}}
 						>
 							Інститут чорної металургії <br /> ім. З.І. Некрасова <br />
 							Національної академії наук України
