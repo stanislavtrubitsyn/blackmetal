@@ -9,6 +9,7 @@ const breakpoints = {
 		lg: 1281,
 		xl: 1441,
 		xxl: 1921,
+		хххl: 2561,
 	},
 }
 
@@ -92,7 +93,7 @@ export const lightTheme = createTheme({
 		primary: { main: '#2D7A84' },
 		background: { default: '#f4f4f4', paper: '#fff' },
 	},
-	...commonThemeConfig
+	breakpoints,
 })
 
 export const darkTheme = createTheme({
