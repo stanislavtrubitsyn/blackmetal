@@ -3,7 +3,7 @@ export interface RouteConfig {
 	component: string
 	title: string
 	layout?: string
-	private?: boolean
+	showIn?: string
 }
 
 export interface RoutesConfig {
