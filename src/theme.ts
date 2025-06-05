@@ -12,13 +12,87 @@ const breakpoints = {
 	},
 }
 
+const commonThemeConfig = {
+	breakpoints,
+	shape: {
+		borderRadius: 0
+	},
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiPaper: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiCard: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiDialog: {
+			styleOverrides: {
+				paper: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiAlert: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiTextField: {
+			styleOverrides: {
+				root: {
+					'& .MuiOutlinedInput-root': {
+						borderRadius: 0
+					}
+				}
+			}
+		},
+		MuiMenu: {
+			styleOverrides: {
+				paper: {
+					borderRadius: 0
+				}
+			}
+		},
+		MuiPopover: {
+			styleOverrides: {
+				paper: {
+					borderRadius: 0
+				}
+			}
+		}
+	}
+}
+
 export const lightTheme = createTheme({
 	palette: {
 		mode: 'light',
-		primary: { main: '#142934' },
+		primary: { main: '#2D7A84' },
 		background: { default: '#f4f4f4', paper: '#fff' },
 	},
-	breakpoints,
+	...commonThemeConfig
 })
 
 export const darkTheme = createTheme({
@@ -27,5 +101,5 @@ export const darkTheme = createTheme({
 		primary: { main: '#90caf9' },
 		background: { default: '#121212', paper: '#1e1e1e' },
 	},
-	breakpoints,
+	...commonThemeConfig
 })
