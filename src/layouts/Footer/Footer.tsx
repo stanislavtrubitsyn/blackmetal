@@ -50,7 +50,8 @@ const Footer = () => {
 				display: 'flex',
 				justifyContent: 'center',
 				minHeight: '271px',
-				px: '190px',
+				px: { xxs: '20px', xl: '190px' },
+				pb: '20px',
 				bgcolor: '#ffffff',
 			}}
 		>
@@ -69,7 +70,9 @@ const Footer = () => {
 						display: 'flex',
 						flexDirection: 'row',
 						alignItems: 'center',
-						justifyContent: 'space-between',
+						justifyContent: { xxs: 'center', lg: 'space-between' },
+						gap: { xxs: '60px', lg: '0px' },
+						flexWrap: 'wrap',
 						width: '80%',
 						p: 0,
 						pt: '20px',
@@ -98,15 +101,23 @@ const Footer = () => {
 				/>
 				<Box
 					sx={{
-						mt: '25px',
-						display: 'flex',
 						width: '95%',
-						flexDirection: 'row',
-						justifyContent: 'space-between',
+						mt: '25px',
+						px: { xxs: '20px', lg: '0px' },
+						display: 'flex',
+						justifyContent: { xxs: 'center', lg: 'space-between' },
+						gap: { xxs: '60px', lg: '0px' },
 						alignItems: 'center',
+						flexWrap: 'wrap',
 					}}
 				>
-					<Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
 						<UniversalLogo size={54} />
 						<MUILink href='' target='_blank' rel='noopener noreferrer'>
 							<Typography sx={{ fontSize: '12px' }}>Мапа сайту</Typography>
@@ -116,27 +127,55 @@ const Footer = () => {
 						</Typography>
 					</Box>
 
-					<Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
 						<Box sx={boxStyles}>
 							<Typography sx={titleStyles}>МІСЦЕ ЗНАХОДЖЕННЯ</Typography>
 						</Box>
 						<Typography
-							sx={{ fontSize: '15px', fontWeight: 400, color: '#606060' }}
+							sx={{
+								fontSize: '15px',
+								fontWeight: 400,
+								color: '#606060',
+								textAlign: 'center',
+							}}
 						>
 							Дніпро, проспект Дмитра <br /> Яворницького, 19
 						</Typography>
 					</Box>
-					<Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
 						<Box sx={boxStyles}>
 							<Typography sx={titleStyles}>КОНТАКТИ</Typography>
 						</Box>
 						<Typography
-							sx={{ fontSize: '15px', fontWeight: 400, color: '#333333' }}
+							sx={{
+								fontSize: '15px',
+								fontWeight: 400,
+								color: '#333333',
+								textAlign: 'center',
+							}}
 						>
 							+38 096 786 77 77 <br /> ntu@gmail.com
 						</Typography>
 					</Box>
-					<Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
 						<Box sx={boxStyles}>
 							<Typography sx={titleStyles}>ЗАДАТИ ПИТАННЯ</Typography>
 						</Box>
@@ -155,7 +194,13 @@ const Footer = () => {
 							Зворотній зв'язок
 						</Button>
 					</Box>
-					<Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
 						<Box sx={boxStyles}>
 							<Typography sx={titleStyles}>СОЦ.МЕРЕЖІ</Typography>
 						</Box>
