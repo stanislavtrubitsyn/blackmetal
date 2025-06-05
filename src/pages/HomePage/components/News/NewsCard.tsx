@@ -139,6 +139,7 @@ export const NewsCard: FC<NewsCardProps> = ({
                 fontSize: '0.92rem',
                 py: 0.5,
                 px: 2,
+                mb: 1.2,
                 '&:hover': {
                   backgroundColor: theme => theme.palette.primary.main,
                   color: '#fff'
