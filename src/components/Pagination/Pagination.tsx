@@ -18,6 +18,7 @@ const PageButton = styled(Button)(({ theme }) => ({
   padding: '0',
   color: theme.palette.primary.main,
   borderColor: theme.palette.primary.main,
+  borderRadius: 0,
   '&.active': {
     backgroundColor: theme.palette.primary.main,
     color: '#fff',
