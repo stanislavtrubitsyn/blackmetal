@@ -1,0 +1,1 @@
+import{j as r}from"./index-Bp1RSzNC.js";import"./news-B_MgNZky.js";import{H as s,N as t}from"./HeroSection-VauSsKnh.js";import{u as e,C as i}from"./FeedbackForm-BCMCdsSt.js";import"./CardMedia-B4FgQKLd.js";import"./Alert-zjN1EvlA.js";const j=()=>r.jsxs(r.Fragment,{children:[r.jsx(s,{image:e}),r.jsx(i,{maxWidth:"xl",sx:{py:4},children:r.jsx(t,{})})]});export{j as default};
