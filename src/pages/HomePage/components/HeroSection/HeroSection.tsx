@@ -3,8 +3,12 @@ import { Box, Container, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { HeroSectionProps } from './types';
 import { useNavigate } from 'react-router-dom';
-import universityImage from '../../../../assets/images/university.png';
-import unImage from '../../../../assets/images/un.jpg';
+import image1 from '../../../../assets/images/1.jpg';
+import image2 from '../../../../assets/images/2.jpg';
+import image3 from '../../../../assets/images/3.jpg';
+import image4 from '../../../../assets/images/4.jpg';
+import image5 from '../../../../assets/images/5.jpg';
+import image6 from '../../../../assets/images/6.jpg';
 import { Modal } from '../../../../components/Modal';
 import { FeedbackForm } from '../../../../components/FeedbackForm/FeedbackForm';
 
@@ -84,7 +88,7 @@ export const HeroSection: FC<HeroSectionProps> = ({
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const images = [universityImage, unImage];
+  const images = [image1, image2, image3, image4, image5, image6];
 
   useEffect(() => {
     const interval = setInterval(() => {

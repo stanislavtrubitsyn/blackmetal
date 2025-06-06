@@ -7,7 +7,7 @@ const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) =>
 	return (
 		<>
 			{type === 'icon' ? (
-				<Box component='img' src='/isi.jpg' alt='logo' sx={{ height: size }} />
+				<Box component='img' src='/blackmetal/isi.jpg' alt='logo' sx={{ height: size }} />
 			) : (
 				<>
 					<Box
@@ -20,7 +20,7 @@ const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) =>
 					>
 						<Box
 							component='img'
-							src='/isi.jpg'
+							src='/blackmetal/isi.jpg'
 							alt='logo'
 							sx={{
 								width: { xxs: '40px', sm: '60px' },
