@@ -1,8 +1,12 @@
-import { FC } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Box, Container, Typography, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { HeroSectionProps } from './types';
 import { useNavigate } from 'react-router-dom';
+import universityImage from '../../../../assets/images/university.png';
+import unImage from '../../../../assets/images/un.jpg';
+import { Modal } from '../../../../components/Modal';
+import { FeedbackForm } from '../../../../components/FeedbackForm/FeedbackForm';
 
 const HeaderContainer = styled(Box)({
   width: '100%',
@@ -13,6 +17,7 @@ const HeaderContainer = styled(Box)({
   justifyContent: 'center',
   alignItems: 'center',
   maxHeight: '880px',
+  height: '880px',
 });
 
 const HeaderImage = styled('img')({
@@ -20,6 +25,10 @@ const HeaderImage = styled('img')({
   height: '100%',
   display: 'block',
   objectFit: 'cover',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  transition: 'opacity 1s ease-in-out',
 });
 
 const Overlay = styled(Box)({
@@ -28,10 +37,10 @@ const Overlay = styled(Box)({
   left: 0,
   right: 0,
   bottom: 0,
-  // backgroundColor: 'rgba(0, 0, 0, 0.5)',
   backgroundColor: 'rgba(20, 41, 52, 0.8)',
   display: 'flex',
   alignItems: 'center',
+  zIndex: 2,
 });
 
 const ContentWrapper = styled(Box)({
@@ -72,32 +81,63 @@ export const HeroSection: FC<HeroSectionProps> = ({
   overlay = true
 }) => {
   const navigate = useNavigate();
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const images = [universityImage, unImage];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => prevIndex === 0 ? 1 : 0);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleButtonClick = () => {
-    navigate('/feedback');
+    setIsModalOpen(true);
   };
 
   return (
-    <HeaderContainer>
-      <HeaderImage src={image} alt="#IЧM" />
-      {overlay && (
-        <Overlay>
-          <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center' }}>
-            <ContentWrapper>
-              <Hashtag variant="h1">
-                #IЧM
-              </Hashtag>
-              <StyledButton 
-                variant="outlined" 
-                size="large"
-                onClick={handleButtonClick}
-              >
-                Зворотний зв'язок
-              </StyledButton>
-            </ContentWrapper>
-          </Container>
-        </Overlay>
-      )}
-    </HeaderContainer>
+    <>
+      <HeaderContainer>
+        {images.map((img, index) => (
+          <HeaderImage 
+            key={index}
+            src={img} 
+            alt={`#IЧM ${index + 1}`}
+            sx={{
+              opacity: index === currentImageIndex ? 1 : 0,
+              zIndex: index === currentImageIndex ? 1 : 0,
+            }}
+          />
+        ))}
+        {overlay && (
+          <Overlay>
+            <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center' }}>
+              <ContentWrapper>
+                <Hashtag variant="h1">
+                  #IЧM
+                </Hashtag>
+                <StyledButton 
+                  variant="outlined" 
+                  size="large"
+                  onClick={handleButtonClick}
+                >
+                  Зворотний зв'язок
+                </StyledButton>
+              </ContentWrapper>
+            </Container>
+          </Overlay>
+        )}
+      </HeaderContainer>
+
+      <Modal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Зворотний зв'язок"
+      >
+        <FeedbackForm onClose={() => setIsModalOpen(false)} />
+      </Modal>
+    </>
   );
 }; 

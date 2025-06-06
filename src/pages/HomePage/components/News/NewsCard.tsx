@@ -7,26 +7,28 @@ type NewsCardProps = NewsItem;
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
-  height: 'auto',
-  minHeight: '180px',
+  height: '190px',
   width: '100%',
-  boxShadow: '0 4px 20px rgba(20, 41, 52, 0.15)',
-  '&:hover': {
-    // boxShadow: '0 4px 20px rgba(20, 41, 52, 0.15)',
-    transition: 'all 0.3s ease-in-out',
-  },
+  boxShadow: '0 4px 20px rgba(20, 41, 52, 0.08)',
+  borderRadius: 0,
   [theme.breakpoints.down('sm')]: {
+    height: 'auto',
+    minHeight: '160px',
     flexDirection: 'column',
   },
 }));
 
 const StyledCardMedia = styled(CardMedia)({
-  width: '200px',
+  width: '170px',
+  height: '100%',
   flexShrink: 0,
-  backgroundColor: 'rgba(0,0,0,0.08)',
+  backgroundColor: 'rgba(0,0,0,0.04)',
+  borderRadius: 0,
   '@media (max-width: 600px)': {
     width: '100%',
     height: '160px',
+    margin: 0,
+    borderRadius: 0,
   },
 });
 
@@ -34,18 +36,41 @@ const ContentBox = styled(Box)({
   display: 'flex',
   flexDirection: 'column',
   flex: 1,
+  height: '100%',
 });
 
 const TextContent = styled(Box)({
   flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+  overflow: 'hidden',
 });
 
 const ActionBox = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'flex-end',
-  marginTop: '16px',
+  alignItems: 'center',
+  marginTop: 'auto',
+  paddingTop: '6px',
+  '@media (max-width: 600px)': {
+    paddingTop: '6px',
+  },
 });
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  padding: '7px 20px',
+  fontSize: '0.875rem',
+  fontWeight: 500,
+  textTransform: 'none',
+  borderColor: theme.palette.primary.main,
+  color: theme.palette.primary.main,
+  borderRadius: 0,
+  '&:hover': {
+    borderColor: theme.palette.primary.dark,
+    backgroundColor: 'rgba(20, 41, 52, 0.04)',
+  },
+}));
 
 export const NewsCard: FC<NewsCardProps> = ({
   title,
@@ -60,36 +85,78 @@ export const NewsCard: FC<NewsCardProps> = ({
         image={imageUrl}
         title={title}
       />
-      <CardContent sx={{ flex: 1, display: 'flex', flexDirection: 'column', p: 2 }}>
+      <CardContent sx={{ 
+        flex: 1, 
+        display: 'flex', 
+        flexDirection: 'column',
+        p: { xs: 2, sm: 2.5, md: 2 },
+        '&:last-child': { pb: { xs: 2, sm: 2.5, md: 2 } }
+      }}>
         <ContentBox>
           <TextContent>
-            <Typography gutterBottom variant="h6" component="h2" sx={{ 
-              overflow: 'hidden',
-              textOverflow: 'ellipsis',
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical',
-              mb: 1
-            }}>
+            <Typography 
+              variant="h6" 
+              component="h2" 
+              sx={{ 
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                fontWeight: 800,
+                fontSize: { xs: '1.1rem', sm: '1.35rem' },
+                lineHeight: 1.3,
+                color: '#142934',
+                mb: 0.5
+              }}
+            >
               {title}
             </Typography>
             <Typography 
-              variant="body2" 
-              color="text.secondary" 
-              sx={{ mb: 2 }}
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                fontSize: { xs: '0.92rem', sm: '1rem' },
+                lineHeight: 1.5,
+                opacity: 0.85,
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                display: '-webkit-box',
+                WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical',
+                mb: 0.5
+              }}
             >
               {text}
             </Typography>
           </TextContent>
           <ActionBox>
-            <Button 
-              variant="outlined" 
-              size="small" 
+            <StyledButton 
+              variant="outlined"
               onClick={onClick}
+              sx={{
+                minWidth: '110px',
+                fontSize: '0.92rem',
+                py: 0.5,
+                px: 2,
+                mb: 1.2,
+                '&:hover': {
+                  backgroundColor: theme => theme.palette.primary.main,
+                  color: '#fff'
+                }
+              }}
             >
               Перейти
-            </Button>
-            <Typography variant="caption" color="text.secondary">
+            </StyledButton>
+            <Typography 
+              variant="caption" 
+              sx={{ 
+                color: 'text.secondary',
+                fontSize: '0.95rem',
+                opacity: 0.75,
+                ml: 2
+              }}
+            >
               {date}
             </Typography>
           </ActionBox>
