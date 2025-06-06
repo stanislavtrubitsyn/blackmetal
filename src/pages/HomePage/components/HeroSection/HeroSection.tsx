@@ -70,6 +70,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   borderColor: '#fff',
   padding: '12px 32px',
   fontSize: '1.2rem',
+  borderRadius: 0,
   '&:hover': {
     borderColor: '#fff',
     backgroundColor: 'rgba(255, 255, 255, 0.1)',

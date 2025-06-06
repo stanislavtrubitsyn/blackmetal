@@ -26,7 +26,7 @@ const StyledCardMedia = styled(CardMedia)({
   borderRadius: 0,
   '@media (max-width: 600px)': {
     width: '100%',
-    height: '160px',
+    height: '300px',
     margin: 0,
     borderRadius: 0,
   },

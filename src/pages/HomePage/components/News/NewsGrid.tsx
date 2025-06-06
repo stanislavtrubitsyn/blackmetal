@@ -67,8 +67,19 @@ export const NewsGrid: FC = () => {
         spacing={{ xs: 3, sm: 4, md: 5 }}
         sx={{ mb: { xs: 3, sm: 4, md: 5 } }}
       >
-        {displayedNews.map((item) => (
-          <Grid item key={item.id} xs={12} sm={6}>
+        {displayedNews.map((item, idx) => (
+          <Grid 
+            item 
+            key={item.id} 
+            xs={12} 
+            sm={6}
+            sx={{
+              mb: {
+                xxs: idx !== displayedNews.length - 1 ? 2 : 0,
+                xs: 0
+              }
+            }}
+          >
             <NewsCard {...item} />
           </Grid>
         ))}
