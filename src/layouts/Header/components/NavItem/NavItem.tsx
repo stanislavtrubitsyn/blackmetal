@@ -1,3 +1,4 @@
+// src/layouts/Header/components/NavItem/NavItem.tsx
 import React from 'react'
 import { Button, MenuItem, Typography, Box, Fade } from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
@@ -5,6 +6,7 @@ import { NavItem as NavItemType } from '../../interface'
 import { DropdownMenu, NestedDropdownMenu, LineDivider } from '../'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+
 interface NavItemProps {
 	item: NavItemType
 	level?: number
@@ -115,10 +117,10 @@ export const NavItem = ({
 					sx={{
 						color: isOpen ? '#2D7A84' : '#373737',
 						textTransform: 'none',
-						fontSize: { xs: '0.7rem', md: '1rem' }, // адаптивный размер шрифта
+						fontSize: { xs: '0.7rem', md: '1rem' },
 						fontWeight: 'bold',
 						borderRadius: 0,
-						px: { xs: 1, md: 2 }, // адаптивный padding
+						px: { xs: 1, md: 2 },
 						'&:hover': {
 							color: '#2D7A84',
 							backgroundColor: 'transparent',
@@ -136,6 +138,9 @@ export const NavItem = ({
 									<Box
 										sx={{
 											position: 'relative',
+											minHeight: '50px', // Минимальная высота
+											height: 'auto', // Автоматическая высота
+											py: 1, // Добавляем padding по вертикали
 											'&:hover': {
 												backgroundColor: '#4DC3D3',
 												color: '#fff',
@@ -150,7 +155,7 @@ export const NavItem = ({
 												justifyContent: 'space-between',
 												alignItems: 'center',
 												width: '100%',
-												height: '50px',
+												height: '100%',
 												px: 2,
 											}}
 										>
@@ -159,7 +164,7 @@ export const NavItem = ({
 												sx={{
 													overflow: 'hidden',
 													textOverflow: 'ellipsis',
-													whiteSpace: 'nowrap',
+													whiteSpace: 'normal', // Разрешаем перенос строк
 													maxWidth: '100%',
 												}}
 											>
@@ -176,8 +181,9 @@ export const NavItem = ({
 															component='a'
 															href={nestedItem.href}
 															sx={{
-																height: '50px',
-																py: 0,
+																minHeight: '50px',
+																height: 'auto',
+																py: 1,
 																color: '#373737',
 																'&:hover': {
 																	backgroundColor: '#4DC3D3',
@@ -190,7 +196,7 @@ export const NavItem = ({
 																sx={{
 																	overflow: 'hidden',
 																	textOverflow: 'ellipsis',
-																	whiteSpace: 'nowrap',
+																	whiteSpace: 'normal',
 																	maxWidth: '100%',
 																}}
 															>
@@ -208,7 +214,9 @@ export const NavItem = ({
 										component='a'
 										href={subItem.href}
 										sx={{
-											height: '50px',
+											minHeight: '50px',
+											height: 'auto',
+											py: 1,
 											color: '#373737',
 											'&:hover': {
 												backgroundColor: '#4DC3D3',
@@ -221,7 +229,7 @@ export const NavItem = ({
 											sx={{
 												overflow: 'hidden',
 												textOverflow: 'ellipsis',
-												whiteSpace: 'nowrap',
+												whiteSpace: 'normal',
 												maxWidth: '100%',
 											}}
 										>
