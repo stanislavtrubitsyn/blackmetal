@@ -80,17 +80,21 @@ export const Pagination: FC<PaginationProps> = ({
 					return <Ellipsis key={`ellipsis-${index}`}>{pageNumber.value}</Ellipsis>
 				}
 
-        return (
-          <PageButton
-            key={pageNumber.value}
-            variant="outlined"
-            onClick={() => onPageChange(pageNumber.value as number)}
-            className={pageNumber.isActive ? 'active' : ''}
-          >
-            {pageNumber.value}
-          </PageButton>
-        );
-      })}
+				return (
+					<PageButton
+						key={pageNumber.value}
+						variant='outlined'
+						onClick={() => onPageChange(pageNumber.value as number)}
+						className={
+							pageNumber.type === 'page' && 'isActive' in pageNumber && pageNumber.isActive
+								? 'active'
+								: ''
+						}
+					>
+						{pageNumber.value}
+					</PageButton>
+				)
+			})}
 
 			<PageButton variant='outlined' onClick={onNext} disabled={currentPage === lastPage}>
 				{'>'}
