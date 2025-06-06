@@ -1,40 +1,49 @@
+// Router.tsx
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Loader from '@/components/Loader'
-import MainLayout from '@/layouts/MainLayout'
 import routes from '@/router/routes.json'
 import { RouteConfig } from '@/router/types'
+import Loader from '@/components/Loader'
+import MainLayout from '@/layouts/MainLayout'
 
-const Router = () => {
-	return (
-		<Suspense fallback={<Loader />}>
-			<Routes>
-				{Object.entries(routes as Record<string, RouteConfig>).map(
-					([key, route]) => {
-						const Component = lazy(
-							() => import(/* @vite-ignore */ `../pages/${route.component}`)
-						)
+const pages = import.meta.glob('../pages/**/*.tsx') as Record<
+	string,
+	() => Promise<{ default: React.ComponentType<any> }>
+>
 
-						const Layout = route.layout
-							? MainLayout
-							: ({ children }: { children: React.ReactNode }) => <>{children}</>
+const Router = () => (
+	<Suspense fallback={<Loader />}>
+		<Routes>
+			{Object.entries(routes as Record<string, RouteConfig>).map(([key, route]) => {
+				const importPath = `../pages/${route.component}/${route.component}.tsx`
+				const importPage = pages[importPath]
 
-						return (
-							<Route
-								key={key}
-								path={route.path}
-								element={
-									<Layout>
-										<Component />
-									</Layout>
-								}
-							/>
-						)
+				const Component = lazy(() => {
+					if (!importPage) {
+						console.error('❌ Страница не найдена:', importPath)
+						return Promise.reject(new Error(`Page not found: ${route.component}`))
 					}
-				)}
-			</Routes>
-		</Suspense>
-	)
-}
+					return importPage()
+				})
+
+				const Layout = route.layout
+					? MainLayout
+					: ({ children }: { children: React.ReactNode }) => <>{children}</>
+
+				return (
+					<Route
+						key={key}
+						path={route.path}
+						element={
+							<Layout>
+								<Component />
+							</Layout>
+						}
+					/>
+				)
+			})}
+		</Routes>
+	</Suspense>
+)
 
 export default Router
