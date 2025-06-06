@@ -123,13 +123,13 @@ export const HeroSection: FC<HeroSectionProps> = ({
                 <Hashtag variant="h1">
                   #IЧM
                 </Hashtag>
-                <StyledButton 
+                {/* <StyledButton 
                   variant="outlined" 
                   size="large"
                   onClick={handleButtonClick}
                 >
                   Зворотний зв'язок
-                </StyledButton>
+                </StyledButton> */}
               </ContentWrapper>
             </Container>
           </Overlay>
