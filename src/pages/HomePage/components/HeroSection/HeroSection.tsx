@@ -92,11 +92,11 @@ export const HeroSection: FC<HeroSectionProps> = ({
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => prevIndex === 0 ? 1 : 0);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   const handleButtonClick = () => {
     setIsModalOpen(true);
