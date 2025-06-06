@@ -1,0 +1,1 @@
+import{j as t,T as o}from"./index-D3qRGpID.js";const e=()=>t.jsx(o,{variant:"h4",children:"Ошибка 404 - Страница не найдена"}),n=Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"})),a=Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"}));export{n as N,a as i};

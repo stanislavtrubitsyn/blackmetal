@@ -1,0 +1,1 @@
+import{j as t,T as o}from"./index-D3qRGpID.js";const e=()=>t.jsx(o,{variant:"h4",children:"Панель управления (только для авторизованных)"}),a=Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"})),n=Object.freeze(Object.defineProperty({__proto__:null,default:e},Symbol.toStringTag,{value:"Module"}));export{a as D,n as i};
