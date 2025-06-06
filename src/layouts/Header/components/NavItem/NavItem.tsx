@@ -142,7 +142,7 @@ export const NavItem = ({
 											height: 'auto', // Автоматическая высота
 											py: 1, // Добавляем padding по вертикали
 											'&:hover': {
-												backgroundColor: '#4DC3D3',
+												backgroundColor: '#2D7A84',
 												color: '#fff',
 											},
 										}}
@@ -186,7 +186,7 @@ export const NavItem = ({
 																py: 1,
 																color: '#373737',
 																'&:hover': {
-																	backgroundColor: '#4DC3D3',
+																	backgroundColor: '#2D7A84',
 																	color: '#fff',
 																},
 															}}
@@ -219,7 +219,7 @@ export const NavItem = ({
 											py: 1,
 											color: '#373737',
 											'&:hover': {
-												backgroundColor: '#4DC3D3',
+												backgroundColor: '#2D7A84',
 												color: '#fff',
 											},
 										}}
