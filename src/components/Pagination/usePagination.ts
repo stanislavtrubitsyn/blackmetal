@@ -19,7 +19,7 @@ export const usePagination = ({
       return Array.from({ length: totalPages }, (_, i) => ({
         type: 'page' as const,
         value: i + 1,
-        isActive: i + 1 === currentPage
+        isActive: Number(i + 1) === Number(currentPage)
       }));
     }
 
@@ -37,7 +37,7 @@ export const usePagination = ({
       const leftRange = Array.from({ length: leftItemCount }, (_, i) => ({
         type: 'page' as const,
         value: i + 1,
-        isActive: i + 1 === currentPage
+        isActive: Number(i + 1) === Number(currentPage)
       }));
 
       return [...leftRange, { type: 'ellipsis' as const, value: DOTS }, { type: 'page' as const, value: lastPageIndex }];
@@ -48,7 +48,7 @@ export const usePagination = ({
       const rightRange = Array.from({ length: rightItemCount }, (_, i) => ({
         type: 'page' as const,
         value: totalPages - rightItemCount + i + 1,
-        isActive: totalPages - rightItemCount + i + 1 === currentPage
+        isActive: Number(totalPages - rightItemCount + i + 1) === Number(currentPage)
       }));
 
       return [{ type: 'page' as const, value: firstPageIndex }, { type: 'ellipsis' as const, value: DOTS }, ...rightRange];
@@ -57,7 +57,7 @@ export const usePagination = ({
     const middleRange = Array.from({ length: rightSiblingIndex - leftSiblingIndex + 1 }, (_, i) => ({
       type: 'page' as const,
       value: leftSiblingIndex + i,
-      isActive: leftSiblingIndex + i === currentPage
+      isActive: Number(leftSiblingIndex + i) === Number(currentPage)
     }));
 
     return [

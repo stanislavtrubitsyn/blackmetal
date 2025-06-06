@@ -89,7 +89,7 @@ export const Pagination: FC<PaginationProps> = ({
             key={pageNumber.value}
             variant="outlined"
             onClick={() => onPageChange(pageNumber.value as number)}
-            className={pageNumber.isActive ? 'active' : ''}
+            className={pageNumber.type === 'page' && 'isActive' in pageNumber && pageNumber.isActive ? 'active' : ''}
           >
             {pageNumber.value}
           </PageButton>
