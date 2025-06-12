@@ -71,7 +71,8 @@ const Footer = () => {
 						flexDirection: 'row',
 						alignItems: 'center',
 						justifyContent: { xxs: 'center', lg: 'space-between' },
-						gap: { xxs: '60px', lg: '0px' },
+						columnGap: { xxs: '60px', lg: '0px' },
+						rowGap: '10px',
 						flexWrap: 'wrap',
 						width: '80%',
 						p: 0,
@@ -105,8 +106,10 @@ const Footer = () => {
 						mt: '25px',
 						px: { xxs: '20px', lg: '0px' },
 						display: 'flex',
+						flexDirection: 'row-reverse',
 						justifyContent: { xxs: 'center', lg: 'space-between' },
-						gap: { xxs: '60px', lg: '0px' },
+						columnGap: { xxs: '60px', lg: '0px' },
+						rowGap: '15px',
 						alignItems: 'center',
 						flexWrap: 'wrap',
 					}}
@@ -118,56 +121,10 @@ const Footer = () => {
 							alignItems: 'center',
 						}}
 					>
-						<UniversalLogo size={54} />
-						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<Typography sx={{ fontSize: '12px' }}>Мапа сайту</Typography>
-						</MUILink>
-						<Typography sx={{ fontSize: '12px' }}>
-							© 2006-2019 О сайте
-						</Typography>
-					</Box>
-
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-						}}
-					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>МІСЦЕ ЗНАХОДЖЕННЯ</Typography>
+							<Typography sx={titleStyles}>СОЦ.МЕРЕЖІ</Typography>
 						</Box>
-						<Typography
-							sx={{
-								fontSize: '15px',
-								fontWeight: 400,
-								color: '#606060',
-								textAlign: 'center',
-							}}
-						>
-							Дніпро, проспект Дмитра <br /> Яворницького, 19
-						</Typography>
-					</Box>
-					<Box
-						sx={{
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
-						}}
-					>
-						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>КОНТАКТИ</Typography>
-						</Box>
-						<Typography
-							sx={{
-								fontSize: '15px',
-								fontWeight: 400,
-								color: '#333333',
-								textAlign: 'center',
-							}}
-						>
-							+38 096 786 77 77 <br /> ntu@gmail.com
-						</Typography>
+						<SocialLinks />
 					</Box>
 					<Box
 						sx={{
@@ -202,9 +159,56 @@ const Footer = () => {
 						}}
 					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>СОЦ.МЕРЕЖІ</Typography>
+							<Typography sx={titleStyles}>КОНТАКТИ</Typography>
 						</Box>
-						<SocialLinks />
+						<Typography
+							sx={{
+								fontSize: '15px',
+								fontWeight: 400,
+								color: '#333333',
+								textAlign: 'center',
+							}}
+						>
+							+38 096 786 77 77 <br /> ntu@gmail.com
+						</Typography>
+					</Box>
+
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
+						<Box sx={boxStyles}>
+							<Typography sx={titleStyles}>МІСЦЕ ЗНАХОДЖЕННЯ</Typography>
+						</Box>
+						<Typography
+							sx={{
+								mb: '10px',
+								fontSize: '15px',
+								fontWeight: 400,
+								color: '#606060',
+								textAlign: 'center',
+							}}
+						>
+							Дніпро, проспект Дмитра <br /> Яворницького, 19
+						</Typography>
+					</Box>
+					<Box
+						sx={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+						}}
+					>
+						<UniversalLogo size={54} />
+						<MUILink href='' target='_blank' rel='noopener noreferrer'>
+							<Typography sx={{ fontSize: '12px' }}>Мапа сайту</Typography>
+						</MUILink>
+						<Typography sx={{ fontSize: '12px' }}>
+							© 2006-2019 О сайте
+						</Typography>
 					</Box>
 				</Box>
 			</Box>
