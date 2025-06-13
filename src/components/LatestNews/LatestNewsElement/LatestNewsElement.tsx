@@ -29,11 +29,13 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 					width: 250,
 					height: 145,
 					backgroundImage: `url(${image})`,
-					backgroundSize: 'cover',
+					backgroundSize: 'contain',
+					backgroundRepeat: 'no-repeat',
 					backgroundPosition: 'center',
 					position: 'relative',
 					overflow: 'hidden',
 					'&:hover .overlay': { opacity: 1 },
+					backgroundColor: '#fff',
 				}}
 			>
 				<Box
@@ -69,10 +71,13 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 			<Typography
 				fontWeight={700}
 				fontSize={19}
+				component={Link}
+				to={link}
 				sx={{
 					...lineClampStyles,
 					WebkitLineClamp: 2,
 					color: '#2D7A84',
+					textDecoration: 'none',
 				}}
 			>
 				{title}
