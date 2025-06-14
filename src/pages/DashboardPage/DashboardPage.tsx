@@ -1,11 +1,7 @@
 import { Typography } from '@mui/material'
-
+import LatestNews from '@/components/LatestNews'
 const DashboardPage = () => {
-	return (
-		<Typography variant='h4'>
-			Панель управления (только для авторизованных)
-		</Typography>
-	)
+	return <LatestNews />
 }
 
 export default DashboardPage

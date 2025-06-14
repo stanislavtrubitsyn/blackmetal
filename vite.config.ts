@@ -18,5 +18,6 @@ export default defineConfig({
 			'@utils': '/src/utils',
 		},
 	},
+	base: '/blackmetal/',
 	plugins: [react()],
 })
