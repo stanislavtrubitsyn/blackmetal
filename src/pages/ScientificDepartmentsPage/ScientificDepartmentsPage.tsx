@@ -7,30 +7,57 @@ const ScientificDepartmentsPage = () => {
 	return (
 		<Box
 			sx={{
+				width: '100%',
 				display: 'flex',
-				alignItems: 'center',
-				justifyContent: 'center',
 				flexDirection: 'column',
+				alignItems: 'center',
+				px: { xxs: '20px', xl: '190px' },
 			}}
 		>
-			<Typography variant='h3' fontWeight={'bold'} mt={3}>
+			<Typography
+				variant='h3'
+				fontWeight='bold'
+				sx={{
+					textAlign: 'center',
+					mt: 3,
+					fontSize: {
+						xxs: '2.5rem',
+						sm: '2.2rem',
+						md: '2.5rem',
+					},
+				}}
+			>
 				Наукові відділи
 			</Typography>
+
 			<Box
 				sx={{
+					width: '100%',
 					mt: 5,
 					mb: 5,
-					px: 5,
 					display: 'grid',
-					gridTemplateColumns: 'repeat(3, 1fr)', // ровно 3 колонки
+					gridTemplateColumns: {
+						xxs: '1fr',
+						sm: 'repeat(2, 1fr)',
+						md: 'repeat(2, 1fr)',
+						lg: 'repeat(3, 1fr)',
+					},
 					gap: '20px',
-					maxWidth: '1920px', // 3 * 390 + 2 * 10
+					justifyItems: 'center',
+					maxWidth: '1440px',
 					mx: 'auto',
-					justifyItems: 'center', // центрируем содержимое в каждой ячейке
 				}}
 			>
 				{data.ScientificDepartments.map(dep => (
-					<Box key={dep.id} sx={{ width: '460px' }}>
+					<Box
+						key={dep.id}
+						sx={{
+							width: '100%',
+							maxWidth: {
+								xxl: '460px',
+							},
+						}}
+					>
 						<DepartmentElement
 							shortName={dep.shortName}
 							fullName={dep.fullName}
@@ -42,7 +69,6 @@ const ScientificDepartmentsPage = () => {
 			</Box>
 		</Box>
 	)
-	// <LatestNews />
 }
 
 export default ScientificDepartmentsPage
