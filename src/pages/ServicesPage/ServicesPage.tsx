@@ -1,18 +1,19 @@
-import PersonCard from '@/components/PersonCard'
+import { DocumentCard, PersonCard } from '@/components'
 import { Box } from '@mui/material'
 
 const ServicePage = () => {
 	return (
 		<Box
 			sx={{
-				minHeight: '500px',
+				px: '20px',
+				minHeight: '800px',
 				display: 'flex',
+				flexDirection: 'column',
 				justifyContent: 'center',
 				alignItems: 'center',
+				gap: '50px',
 			}}
-		>
-			<PersonCard />
-		</Box>
+		></Box>
 	)
 }
 
