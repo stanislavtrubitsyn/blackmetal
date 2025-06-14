@@ -19,7 +19,7 @@
 				{
 					"id": "scientific-departments",
 					"label": "Наукові відділи",
-					"href": "/structure/scientific-departments"
+					"href": "/blackmetal/scientific-departments"
 				},
 				{
 					"id": "technical-departments",

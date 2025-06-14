@@ -5,10 +5,10 @@
 		"title": "Інститут чорної металургії",
 		"layout": "MainLayout"
 	},
-	"DashboardPage": {
-		"path": "/dashboard",
-		"component": "DashboardPage",
-		"title": "Панель",
+	"ScientificDepartments": {
+		"path": "/scientific-departments",
+		"component": "ScientificDepartmentsPage",
+		"title": "Наукові відділи",
 		"layout": "MainLayout"
 	},
 	"ServicesPage": {
