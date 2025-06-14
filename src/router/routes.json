@@ -11,6 +11,12 @@
 		"title": "Наукові відділи",
 		"layout": "MainLayout"
 	},
+	"TechnicalDepartments": {
+		"path": "/technical-departments",
+		"component": "TechnicalDepartmentsPage",
+		"title": "Наукові відділи",
+		"layout": "MainLayout"
+	},
 	"ServicesPage": {
 		"path": "/services",
 		"component": "ServicesPage",

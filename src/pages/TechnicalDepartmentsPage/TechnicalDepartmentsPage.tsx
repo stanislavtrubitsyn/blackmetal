@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import DepartmentElement from '@components/Departments/DepartmentElement'
 import data from '@components/Departments/departments.json'
 
-const ScientificDepartmentsPage = () => {
+const TechnicalDepartmentsPage = () => {
 	return (
 		<Box
 			sx={{
@@ -14,7 +14,7 @@ const ScientificDepartmentsPage = () => {
 			}}
 		>
 			<Typography variant='h3' fontWeight={'bold'} mt={3}>
-				Наукові відділи
+				Науково-технічні відділи
 			</Typography>
 			<Box
 				sx={{
@@ -29,7 +29,7 @@ const ScientificDepartmentsPage = () => {
 					justifyItems: 'center', // центрируем содержимое в каждой ячейке
 				}}
 			>
-				{data.ScientificDepartments.map(dep => (
+				{data.TechnicalDepartments.map(dep => (
 					<Box key={dep.id} sx={{ width: '460px' }}>
 						<DepartmentElement
 							shortName={dep.shortName}
@@ -45,4 +45,4 @@ const ScientificDepartmentsPage = () => {
 	// <LatestNews />
 }
 
-export default ScientificDepartmentsPage
+export default TechnicalDepartmentsPage
