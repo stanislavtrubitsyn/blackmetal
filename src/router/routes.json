@@ -54,7 +54,7 @@
 		"showIn": "Footer"
 	},
 	"DirectoratePage": {
-		"path": "/blackmetal/structure/directorate",
+		"path": "/structure/directorate",
 		"component": "DirectoratePage",
 		"title": "Директорат",
 		"layout": "MainLayout"

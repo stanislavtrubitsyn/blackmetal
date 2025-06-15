@@ -1,24 +1,41 @@
 import { Box, Typography } from '@mui/material'
-import data from './data.json'
+import { PersonCardInterface } from './PersonCardInterface'
 
-const PersonCard = () => {
+const PersonCard = ({
+	photo = '/public/person.jpg',
+	position,
+	name,
+	description,
+	contacts,
+}: PersonCardInterface) => {
 	return (
 		<Box
 			sx={{
-				width: '589px',
-				height: '342px',
+				width: '100%',
+				m: '0 auto',
+				maxWidth: '589px',
 				display: 'flex',
+				flexDirection: 'row',
 				bgcolor: '#FFFFFF',
+				'@media (max-width: 600px)': {
+					flexDirection: 'column',
+				},
 			}}
 		>
 			<Box
 				sx={{
-					height: '100%',
 					width: '43%',
-					backgroundImage: `url(${data.photo})`,
+					aspectRatio: '0.7505 / 1',
+					bgcolor: '#FFFFFF',
+					backgroundImage: `url(/blackmetal${photo})`,
 					backgroundRepeat: 'no-repeat',
 					backgroundPosition: 'center',
 					backgroundSize: 'cover',
+					'@media (max-width: 600px)': {
+						width: '100%',
+						aspectRatio: '1 / 1',
+						backgroundSize: 'contain',
+					},
 				}}
 			/>
 			<Box
@@ -28,18 +45,22 @@ const PersonCard = () => {
 					py: '30px',
 					display: 'flex',
 					flexDirection: 'column',
+					height: '100%',
+					'@media (max-width: 600px)': {
+						width: '100%',
+					},
 				}}
 			>
 				<Typography
 					sx={{ fontSize: '14px', fontWeight: 400, color: '#8A8A8A' }}
 				>
-					{data.position}
+					{position}
 				</Typography>
 
 				<Typography
 					sx={{ mt: '13px', fontSize: '22px', fontWeight: 700, lineHeight: 1 }}
 				>
-					{data.name}
+					{name}
 				</Typography>
 
 				<Typography
@@ -49,14 +70,14 @@ const PersonCard = () => {
 						fontWeight: 400,
 						color: '#707070',
 						flex: 1,
-						overflow: 'hidden',
+						mb: '15px',
 					}}
 				>
-					{data.description}
+					{description}
 				</Typography>
 
-				<Box sx={{ mt: '15px' }}>
-					{data.contacts.map((contact, index) => (
+				<Box>
+					{contacts.map((contact, index) => (
 						<Box
 							key={index}
 							sx={{
