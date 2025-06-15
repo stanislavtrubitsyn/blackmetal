@@ -20,6 +20,7 @@ const DocumentCard = ({ title, link }: DocumentCardProps) => {
 
 	const fileName = getFileNameFromUrl(link)
 	const fileExtension = getFileExtensionFromUrl(fileName)
+	const fileLink = `/blackmetal${link}`
 
 	return (
 		<Box
@@ -86,7 +87,7 @@ const DocumentCard = ({ title, link }: DocumentCardProps) => {
 				) : (
 					<>
 						<MUILink
-							href={link}
+							href={fileLink}
 							rel='noopener noreferrer'
 							sx={{ width: '100%' }}
 						>
@@ -104,7 +105,7 @@ const DocumentCard = ({ title, link }: DocumentCardProps) => {
 							</Button>
 						</MUILink>
 						<MUILink
-							href={link}
+							href={fileLink}
 							rel='noopener noreferrer'
 							download={fileName}
 							sx={{ width: '100%' }}

@@ -65,6 +65,12 @@
 		"title": "Для вступників",
 		"layout": "MainLayout"
 	},
+	"MainCouncilPage": {
+		"path": "/structure/councils/main",
+		"component": "MainCouncilPage",
+		"title": "Вчена рада",
+		"layout": "MainLayout"
+	},
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
