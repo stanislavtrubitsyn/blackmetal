@@ -66,7 +66,7 @@ const DocumentCard = ({ title, link }: DocumentCardProps) => {
 				{['docx', 'doc'].includes(fileExtension) ? (
 					<>
 						<MUILink
-							href={link}
+							href={fileLink}
 							rel='noopener noreferrer'
 							sx={{ width: '100%' }}
 						>
