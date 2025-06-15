@@ -59,6 +59,24 @@
 		"layout": "MainLayout",
 		"showIn": "Footer"
 	},
+	"DirectoratePage": {
+		"path": "/structure/directorate",
+		"component": "DirectoratePage",
+		"title": "Директорат",
+		"layout": "MainLayout"
+	},
+	"PostgraduateApplicantsPage": {
+		"path": "/training/postgraduate/applicants",
+		"component": "PostgraduateApplicantsPage",
+		"title": "Для вступників",
+		"layout": "MainLayout"
+	},
+	"MainCouncilPage": {
+		"path": "/structure/councils/main",
+		"component": "MainCouncilPage",
+		"title": "Вчена рада",
+		"layout": "MainLayout"
+	},
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
