@@ -1,13 +1,33 @@
 import { Box, Button, Link as MUILink, Typography } from '@mui/material'
-import data from './data.json'
 
-const DocumentCard = () => {
+type DocumentCardProps = {
+	title: string
+	link: string
+}
+
+const DocumentCard = ({ title, link }: DocumentCardProps) => {
+	const getFileNameFromUrl = (url: string): string => {
+		if (!url) return 'document'
+		const parts = url.split('/')
+		return parts[parts.length - 1] || 'document'
+	}
+
+	const getFileExtensionFromUrl = (url: string): string => {
+		if (!url) return 'docx'
+		const parts = url.split('.')
+		return parts[parts.length - 1] || 'document'
+	}
+
+	const fileName = getFileNameFromUrl(link)
+	const fileExtension = getFileExtensionFromUrl(fileName)
+
 	return (
 		<Box
 			sx={{
 				maxWidth: '390px',
 				width: '100%',
 				minHeight: '171px',
+				m: '0px auto',
 				py: '25px',
 				px: '20px',
 				display: 'flex',
@@ -29,7 +49,7 @@ const DocumentCard = () => {
 					textAlign: 'center',
 				}}
 			>
-				{data.title}
+				{title}
 			</Typography>
 			<Box
 				sx={{
@@ -42,43 +62,68 @@ const DocumentCard = () => {
 					flexWrap: 'wrap',
 				}}
 			>
-				<MUILink
-					href={data.seeLink}
-					target='_blank'
-					rel='noopener noreferrer'
-					sx={{ width: { xxs: '100%', xs: '142px' } }}
-				>
-					<Button
-						variant='contained'
-						sx={{
-							width: '100%',
-							height: '42px',
-							borderRadius: 0,
-							boxShadow: 'none',
-							textTransform: 'none',
-						}}
-					>
-						Подивитись
-					</Button>
-				</MUILink>
-				<MUILink
-					href={data.downloadLink}
-					rel='noopener noreferrer'
-					sx={{ width: { xxs: '100%', xs: '142px' } }}
-				>
-					<Button
-						variant='outlined'
-						sx={{
-							width: '100%',
-							height: '42px',
-							borderRadius: 0,
-							textTransform: 'none',
-							color: '#000000',
-						}}
-					>
-						Скачати
-					</Button>
-				</MUILink>
+				{['docx', 'doc'].includes(fileExtension) ? (
+					<>
+						<MUILink
+							href={link}
+							rel='noopener noreferrer'
+							sx={{ width: '100%' }}
+						>
+							<Button
+								variant='outlined'
+								sx={{
+									width: '100%',
+									height: '42px',
+									borderRadius: 0,
+									textTransform: 'none',
+									color: '#000000',
+								}}
+							>
+								Скачати
+							</Button>
+						</MUILink>
+					</>
+				) : (
+					<>
+						<MUILink
+							href={link}
+							rel='noopener noreferrer'
+							sx={{ width: '100%' }}
+						>
+							<Button
+								variant='contained'
+								sx={{
+									width: '100%',
+									height: '42px',
+									borderRadius: 0,
+									boxShadow: 'none',
+									textTransform: 'none',
+								}}
+							>
+								Подивитись
+							</Button>
+						</MUILink>
+						<MUILink
+							href={link}
+							rel='noopener noreferrer'
+							download={fileName}
+							sx={{ width: '100%' }}
+						>
+							<Button
+								variant='outlined'
+								sx={{
+									width: '100%',
+									height: '42px',
+									borderRadius: 0,
+									textTransform: 'none',
+									color: '#000000',
+								}}
+							>
+								Скачати
+							</Button>
+						</MUILink>
+					</>
+				)}
 			</Box>
 		</Box>
 	)

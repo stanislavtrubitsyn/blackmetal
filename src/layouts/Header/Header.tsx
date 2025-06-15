@@ -1,6 +1,13 @@
-// src/layouts/Header/Header.tsx
 import React, { useState } from 'react'
-import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
+import {
+	AppBar,
+	Toolbar,
+	Box,
+	IconButton,
+	InputBase,
+	Divider,
+	useTheme,
+} from '@mui/material'
 import { UniversalLogo } from '@/components'
 import { SocialLinks } from '@/components'
 import { NavItem } from './components/NavItem'
@@ -109,7 +116,11 @@ const Header = () => {
 								},
 							}}
 						/>
-						<IconButton type='submit' onClick={handleSearchSubmit} sx={{ color: '#C7C7C7' }}>
+						<IconButton
+							type='submit'
+							onClick={handleSearchSubmit}
+							sx={{ color: '#C7C7C7' }}
+						>
 							<SearchIcon />
 						</IconButton>
 					</Box>

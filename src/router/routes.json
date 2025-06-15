@@ -53,6 +53,18 @@
 		"layout": "MainLayout",
 		"showIn": "Footer"
 	},
+	"DirectoratePage": {
+		"path": "/blackmetal/structure/directorate",
+		"component": "DirectoratePage",
+		"title": "Директорат",
+		"layout": "MainLayout"
+	},
+	"PostgraduateApplicantsPage": {
+		"path": "/training/postgraduate/applicants",
+		"component": "PostgraduateApplicantsPage",
+		"title": "Для вступників",
+		"layout": "MainLayout"
+	},
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
