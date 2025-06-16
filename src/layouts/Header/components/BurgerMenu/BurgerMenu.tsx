@@ -1,12 +1,20 @@
 // src/layouts/Header/components/BurgerMenu/BurgerMenu.tsx
 import { useState } from 'react'
-import { Box, IconButton, Drawer, useTheme, Typography, Divider } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	Drawer,
+	useTheme,
+	Typography,
+	Divider,
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavItem } from '../NavItem'
 import { NavigationData } from '../../interface'
 import { SocialLinks } from '@/components'
 import { Search } from '../Search'
+import { useTranslation } from 'react-i18next'
 
 interface BurgerMenuProps {
 	navItems: NavigationData['navItems']
@@ -21,8 +29,11 @@ export const BurgerMenu = ({
 	onSearchChange,
 	onSearchSubmit,
 }: BurgerMenuProps) => {
+	const { t } = useTranslation()
 	const [open, setOpen] = useState(false)
-	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
+	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
+		{}
+	)
 	const theme = useTheme()
 
 	const toggleDrawer = (newOpen: boolean) => () => {
@@ -39,7 +50,10 @@ export const BurgerMenu = ({
 		}))
 	}
 
-	const renderMobileNavItems = (items: NavigationData['navItems'], level = 0) => {
+	const renderMobileNavItems = (
+		items: NavigationData['navItems'],
+		level = 0
+	) => {
 		return items.map(item => (
 			<Box
 				key={item.id}
@@ -78,7 +92,7 @@ export const BurgerMenu = ({
 									color: '#373737',
 								}}
 							>
-								{item.label}
+								{t(item.label)}
 							</Typography>
 						</Box>
 					</a>
@@ -104,7 +118,7 @@ export const BurgerMenu = ({
 								color: '#373737',
 							}}
 						>
-							{item.label}
+							{t(item.label)}
 						</Typography>
 						{item.items?.length && (
 							<Typography sx={{ color: '#373737' }}>

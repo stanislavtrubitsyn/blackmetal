@@ -16,19 +16,25 @@ const Syllabus132Page = () => {
 					display: 'grid',
 					gap: '25px',
 					justifyContent: 'center',
-					gridTemplateColumns: {
-						xxs: '1fr',
-						xs: 'repeat(2, 1fr)',
-						sm: 'repeat(3, 1fr)',
-						lg: 'repeat(3, 1fr)',
-						xl: 'repeat(4, 1fr)',
-						xxl: 'repeat(5, 1fr)',
-						xxxl: 'repeat(6, 1fr)',
+					gridTemplateColumns: 'repeat(4, 1fr)',
+					'@media (max-width: 1498px)': {
+						gridTemplateColumns: 'repeat(3, 1fr)',
+					},
+					'@media (max-width: 1127px)': {
+						gridTemplateColumns: 'repeat(2, 1fr)',
+					},
+					'@media (max-width: 756px)': {
+						gridTemplateColumns: '1fr',
 					},
 				}}
 			>
 				{data.map((item, index) => (
-					<DocumentCard key={index} title={item.title} link={item.link} />
+					<DocumentCard
+						key={index}
+						title={item.title}
+						link={item.link}
+						date={item.date}
+					/>
 				))}
 			</Box>
 		</Box>
