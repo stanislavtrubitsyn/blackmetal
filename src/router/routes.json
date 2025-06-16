@@ -83,6 +83,12 @@
 		"title": "Вчена рада",
 		"layout": "MainLayout"
 	},
+	"YoungCouncilPage": {
+		"path": "/structure/councils/young",
+		"component": "YoungCouncilPage",
+		"title": "Рада молодих вчених",
+		"layout": "MainLayout"
+	},
 	"IndividualPlansPage": {
 		"path": "/training/postgraduate/plans",
 		"component": "IndividualPlansPage",

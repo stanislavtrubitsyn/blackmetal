@@ -1,4 +1,5 @@
 import { Box, Button, Link as MUILink, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
 type DocumentCardProps = {
 	title: string
@@ -7,6 +8,8 @@ type DocumentCardProps = {
 }
 
 const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
+	const { t } = useTranslation()
+
 	const getFileNameFromUrl = (url: string): string => {
 		if (!url) return 'document'
 		const parts = url.split('/')
@@ -93,7 +96,6 @@ const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
 					width: '100%',
 					m: '0px auto',
 					display: 'flex',
-					// flexDirection: { xxs: 'column', xs: 'row' },
 					justifyContent: 'center',
 					gap: '20px',
 					flexWrap: 'wrap',
@@ -116,7 +118,7 @@ const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
 									color: '#000000',
 								}}
 							>
-								Скачати
+								{t('components.document-card.download')}
 							</Button>
 						</MUILink>
 					</>
@@ -137,7 +139,7 @@ const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
 									textTransform: 'none',
 								}}
 							>
-								Подивитись
+								{t('components.document-card.see')}
 							</Button>
 						</MUILink>
 						<MUILink
@@ -156,7 +158,7 @@ const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
 									color: '#000000',
 								}}
 							>
-								Скачати
+								{t('components.document-card.download')}
 							</Button>
 						</MUILink>
 					</>

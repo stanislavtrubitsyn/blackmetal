@@ -62,12 +62,12 @@
 						{
 							"id": "young-scientists",
 							"label": "Рада молодих вчених",
-							"href": "/structure/councils/young"
+							"href": "/blackmetal/structure/councils/young"
 						},
 						{
 							"id": "specialized-council",
 							"label": "Спеціалізована вчена рада",
-							"href": "/structure/councils/specialized"
+							"href": "/blackmetal/structure/councils/specialized"
 						}
 					]
 				}

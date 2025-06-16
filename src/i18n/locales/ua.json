@@ -13,6 +13,53 @@
 		"EntrantPage": "Вступнику",
 		"LibraryPage": "Бібліотека"
 	},
+	"pages": {
+		"directorate": {
+			"title": "Дирекція"
+		},
+		"main-council": {
+			"title": "Вчена рада"
+		},
+		"young-council": {
+			"title": "Рада молодих вчених"
+		},
+		"applicants": {
+			"title": "Для вступників"
+		},
+		"plans": {
+			"title": "Індивідуальні плани"
+		},
+		"orders": {
+			"title": "Накази"
+		},
+		"regulations": {
+			"title": "Правила та положення"
+		},
+		"license": {
+			"title": "Ліцензія"
+		},
+		"antiplagiat": {
+			"title": "Перевірка антиплагіату"
+		},
+		"syllabus-136": {
+			"title": "Силабуси 136"
+		},
+		"syllabus-132": {
+			"title": "Силабуси 132"
+		},
+		"accreditation": {
+			"title": "Акредитація"
+		},
+		"stakeholders": {
+			"title": "Стейкхолдери"
+		}
+	},
+	"components": {
+		"document-card": {
+			"see": "Подивитись",
+			"download": "Скачати"
+		}
+	},
 	"footer": {
 		"map": "Мапа сайту",
 		"about": "© 2006-2019 О сайте",

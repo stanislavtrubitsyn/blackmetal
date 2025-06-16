@@ -4,9 +4,9 @@ interface Contact {
 }
 
 export interface PersonCardInterface {
-	photo: string
+	photo?: string
 	position: string
 	name: string
-	description: string
-	contacts: Contact[]
+	description?: string
+	contacts?: Contact[]
 }

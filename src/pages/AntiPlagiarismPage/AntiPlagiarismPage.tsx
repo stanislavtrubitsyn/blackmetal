@@ -1,12 +1,18 @@
 import { DocumentCard } from '@/components'
 import { Box, Typography } from '@mui/material'
 import data from './data.json'
+import data_en from './data_en.json'
+import { useTranslation } from 'react-i18next'
+
 const AntiPlagiarismPage = () => {
+	const { t, i18n } = useTranslation()
+	const currentData = i18n.language === 'en' ? data_en : data
+
 	return (
 		<Box sx={{ px: '20px', pb: '30px' }}>
 			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'center' }}>
 				<Typography sx={{ fontSize: '25px', fontWeight: 600, lineHeight: 1 }}>
-					Перевірка антиплагіату
+					{t('pages.antiplagiat.title')}
 				</Typography>
 			</Box>
 
@@ -27,7 +33,7 @@ const AntiPlagiarismPage = () => {
 					},
 				}}
 			>
-				{data.map((item, index) => (
+				{currentData.map((item, index) => (
 					<DocumentCard
 						key={index}
 						title={item.title}

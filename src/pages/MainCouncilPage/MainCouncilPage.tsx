@@ -1,13 +1,18 @@
 import { Box, Typography } from '@mui/material'
-import data from './data.json'
 import { PersonCard } from '@/components'
+import data from './data.json'
+import data_en from './data_en.json'
+import { useTranslation } from 'react-i18next'
 
 const MainCouncilPage = () => {
+	const { t, i18n } = useTranslation()
+
+	const currentData = i18n.language === 'en' ? data_en : data
 	return (
 		<Box sx={{ px: '20px', pb: '30px' }}>
 			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'center' }}>
 				<Typography sx={{ fontSize: '25px', fontWeight: 600, lineHeight: 1 }}>
-					Вчена рада
+					{t('pages.main-council.title')}
 				</Typography>
 			</Box>
 			<Box
@@ -27,7 +32,7 @@ const MainCouncilPage = () => {
 					},
 				}}
 			>
-				{data.map((item, index) => (
+				{currentData.map((item, index) => (
 					<PersonCard
 						key={index}
 						photo={item.photo}

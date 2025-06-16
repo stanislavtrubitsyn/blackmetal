@@ -13,6 +13,53 @@
 		"EntrantPage": "For Entrants",
 		"LibraryPage": "Library"
 	},
+	"pages": {
+		"directorate": {
+			"title": "Directorate"
+		},
+		"main-council": {
+			"title": "Academic Council"
+		},
+		"young-council": {
+			"title": "Young Scientists' Council"
+		},
+		"applicants": {
+			"title": "For applicants"
+		},
+		"plans": {
+			"title": "Individual plans"
+		},
+		"orders": {
+			"title": "Orders"
+		},
+		"regulations": {
+			"title": "Rules and Regulations"
+		},
+		"license": {
+			"title": "License"
+		},
+		"antiplagiat": {
+			"title": "Plagiarism Check"
+		},
+		"syllabus-136": {
+			"title": "Syllabi 136"
+		},
+		"syllabus-132": {
+			"title": "Syllabi 132"
+		},
+		"accreditation": {
+			"title": "Accreditation"
+		},
+		"stakeholders": {
+			"title": "Stakeholders"
+		}
+	},
+	"components": {
+		"document-card": {
+			"see": "View",
+			"download": "Download"
+		}
+	},
 	"footer": {
 		"map": "Site map",
 		"about": "© 2006-2019 About site",
