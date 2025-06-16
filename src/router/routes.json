@@ -86,6 +86,7 @@
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
-		"title": "Страница не найдена"
+		"title": "Страница не найдена",
+		"layout": "MainLayout"
 	}
 }

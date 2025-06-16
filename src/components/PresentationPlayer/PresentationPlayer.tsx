@@ -1,11 +1,13 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { Box, IconButton, Typography, LinearProgress } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import SendIcon from '@mui/icons-material/Send';
 import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import { PresentationPlayerProps } from './types';
+import * as pdfjsLib from 'pdfjs-dist/legacy/build/pdf';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/blackmetal/pdf.worker.min.js';
 
 const PlayerContainer = styled(Box)({
   width: '100%',
@@ -18,21 +20,20 @@ const PlayerContainer = styled(Box)({
 });
 
 const SlideContent = styled(Box)({
-  height: 500,
+  height: '100%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   position: 'relative',
   width: '100%',
+  background: 'transparent',
 });
 
-const SlideImage = styled('img')({
-  width: '100%',
-  height: '100%',
-  objectFit: 'fill',
-  position: 'absolute',
-  top: 0,
-  left: 0,
+const Canvas = styled('canvas')({
+  maxWidth: '100%',
+  maxHeight: '100%',
+  background: '#fff',
+  borderRadius: 4,
 });
 
 const ControlsBar = styled(Box)({
@@ -56,17 +57,67 @@ const ProgressBar = styled(LinearProgress)({
   },
 });
 
-export const PresentationPlayer: FC<PresentationPlayerProps> = ({ slides }) => {
-  const [current, setCurrent] = useState(0);
-  const total = slides.length;
+export const PresentationPlayer: FC = () => {
+  const [numPages, setNumPages] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const playerRef = useRef<HTMLDivElement>(null);
 
-  const handlePrev = () => setCurrent(c => (c === 0 ? total - 1 : c - 1));
-  const handleNext = () => setCurrent(c => (c === total - 1 ? 0 : c + 1));
+  useEffect(() => {
+    let pdfDoc: any = null;
+    setLoading(true);
+    pdfjsLib.getDocument('/blackmetal/presentation.pdf').promise.then((doc: any) => {
+      pdfDoc = doc;
+      setNumPages(doc.numPages);
+      setLoading(false);
+      renderPage(doc, page);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (numPages > 0) {
+      pdfjsLib.getDocument('/blackmetal/presentation.pdf').promise.then((doc: any) => {
+        renderPage(doc, page);
+      });
+    }
+  }, [page, numPages]);
+
+  const renderPage = (doc: any, pageNum: number) => {
+    doc.getPage(pageNum).then((pdfPage: any) => {
+      const viewport = pdfPage.getViewport({ scale: 1.5, rotation: 0 });
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const context = canvas.getContext('2d');
+      canvas.height = viewport.height;
+      canvas.width = viewport.width;
+      pdfPage.render({ canvasContext: context, viewport });
+    });
+  };
+
+  const handlePrev = () => setPage(p => (p > 1 ? p - 1 : numPages));
+  const handleNext = () => setPage(p => (p < numPages ? p + 1 : 1));
+
+  const handleFullscreen = () => {
+    const elem = playerRef.current;
+    if (!elem) return;
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if ((elem as any).webkitRequestFullscreen) {
+      (elem as any).webkitRequestFullscreen();
+    } else if ((elem as any).msRequestFullscreen) {
+      (elem as any).msRequestFullscreen();
+    }
+  };
 
   return (
-    <PlayerContainer>
+    <PlayerContainer ref={playerRef}>
       <SlideContent>
-        <SlideImage src={slides[current].image} alt="slide" />
+        {loading ? (
+          <Typography color="#fff">Загрузка...</Typography>
+        ) : (
+          <Canvas ref={canvasRef} />
+        )}
       </SlideContent>
       <ControlsBar>
         <IconButton onClick={handlePrev} sx={{ color: '#fff' }}>
@@ -76,21 +127,21 @@ export const PresentationPlayer: FC<PresentationPlayerProps> = ({ slides }) => {
           <ArrowForwardIosIcon />
         </IconButton>
         <Typography sx={{ color: '#fff', minWidth: 32, textAlign: 'center', fontWeight: 500, ml: 2 }}>
-          {current + 1}
+          {page}
         </Typography>
-        <ProgressBar variant="determinate" value={((current + 1) / total) * 100} />
+        <ProgressBar variant="determinate" value={numPages ? (page / numPages) * 100 : 0} />
         <Typography sx={{ color: '#fff', minWidth: 32, textAlign: 'center', fontWeight: 500 }}>
-          {total}
+          {numPages}
         </Typography>
         <IconButton sx={{ color: '#fff' }}>
           <SendIcon />
         </IconButton>
-        <IconButton sx={{ color: '#fff' }}>
+        <IconButton sx={{ color: '#fff' }} onClick={handleFullscreen}>
           <FullscreenIcon />
         </IconButton>
       </ControlsBar>
     </PlayerContainer>
   );
-}; 
+};
 
-export default PresentationPlayer
+export default PresentationPlayer;
