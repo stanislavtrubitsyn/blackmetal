@@ -1,4 +1,8 @@
 {
+	"header": {
+		"about": "Про нас",
+		"developments": "Основні розробки"
+	},
 	"routes": {
 		"HomePage": "Інститут чорної металургії",
 		"DashboardPage": "Панель",

@@ -2,11 +2,11 @@
 	"navItems": [
 		{
 			"id": "about",
-			"label": "Про нас",
+			"label": "header.about",
 			"items": [
 				{
 					"id": "developments",
-					"label": "Основні розробки",
+					"label": "header.developments",
 					"href": "/blackmetal/about/developments"
 				},
 				{

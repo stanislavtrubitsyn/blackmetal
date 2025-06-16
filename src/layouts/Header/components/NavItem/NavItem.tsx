@@ -1,4 +1,3 @@
-// src/layouts/Header/components/NavItem/NavItem.tsx
 import React from 'react'
 import { Button, MenuItem, Typography, Box, Fade } from '@mui/material'
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
@@ -6,6 +5,7 @@ import { NavItem as NavItemType } from '../../interface'
 import { DropdownMenu, NestedDropdownMenu, LineDivider } from '../'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTranslation } from 'react-i18next' // Добавляем импорт
 
 interface NavItemProps {
 	item: NavItemType
@@ -28,8 +28,17 @@ export const NavItem = ({
 	onSubItemMouseEnter,
 	onSubItemMouseLeave,
 }: NavItemProps) => {
+	const { t } = useTranslation() // Добавляем хук перевода
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
+	// Функция для получения переведенного текста
+	const getLabel = () => {
+		// Если есть labelKey, используем перевод
+		if ('label' in item) {
+			return t(item.label)
+		}
+	}
 
 	if (item.href) {
 		return (
@@ -56,7 +65,7 @@ export const NavItem = ({
 					},
 				}}
 			>
-				{item.label}
+				{getLabel()} {/* Используем функцию getLabel вместо item.label */}
 			</Button>
 		)
 	}
@@ -84,7 +93,7 @@ export const NavItem = ({
 							},
 						}}
 					>
-						{item.label}
+						{getLabel()} {/* Используем функцию getLabel вместо item.label */}
 					</Button>
 
 					<Box sx={{ pl: 2, mt: 1 }}>
@@ -127,7 +136,7 @@ export const NavItem = ({
 						},
 					}}
 				>
-					{item.label}
+					{getLabel()} {/* Используем функцию getLabel вместо item.label */}
 				</Button>
 
 				<Fade in={isOpen} timeout={300}>
@@ -138,9 +147,9 @@ export const NavItem = ({
 									<Box
 										sx={{
 											position: 'relative',
-											minHeight: '50px', // Минимальная высота
-											height: 'auto', // Автоматическая высота
-											py: 1, // Добавляем padding по вертикали
+											minHeight: '50px',
+											height: 'auto',
+											py: 1,
 											'&:hover': {
 												backgroundColor: '#2D7A84',
 												color: '#fff',
@@ -164,48 +173,56 @@ export const NavItem = ({
 												sx={{
 													overflow: 'hidden',
 													textOverflow: 'ellipsis',
-													whiteSpace: 'normal', // Разрешаем перенос строк
+													whiteSpace: 'normal',
 													maxWidth: '100%',
 												}}
 											>
-												{subItem.label}
+												{'labelKey' in subItem
+													? t(subItem.label)
+													: subItem.label}
 											</Typography>
 											<KeyboardArrowRightIcon fontSize='small' />
 										</Box>
 
 										<Fade in={hoveredSubItem === subItem.id} timeout={300}>
 											<NestedDropdownMenu>
-												{subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
-													<React.Fragment key={nestedItem.id}>
-														<MenuItem
-															component='a'
-															href={nestedItem.href}
-															sx={{
-																minHeight: '50px',
-																height: 'auto',
-																py: 1,
-																color: '#373737',
-																'&:hover': {
-																	backgroundColor: '#2D7A84',
-																	color: '#fff',
-																},
-															}}
-														>
-															<Typography
-																fontWeight='bold'
+												{subItem.items.map(
+													(nestedItem, nestedIndex, nestedArr) => (
+														<React.Fragment key={nestedItem.id}>
+															<MenuItem
+																component='a'
+																href={nestedItem.href}
 																sx={{
-																	overflow: 'hidden',
-																	textOverflow: 'ellipsis',
-																	whiteSpace: 'normal',
-																	maxWidth: '100%',
+																	minHeight: '50px',
+																	height: 'auto',
+																	py: 1,
+																	color: '#373737',
+																	'&:hover': {
+																		backgroundColor: '#2D7A84',
+																		color: '#fff',
+																	},
 																}}
 															>
-																{nestedItem.label}
-															</Typography>
-														</MenuItem>
-														{nestedIndex < nestedArr.length - 1 && <LineDivider />}
-													</React.Fragment>
-												))}
+																<Typography
+																	fontWeight='bold'
+																	sx={{
+																		overflow: 'hidden',
+																		textOverflow: 'ellipsis',
+																		whiteSpace: 'normal',
+																		maxWidth: '100%',
+																	}}
+																>
+																	{'labelKey' in nestedItem
+																		? t(nestedItem.label)
+																		: nestedItem.label}
+																</Typography>
+															</MenuItem>
+															{nestedIndex < nestedArr.length - 1 && (
+																<LineDivider />
+															)}
+														</React.Fragment>
+													)
+												)}
 											</NestedDropdownMenu>
 										</Fade>
 									</Box>
@@ -233,7 +250,7 @@ export const NavItem = ({
 												maxWidth: '100%',
 											}}
 										>
-											{subItem.label}
+											{t(subItem.label)}
 										</Typography>
 									</MenuItem>
 								)}

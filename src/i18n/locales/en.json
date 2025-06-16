@@ -1,4 +1,8 @@
 {
+	"header": {
+		"about": "About us",
+		"developments": "Basic developments"
+	},
 	"routes": {
 		"HomePage": "Institute of Ferrous Metallurgy",
 		"DashboardPage": "Dashboard",
