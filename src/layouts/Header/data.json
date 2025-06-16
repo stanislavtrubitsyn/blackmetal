@@ -7,7 +7,7 @@
 				{
 					"id": "developments",
 					"label": "Основні розробки",
-					"href": "/about/developments"
+					"href": "/blackmetal/about/developments"
 				},
 				{
 					"id": "documents",
@@ -43,12 +43,12 @@
 				{
 					"id": "scientific-departments",
 					"label": "Наукові відділи",
-					"href": "/structure/scientific-departments"
+					"href": "/blackmetal/scientific-departments"
 				},
 				{
 					"id": "technical-departments",
 					"label": "Науково-технічні відділи",
-					"href": "/structure/technical-departments"
+					"href": "/blackmetal/technical-departments"
 				},
 				{
 					"id": "scientific-councils",

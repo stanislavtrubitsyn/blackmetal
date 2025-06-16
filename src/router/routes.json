@@ -5,10 +5,22 @@
 		"title": "Інститут чорної металургії",
 		"layout": "MainLayout"
 	},
-	"DashboardPage": {
-		"path": "/dashboard",
-		"component": "DashboardPage",
-		"title": "Панель",
+	"DevelopmentsPage": {
+		"path": "/about/developments",
+		"component": "DevelopmentsPage",
+		"title": "Розробки",
+		"layout": "MainLayout"
+	},
+	"ScientificDepartments": {
+		"path": "/scientific-departments",
+		"component": "ScientificDepartmentsPage",
+		"title": "Наукові відділи",
+		"layout": "MainLayout"
+	},
+	"TechnicalDepartments": {
+		"path": "/technical-departments",
+		"component": "TechnicalDepartmentsPage",
+		"title": "Наукові відділи",
 		"layout": "MainLayout"
 	},
 	"ServicesPage": {

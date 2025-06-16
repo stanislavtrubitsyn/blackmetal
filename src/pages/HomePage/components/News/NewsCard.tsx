@@ -7,26 +7,29 @@ type NewsCardProps = NewsItem;
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
-  height: '190px',
+  height: '250px',
   width: '100%',
   boxShadow: '0 4px 20px rgba(20, 41, 52, 0.08)',
   borderRadius: 0,
   [theme.breakpoints.down('sm')]: {
     height: 'auto',
-    minHeight: '160px',
+    minHeight: '250px',
     flexDirection: 'column',
   },
 }));
 
 const StyledCardMedia = styled(CardMedia)({
-  width: '170px',
-  height: '100%',
+  width: '250px',
+  height: '250px',
   flexShrink: 0,
-  backgroundColor: 'rgba(0,0,0,0.04)',
+  backgroundColor: '#fff',
   borderRadius: 0,
+  backgroundSize: 'contain',
+  backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat',
   '@media (max-width: 600px)': {
     width: '100%',
-    height: '300px',
+    height: '250px',
     margin: 0,
     borderRadius: 0,
   },

@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import {
-	AppBar,
-	Toolbar,
-	Box,
-	IconButton,
-	InputBase,
-	Divider,
-	useTheme,
-} from '@mui/material'
+import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
 import { UniversalLogo } from '@/components'
 import { SocialLinks } from '@/components'
 import { NavItem } from './components/NavItem'
@@ -16,6 +8,7 @@ import { NavigationData } from './interface'
 import { Search } from './components/Search'
 import SearchIcon from '@mui/icons-material/Search'
 import { BurgerMenu } from './components/BurgerMenu'
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
 
 const Header = () => {
 	const theme = useTheme()
@@ -116,17 +109,14 @@ const Header = () => {
 								},
 							}}
 						/>
-						<IconButton
-							type='submit'
-							onClick={handleSearchSubmit}
-							sx={{ color: '#C7C7C7' }}
-						>
+						<IconButton type='submit' onClick={handleSearchSubmit} sx={{ color: '#C7C7C7' }}>
 							<SearchIcon />
 						</IconButton>
 					</Box>
 
 					<Box sx={{ display: { xxs: 'none', sm: 'flex' } }}>
-						<SocialLinks />
+						{/* <SocialLinks /> */}
+						<LanguageSwitcher />
 					</Box>
 
 					<BurgerMenu
