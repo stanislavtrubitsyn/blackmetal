@@ -8,6 +8,7 @@ import { NavigationData } from './interface'
 import { Search } from './components/Search'
 import SearchIcon from '@mui/icons-material/Search'
 import { BurgerMenu } from './components/BurgerMenu'
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
 
 const Header = () => {
 	const theme = useTheme()
@@ -114,7 +115,8 @@ const Header = () => {
 					</Box>
 
 					<Box sx={{ display: { xxs: 'none', sm: 'flex' } }}>
-						<SocialLinks />
+						{/* <SocialLinks /> */}
+						<LanguageSwitcher />
 					</Box>
 
 					<BurgerMenu
