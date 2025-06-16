@@ -1,4 +1,14 @@
 {
+	"routes": {
+		"HomePage": "Інститут чорної металургії",
+		"DashboardPage": "Панель",
+		"ServicesPage": "Сервіси",
+		"RepositoryPage": "Репозиторій",
+		"RemoteEducationPage": "Дистанційна освіта",
+		"ApplicantPage": "Абітурієнту",
+		"EntrantPage": "Вступнику",
+		"LibraryPage": "Бібліотека"
+	},
 	"footer": {
 		"map": "Мапа сайту",
 		"about": "© 2006-2019 О сайте",

@@ -1,4 +1,14 @@
 {
+	"routes": {
+		"HomePage": "Institute of Ferrous Metallurgy",
+		"DashboardPage": "Dashboard",
+		"ServicesPage": "Services",
+		"RepositoryPage": "Repository",
+		"RemoteEducationPage": "Remote Education",
+		"ApplicantPage": "For Applicants",
+		"EntrantPage": "For Entrants",
+		"LibraryPage": "Library"
+	},
 	"footer": {
 		"map": "Site map",
 		"about": "© 2006-2019 About site",

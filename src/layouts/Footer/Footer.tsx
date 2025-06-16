@@ -11,10 +11,10 @@ import { Link } from 'react-router-dom'
 import { SocialLinks, UniversalLogo } from '@/components'
 import routes from '@/router/routes.json'
 import { RouteConfig, RoutesConfig } from '@/router/types'
-import { useTranslation } from 'react-i18next' // ВОТ ЭТО ДОБАВЛЯТЬ
+import { useTranslation } from 'react-i18next'
 
 const Footer = () => {
-	const { t } = useTranslation() // ВОТ ЭТО ДОБАВЛЯТЬ
+	const { t } = useTranslation()
 
 	const listItemStyle = {
 		width: 'fit-content',
@@ -45,6 +45,11 @@ const Footer = () => {
 		(route): route is RouteConfig & { showIn: string } =>
 			route.showIn === 'Footer'
 	)
+
+	// Функция для получения переведенного заголовка
+	const getTranslatedTitle = (routeKey: string) => {
+		return t(`routes.${routeKey}`)
+	}
 
 	return (
 		<Box
@@ -89,10 +94,17 @@ const Footer = () => {
 							to={link.path}
 							sx={listItemStyle}
 						>
-							<Typography sx={listTypographyStyle}>{link.title}</Typography>
+							<Typography sx={listTypographyStyle}>
+								{getTranslatedTitle(
+									Object.keys(routes).find(
+										key => routes[key as keyof typeof routes].path === link.path
+									) as string
+								)}
+							</Typography>
 						</ListItem>
 					))}
 				</List>
+				{/* Остальной код остается без изменений */}
 				<Divider
 					sx={{
 						width: '100%',
