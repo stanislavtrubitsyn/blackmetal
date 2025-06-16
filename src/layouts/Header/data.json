@@ -4,18 +4,42 @@
 			"id": "about",
 			"label": "Про нас",
 			"items": [
-				{ "id": "developments", "label": "Основні розробки", "href": "/about/developments" },
-				{ "id": "documents", "label": "Нормативні документи", "href": "/about/documents" },
-				{ "id": "history", "label": "Історія Інституту", "href": "/about/history" },
-				{ "id": "strategy", "label": "Стратегія Інституту", "href": "/about/strategy" },
-				{ "id": "procurement", "label": "Закупівлі", "href": "/about/procurement" }
+				{
+					"id": "developments",
+					"label": "Основні розробки",
+					"href": "/about/developments"
+				},
+				{
+					"id": "documents",
+					"label": "Нормативні документи",
+					"href": "/about/documents"
+				},
+				{
+					"id": "history",
+					"label": "Історія Інституту",
+					"href": "/about/history"
+				},
+				{
+					"id": "strategy",
+					"label": "Стратегія Інституту",
+					"href": "/about/strategy"
+				},
+				{
+					"id": "procurement",
+					"label": "Закупівлі",
+					"href": "/about/procurement"
+				}
 			]
 		},
 		{
 			"id": "structure",
 			"label": "Структура інститута",
 			"items": [
-				{ "id": "directorate", "label": "Дирекція", "href": "/structure/directorate" },
+				{
+					"id": "directorate",
+					"label": "Дирекція",
+					"href": "/blackmetal/structure/directorate"
+				},
 				{
 					"id": "scientific-departments",
 					"label": "Наукові відділи",
@@ -30,7 +54,11 @@
 					"id": "scientific-councils",
 					"label": "Вчені ради Інституту",
 					"items": [
-						{ "id": "main-council", "label": "Вчена рада", "href": "/structure/councils/main" },
+						{
+							"id": "main-council",
+							"label": "Вчена рада",
+							"href": "/blackmetal/structure/councils/main"
+						},
 						{
 							"id": "young-scientists",
 							"label": "Рада молодих вчених",
@@ -54,7 +82,11 @@
 					"label": "Збірник наукових праць",
 					"href": "/publishing/scientific-works"
 				},
-				{ "id": "monographs", "label": "Монографії", "href": "/publishing/monographs" }
+				{
+					"id": "monographs",
+					"label": "Монографії",
+					"href": "/publishing/monographs"
+				}
 			]
 		},
 		{
@@ -68,44 +100,52 @@
 						{
 							"id": "applicants",
 							"label": "Для вступників",
-							"href": "/training/postgraduate/applicants"
+							"href": "/blackmetal/training/postgraduate/applicants"
 						},
 						{
 							"id": "individual-plans",
 							"label": "Індивідуальні плани",
-							"href": "/training/postgraduate/plans"
+							"href": "/blackmetal/training/postgraduate/plans"
 						},
-						{ "id": "orders", "label": "Накази", "href": "/training/postgraduate/orders" },
+						{
+							"id": "orders",
+							"label": "Накази",
+							"href": "/blackmetal/training/postgraduate/orders"
+						},
 						{
 							"id": "regulations",
 							"label": "Правила та положення",
-							"href": "/training/postgraduate/regulations"
+							"href": "/blackmetal/training/postgraduate/regulations"
 						},
-						{ "id": "license", "label": "Ліцензія", "href": "/training/postgraduate/license" },
+						{
+							"id": "license",
+							"label": "Ліцензія",
+							"href": "/blackmetal/training/postgraduate/license"
+						},
 						{
 							"id": "antiplagiat",
 							"label": "Перевірка антиплагіату",
-							"href": "/training/postgraduate/antiplagiat"
+							"href": "/blackmetal/training/postgraduate/antiplagiat"
 						},
 						{
 							"id": "syllabus-136",
 							"label": "Силабуси 136",
-							"href": "/training/postgraduate/syllabus-136"
+							"href": "/blackmetal/training/postgraduate/syllabus-136"
 						},
 						{
 							"id": "syllabus-132",
 							"label": "Силабуси 132",
-							"href": "/training/postgraduate/syllabus-132"
+							"href": "/blackmetal/training/postgraduate/syllabus-132"
 						},
 						{
 							"id": "stakeholders",
 							"label": "Стейкхолдери",
-							"href": "/training/postgraduate/stakeholders"
+							"href": "/blackmetal/training/postgraduate/stakeholders"
 						},
 						{
 							"id": "accreditation",
 							"label": "Акредитація",
-							"href": "/training/postgraduate/accreditation"
+							"href": "/blackmetal/training/postgraduate/accreditation"
 						}
 					]
 				},
