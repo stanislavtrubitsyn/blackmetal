@@ -49,33 +49,70 @@ export const BurgerMenu = ({
 					borderLeft: level > 0 ? `2px solid ${theme.palette.divider}` : 'none',
 				}}
 			>
-				<Box
-					sx={{
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-						width: '100%',
-						py: 1.5,
-						cursor: 'pointer',
-						'&:hover': {
-							backgroundColor: 'rgba(0,0,0,0.05)',
-						},
-					}}
-					onClick={() => (item.items?.length ? toggleItem(item.id) : null)}
-				>
-					<Typography
-						sx={{
-							fontSize: '1.2rem',
-							fontWeight: 'bold',
-							color: '#373737',
+				{item.href ? (
+					<a
+						href={item.href}
+						style={{
+							textDecoration: 'none',
+							width: '100%',
+							display: 'block',
 						}}
 					>
-						{item.label}
-					</Typography>
-					{item.items?.length && (
-						<Typography sx={{ color: '#373737' }}>{expandedItems[item.id] ? '−' : '+'}</Typography>
-					)}
-				</Box>
+						<Box
+							sx={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'space-between',
+								width: '100%',
+								py: 1.5,
+								cursor: 'pointer',
+								'&:hover': {
+									backgroundColor: 'rgba(0,0,0,0.05)',
+								},
+							}}
+						>
+							<Typography
+								sx={{
+									fontSize: '1.2rem',
+									fontWeight: 'bold',
+									color: '#373737',
+								}}
+							>
+								{item.label}
+							</Typography>
+						</Box>
+					</a>
+				) : (
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'space-between',
+							width: '100%',
+							py: 1.5,
+							cursor: 'pointer',
+							'&:hover': {
+								backgroundColor: 'rgba(0,0,0,0.05)',
+							},
+						}}
+						onClick={() => item.items?.length && toggleItem(item.id)}
+					>
+						<Typography
+							sx={{
+								fontSize: '1.2rem',
+								fontWeight: 'bold',
+								color: '#373737',
+							}}
+						>
+							{item.label}
+						</Typography>
+						{item.items?.length && (
+							<Typography sx={{ color: '#373737' }}>
+								{expandedItems[item.id] ? '−' : '+'}
+							</Typography>
+						)}
+					</Box>
+				)}
 
 				{item.items?.length && expandedItems[item.id] && (
 					<Box
@@ -113,7 +150,6 @@ export const BurgerMenu = ({
 					},
 				}}
 				ModalProps={{
-					// Это предотвратит сдвиг контента при открытии меню
 					style: {
 						position: 'fixed',
 						top: 0,
@@ -168,7 +204,7 @@ export const BurgerMenu = ({
 					sx={{
 						display: 'flex',
 						justifyContent: 'center',
-						mt: 'auto', // Это заставит блок быть внизу
+						mt: 'auto',
 						mb: 4,
 						pt: 2,
 					}}
