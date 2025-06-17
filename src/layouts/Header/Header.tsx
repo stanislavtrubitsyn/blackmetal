@@ -89,34 +89,11 @@ const Header = () => {
 				>
 					<UniversalLogo type='icon-text' />
 
-					<Box
-						sx={{
-							display: { xxs: 'none', sm: 'flex' },
-							width: '378px',
-							height: '50px',
-							border: '1px solid #C7C7C7',
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							pl: '20px',
-							pr: '10px',
-						}}
-					>
-						<InputBase
-							placeholder='Пошук по сайту'
-							value={searchQuery}
-							onChange={handleSearchChange}
-							sx={{
-								width: '100%',
-								color: '#373737',
-								'& .MuiInputBase-input': {
-									padding: '8px 0',
-								},
-							}}
-						/>
-						<IconButton type='submit' onClick={handleSearchSubmit} sx={{ color: '#C7C7C7' }}>
-							<SearchIcon />
-						</IconButton>
-					</Box>
+					<Search
+						searchQuery={searchQuery}
+						onSearchChange={handleSearchChange}
+						onSearchSubmit={handleSearchSubmit}
+					/>
 
 					<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
 						<BurgerMenu
