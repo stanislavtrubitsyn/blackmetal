@@ -9,7 +9,7 @@ import { SocialLinks } from '@/components'
 import { Search } from '../Search'
 
 interface BurgerMenuProps {
-	navItems: NavigationData['navItems']
+	navItems: NavigationData['navItems'] // Используем тип из NavigationData
 	searchQuery: string
 	onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	onSearchSubmit: (event: React.FormEvent) => void

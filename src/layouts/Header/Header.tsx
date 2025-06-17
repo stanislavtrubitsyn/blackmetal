@@ -3,16 +3,16 @@ import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '
 import { UniversalLogo } from '@/components'
 import { SocialLinks } from '@/components'
 import { NavItem } from './components/NavItem'
-import navigationData from './data.json'
-import { NavigationData } from './interface'
 import { Search } from './components/Search'
 import SearchIcon from '@mui/icons-material/Search'
 import { BurgerMenu } from './components/BurgerMenu'
-import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useTranslationData } from '@/hooks/useTranslationData'
+import { NavigationData } from './interface'
 
 const Header = () => {
 	const theme = useTheme()
-	const { navItems } = navigationData as NavigationData
+	const { data: navigationData } = useTranslationData<NavigationData>('header')
 	const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
@@ -40,7 +40,11 @@ const Header = () => {
 
 	const handleSearchSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
-		// console.log('Search query:', searchQuery)
+		// Обработка поиска
+	}
+
+	if (!navigationData) {
+		return null // Или загрузочный индикатор
 	}
 
 	return (
@@ -120,7 +124,7 @@ const Header = () => {
 					</Box>
 
 					<BurgerMenu
-						navItems={navItems}
+						navItems={navigationData.navItems} // Передаем массив navItems напрямую
 						searchQuery={searchQuery}
 						onSearchChange={handleSearchChange}
 						onSearchSubmit={handleSearchSubmit}
@@ -150,7 +154,7 @@ const Header = () => {
 						boxSizing: 'border-box',
 					}}
 				>
-					{navItems.map(item => (
+					{navigationData.navItems.map(item => (
 						<NavItem
 							key={item.id}
 							item={item}
