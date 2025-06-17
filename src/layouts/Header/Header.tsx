@@ -118,17 +118,16 @@ const Header = () => {
 						</IconButton>
 					</Box>
 
-					<Box sx={{ display: { xxs: 'none', sm: 'flex' } }}>
-						{/* <SocialLinks /> */}
+					<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+						<BurgerMenu
+							navItems={navigationData.navItems} // Передаем массив navItems напрямую
+							searchQuery={searchQuery}
+							onSearchChange={handleSearchChange}
+							onSearchSubmit={handleSearchSubmit}
+						/>
+
 						<LanguageSwitcher />
 					</Box>
-
-					<BurgerMenu
-						navItems={navigationData.navItems} // Передаем массив navItems напрямую
-						searchQuery={searchQuery}
-						onSearchChange={handleSearchChange}
-						onSearchSubmit={handleSearchSubmit}
-					/>
 				</Box>
 
 				<Divider
