@@ -1,0 +1,192 @@
+{
+	"searchPlaceholder": "Search the site",
+	"navItems": [
+		{
+			"id": "about",
+			"label": "About Us",
+			"items": [
+				{
+					"id": "developments",
+					"label": "Key Developments",
+					"href": "/blackmetal/about/developments"
+				},
+				{
+					"id": "documents",
+					"label": "Regulatory Documents",
+					"href": "/about/documents"
+				},
+				{
+					"id": "history",
+					"label": "Institute History",
+					"href": "/about/history"
+				},
+				{
+					"id": "strategy",
+					"label": "Institute Strategy",
+					"href": "/about/strategy"
+				},
+				{
+					"id": "procurement",
+					"label": "Procurement",
+					"href": "/about/procurement"
+				}
+			]
+		},
+		{
+			"id": "structure",
+			"label": "Institute Structure",
+			"items": [
+				{
+					"id": "directorate",
+					"label": "Directorate",
+					"href": "/blackmetal/structure/directorate"
+				},
+				{
+					"id": "scientific-departments",
+					"label": "Scientific Departments",
+					"href": "/blackmetal/scientific-departments"
+				},
+				{
+					"id": "technical-departments",
+					"label": "Scientific and Technical Departments",
+					"href": "/blackmetal/technical-departments"
+				},
+				{
+					"id": "scientific-councils",
+					"label": "Institute Scientific Councils",
+					"items": [
+						{
+							"id": "main-council",
+							"label": "Scientific Council",
+							"href": "/blackmetal/structure/councils/main"
+						},
+						{
+							"id": "young-scientists",
+							"label": "Young Scientists Council",
+							"href": "/structure/councils/young"
+						},
+						{
+							"id": "specialized-council",
+							"label": "Specialized Academic Council",
+							"href": "/structure/councils/specialized"
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "publishing",
+			"label": "Publishing Activity",
+			"items": [
+				{
+					"id": "scientific-works",
+					"label": "Collection of Scientific Works",
+					"href": "/publishing/scientific-works"
+				},
+				{
+					"id": "monographs",
+					"label": "Monographs",
+					"href": "/publishing/monographs"
+				}
+			]
+		},
+		{
+			"id": "training",
+			"label": "Personnel Training",
+			"items": [
+				{
+					"id": "postgraduate",
+					"label": "Postgraduate Studies",
+					"items": [
+						{
+							"id": "applicants",
+							"label": "For Applicants",
+							"href": "/blackmetal/training/postgraduate/applicants"
+						},
+						{
+							"id": "individual-plans",
+							"label": "Individual Plans",
+							"href": "/blackmetal/training/postgraduate/plans"
+						},
+						{
+							"id": "orders",
+							"label": "Orders",
+							"href": "/blackmetal/training/postgraduate/orders"
+						},
+						{
+							"id": "regulations",
+							"label": "Rules and Regulations",
+							"href": "/blackmetal/training/postgraduate/regulations"
+						},
+						{
+							"id": "license",
+							"label": "License",
+							"href": "/blackmetal/training/postgraduate/license"
+						},
+						{
+							"id": "antiplagiat",
+							"label": "Plagiarism Check",
+							"href": "/blackmetal/training/postgraduate/antiplagiat"
+						},
+						{
+							"id": "syllabus-136",
+							"label": "Syllabi 136",
+							"href": "/blackmetal/training/postgraduate/syllabus-136"
+						},
+						{
+							"id": "syllabus-132",
+							"label": "Syllabi 132",
+							"href": "/blackmetal/training/postgraduate/syllabus-132"
+						},
+						{
+							"id": "stakeholders",
+							"label": "Stakeholders",
+							"href": "/blackmetal/training/postgraduate/stakeholders"
+						},
+						{
+							"id": "accreditation",
+							"label": "Accreditation",
+							"href": "/blackmetal/training/postgraduate/accreditation"
+						}
+					]
+				},
+				{
+					"id": "special-councils",
+					"label": "Ad Hoc Specialized Councils",
+					"href": "/training/special-councils"
+				}
+			]
+		},
+		{
+			"id": "services",
+			"label": "Services",
+			"items": [
+				{
+					"id": "equipment-center",
+					"label": "Shared Research Equipment Center (SREC)",
+					"href": "/services/equipment-center"
+				},
+				{
+					"id": "testing-center",
+					"label": "Testing Center",
+					"href": "/services/testing-center"
+				},
+				{
+					"id": "technical-committee",
+					"label": "Technical Committee 4 (TC4)",
+					"href": "/services/technical-committee"
+				},
+				{
+					"id": "technical-services",
+					"label": "Scientific and Technical Services",
+					"href": "/services/technical-services"
+				}
+			]
+		},
+		{
+			"id": "contacts",
+			"label": "Contacts",
+			"href": "/contacts"
+		}
+	]
+}

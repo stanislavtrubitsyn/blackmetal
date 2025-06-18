@@ -1,8 +1,10 @@
 // components/LatestNews/LatestNews.tsx
 import React, { useEffect, useState } from 'react'
 import { Box } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import LatestNewsElement from './LatestNewsElement'
-import newsData from '@pages/HomePage/components/News/news.json'
+import newsDataUA from '../../i18n/data/news-ua.json'
+import newsDataEN from '../../i18n/data/news-en.json'
 
 interface NewsItem {
 	id: number
@@ -12,20 +14,24 @@ interface NewsItem {
 	date: string
 }
 
-const parseDate = (str: string): Date => {
-	const [day, month, year] = str.split('.').map(Number)
-	return new Date(year, month - 1, day)
+const parseDate = (dateString: string) => {
+	const [day, month, year] = dateString.split('.')
+	return new Date(parseInt(year), parseInt(month) - 1, parseInt(day))
 }
 
 const LatestNews = () => {
+	const { i18n } = useTranslation()
 	const [latestNews, setLatestNews] = useState<NewsItem[]>([])
 
 	useEffect(() => {
-		const sorted = [...newsData.news]
+		// Choose news data based on current language
+		const currentNewsData = i18n.language === 'en' ? newsDataEN : newsDataUA
+		
+		const sorted = [...currentNewsData.news]
 			.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
 			.slice(0, 4)
 		setLatestNews(sorted)
-	}, [])
+	}, [i18n.language])
 
 	return (
 		<Box

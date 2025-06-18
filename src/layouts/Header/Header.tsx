@@ -1,25 +1,18 @@
 import React, { useState } from 'react'
-import {
-	AppBar,
-	Toolbar,
-	Box,
-	IconButton,
-	InputBase,
-	Divider,
-	useTheme,
-} from '@mui/material'
+import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
 import { UniversalLogo } from '@/components'
 import { SocialLinks } from '@/components'
 import { NavItem } from './components/NavItem'
-import navigationData from './data.json'
-import { NavigationData } from './interface'
 import { Search } from './components/Search'
 import SearchIcon from '@mui/icons-material/Search'
 import { BurgerMenu } from './components/BurgerMenu'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import { useTranslationData } from '@/hooks/useTranslationData'
+import { NavigationData } from './interface'
 
 const Header = () => {
 	const theme = useTheme()
-	const { navItems } = navigationData as NavigationData
+	const { data: navigationData } = useTranslationData<NavigationData>('header')
 	const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
@@ -47,7 +40,11 @@ const Header = () => {
 
 	const handleSearchSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
-		// console.log('Search query:', searchQuery)
+		// Обработка поиска
+	}
+
+	if (!navigationData) {
+		return null // Или загрузочный индикатор
 	}
 
 	return (
@@ -92,49 +89,22 @@ const Header = () => {
 				>
 					<UniversalLogo type='icon-text' />
 
-					<Box
-						sx={{
-							display: { xxs: 'none', sm: 'flex' },
-							width: '378px',
-							height: '50px',
-							border: '1px solid #C7C7C7',
-							alignItems: 'center',
-							justifyContent: 'space-between',
-							pl: '20px',
-							pr: '10px',
-						}}
-					>
-						<InputBase
-							placeholder='Пошук по сайту'
-							value={searchQuery}
-							onChange={handleSearchChange}
-							sx={{
-								width: '100%',
-								color: '#373737',
-								'& .MuiInputBase-input': {
-									padding: '8px 0',
-								},
-							}}
-						/>
-						<IconButton
-							type='submit'
-							onClick={handleSearchSubmit}
-							sx={{ color: '#C7C7C7' }}
-						>
-							<SearchIcon />
-						</IconButton>
-					</Box>
-
-					<Box sx={{ display: { xxs: 'none', sm: 'flex' } }}>
-						<SocialLinks />
-					</Box>
-
-					<BurgerMenu
-						navItems={navItems}
+					<Search
 						searchQuery={searchQuery}
 						onSearchChange={handleSearchChange}
 						onSearchSubmit={handleSearchSubmit}
 					/>
+
+					<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+						<BurgerMenu
+							navItems={navigationData.navItems} // Передаем массив navItems напрямую
+							searchQuery={searchQuery}
+							onSearchChange={handleSearchChange}
+							onSearchSubmit={handleSearchSubmit}
+						/>
+
+						<LanguageSwitcher />
+					</Box>
 				</Box>
 
 				<Divider
@@ -160,7 +130,7 @@ const Header = () => {
 						boxSizing: 'border-box',
 					}}
 				>
-					{navItems.map(item => (
+					{navigationData.navItems.map(item => (
 						<NavItem
 							key={item.id}
 							item={item}

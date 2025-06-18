@@ -1,7 +1,9 @@
-// src/layouts/Header/components/BurgerMenu/Search.tsx
 import { styled, alpha } from '@mui/material'
 import SearchIcon from '@mui/icons-material/Search'
 import { IconButton, InputBase } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { useTranslationData } from '@/hooks/useTranslationData'
+import { HeaderTranslation } from '../../interface'
 
 const SearchWrapper = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -13,6 +15,15 @@ const SearchWrapper = styled('div')(({ theme }) => ({
 	marginLeft: 0,
 	width: '100%',
 	border: '1px solid #C7C7C7',
+	[theme.breakpoints.up('sm')]: {
+		width: '378px',
+		height: '50px',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'space-between',
+		paddingLeft: '20px',
+		paddingRight: '10px',
+	},
 }))
 
 const SearchIconWrapper = styled('div')(({ theme }) => ({
@@ -25,6 +36,10 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 	justifyContent: 'center',
 	right: 0,
 	color: '#C7C7C7',
+	[theme.breakpoints.up('sm')]: {
+		position: 'static',
+		pointerEvents: 'auto',
+	},
 }))
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -35,6 +50,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 		paddingRight: `calc(1em + ${theme.spacing(4)})`,
 		transition: theme.transitions.create('width'),
 		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			padding: '8px 0',
+		},
 	},
 }))
 
@@ -45,6 +63,10 @@ interface SearchProps {
 }
 
 export const Search = ({ searchQuery, onSearchChange, onSearchSubmit }: SearchProps) => {
+	const { data: headerData, loading } = useTranslationData<HeaderTranslation>('header')
+
+	if (loading || !headerData) return null
+
 	return (
 		<SearchWrapper>
 			<form
@@ -57,13 +79,15 @@ export const Search = ({ searchQuery, onSearchChange, onSearchSubmit }: SearchPr
 				}}
 			>
 				<StyledInputBase
-					placeholder='Пошук по сайту'
+					placeholder={headerData.searchPlaceholder}
 					inputProps={{ 'aria-label': 'search' }}
 					value={searchQuery}
 					onChange={onSearchChange}
 				/>
 				<SearchIconWrapper>
-					<SearchIcon />
+					<IconButton type='submit' sx={{ color: '#C7C7C7' }}>
+						<SearchIcon />
+					</IconButton>
 				</SearchIconWrapper>
 			</form>
 		</SearchWrapper>

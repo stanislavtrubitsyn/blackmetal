@@ -83,10 +83,58 @@
 		"title": "Вчена рада",
 		"layout": "MainLayout"
 	},
+	"IndividualPlansPage": {
+		"path": "/training/postgraduate/plans",
+		"component": "IndividualPlansPage",
+		"title": "Індивідуальні плани",
+		"layout": "MainLayout"
+	},
+	"OrdersPage": {
+		"path": "/training/postgraduate/orders",
+		"component": "OrdersPage",
+		"title": "Накази",
+		"layout": "MainLayout"
+	},
+	"RegulationsPage": {
+		"path": "/training/postgraduate/regulations",
+		"component": "RegulationsPage",
+		"title": "Правила та положення",
+		"layout": "MainLayout"
+	},
+	"LicensePage": {
+		"path": "/training/postgraduate/license",
+		"component": "LicensePage",
+		"title": "Правила та положення",
+		"layout": "MainLayout"
+	},
+	"AntiPlagiarismPage": {
+		"path": "/training/postgraduate/antiplagiat",
+		"component": "AntiPlagiarismPage",
+		"title": "Перевірка антиплагіату",
+		"layout": "MainLayout"
+	},
+	"AccreditationPage": {
+		"path": "/training/postgraduate/accreditation",
+		"component": "AccreditationPage",
+		"title": "Акредитація",
+		"layout": "MainLayout"
+	},
+	"Syllabus136Page": {
+		"path": "/training/postgraduate/syllabus-136",
+		"component": "Syllabus136Page",
+		"title": "Силабуси 136",
+		"layout": "MainLayout"
+	},
+	"Syllabus132Page": {
+		"path": "/training/postgraduate/syllabus-132",
+		"component": "Syllabus132Page",
+		"title": "Силабуси 132",
+		"layout": "MainLayout"
+	},
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",
 		"title": "Страница не найдена",
-		"layout": "MainLayout"
+		"layout": "HeaderOnlyLayout"
 	}
 }

@@ -1,46 +1,81 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
-
+import { Box } from '@mui/material'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { UniversalLogoProps } from './LogoInterface'
+import { useTranslation } from 'react-i18next'
 
 const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) => {
+	const navigate = useNavigate()
+	const location = useLocation()
+	const { t } = useTranslation()
+
+	const handleLogoClick = () => {
+		if (location.pathname === '/') {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			})
+		} else {
+			navigate('/')
+		}
+	}
+
+	// Получаем переведенный текст с HTML-тегами
+	const logoText = t('logo.text')
+
 	return (
-		<>
+		<Box
+			onClick={handleLogoClick}
+			sx={{
+				cursor: 'pointer',
+				display: 'inline-block',
+				'&:hover': {
+					opacity: 0.8,
+					transition: 'opacity 0.2s ease',
+				},
+			}}
+		>
 			{type === 'icon' ? (
-				<Box component='img' src='/blackmetal/isi.jpg' alt='logo' sx={{ height: size }} />
+				<Box
+					component='img'
+					src='/blackmetal/isi.jpg'
+					alt='logo'
+					sx={{
+						height: size,
+						display: 'block',
+					}}
+				/>
 			) : (
-				<>
+				<Box
+					sx={{
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+						gap: '7px',
+					}}
+				>
 					<Box
+						component='img'
+						src='/blackmetal/isi.jpg'
+						alt='logo'
 						sx={{
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							gap: '7px',
+							width: { xxs: '40px', sm: '60px' },
 						}}
-					>
-						<Box
-							component='img'
-							src='/blackmetal/isi.jpg'
-							alt='logo'
-							sx={{
-								width: { xxs: '40px', sm: '60px' },
-							}}
-						/>
-						<Typography
-							sx={{
-								fontWeight: 'bold',
-								fontSize: { xxs: '10px', sm: '13px' },
-								lineHeight: 1.2,
-								maxWidth: { xxs: '180px', sm: '100%' },
-							}}
-						>
-							Інститут чорної металургії <br /> ім. З.І. Некрасова <br />
-							Національної академії наук України
-						</Typography>
-					</Box>
-				</>
+					/>
+					{/* Используем dangerouslySetInnerHTML для вставки HTML */}
+					<Box
+						component='span'
+						dangerouslySetInnerHTML={{ __html: logoText }}
+						sx={{
+							fontWeight: 'bold',
+							fontSize: { xxs: '10px', sm: '13px' },
+							lineHeight: 1.2,
+							maxWidth: { xxs: '180px', sm: '100%' },
+						}}
+					/>
+				</Box>
 			)}
-		</>
+		</Box>
 	)
 }
 

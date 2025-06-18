@@ -5,6 +5,7 @@ import routes from '@/router/routes.json'
 import { RouteConfig } from '@/router/types'
 import Loader from '@/components/Loader'
 import MainLayout from '@/layouts/MainLayout'
+import HeaderOnlyLayout from '@/layouts/HeaderOnlyLayout/HeaderOnlyLayout'
 
 const pages = import.meta.glob('../pages/**/*.tsx') as Record<
 	string,
@@ -26,9 +27,16 @@ const Router = () => (
 					return importPage()
 				})
 
-				const Layout = route.layout
-					? MainLayout
-					: ({ children }: { children: React.ReactNode }) => <>{children}</>
+				// Выбираем layout в зависимости от настроек маршрута
+				let Layout
+				if (route.layout === 'HeaderOnlyLayout') {
+					Layout = HeaderOnlyLayout
+				} else if (route.layout === 'MainLayout') {
+					Layout = MainLayout
+				} else {
+					// Без layout - только компонент
+					Layout = ({ children }: { children: React.ReactNode }) => <>{children}</>
+				}
 
 				return (
 					<Route

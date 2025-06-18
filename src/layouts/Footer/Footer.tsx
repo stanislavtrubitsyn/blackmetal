@@ -11,8 +11,11 @@ import { Link } from 'react-router-dom'
 import { SocialLinks, UniversalLogo } from '@/components'
 import routes from '@/router/routes.json'
 import { RouteConfig, RoutesConfig } from '@/router/types'
+import { useTranslation } from 'react-i18next' // ВОТ ЭТО ДОБАВЛЯТЬ
 
 const Footer = () => {
+	const { t } = useTranslation() // ВОТ ЭТО ДОБАВЛЯТЬ
+
 	const listItemStyle = {
 		width: 'fit-content',
 		minWidth: 'unset',
@@ -116,13 +119,14 @@ const Footer = () => {
 				>
 					<Box
 						sx={{
+							pb: '11px',
 							display: 'flex',
 							flexDirection: 'column',
 							alignItems: 'center',
 						}}
 					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>СОЦ.МЕРЕЖІ</Typography>
+							<Typography sx={titleStyles}>{t('footer.socials')}</Typography>
 						</Box>
 						<SocialLinks />
 					</Box>
@@ -134,12 +138,13 @@ const Footer = () => {
 						}}
 					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>ЗАДАТИ ПИТАННЯ</Typography>
+							<Typography sx={titleStyles}>{t('footer.question')}</Typography>
 						</Box>
 						<Button
 							variant='outlined'
 							sx={{
 								width: '186px',
+								mb: '9.5px',
 								borderRadius: 0,
 								textTransform: 'none',
 								borderColor: '#333333',
@@ -148,7 +153,7 @@ const Footer = () => {
 								color: '#333333',
 							}}
 						>
-							Зворотній зв'язок
+							{t('footer.questionButton')}
 						</Button>
 					</Box>
 					<Box
@@ -159,7 +164,7 @@ const Footer = () => {
 						}}
 					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>КОНТАКТИ</Typography>
+							<Typography sx={titleStyles}>{t('footer.contacts')}</Typography>
 						</Box>
 						<Typography
 							sx={{
@@ -181,18 +186,18 @@ const Footer = () => {
 						}}
 					>
 						<Box sx={boxStyles}>
-							<Typography sx={titleStyles}>МІСЦЕ ЗНАХОДЖЕННЯ</Typography>
+							<Typography sx={titleStyles}>{t('footer.location')}</Typography>
 						</Box>
 						<Typography
 							sx={{
-								mb: '10px',
+								maxWidth: '178px',
 								fontSize: '15px',
 								fontWeight: 400,
 								color: '#606060',
 								textAlign: 'center',
 							}}
 						>
-							Дніпро, проспект Дмитра <br /> Яворницького, 19
+							{t('footer.address')}
 						</Typography>
 					</Box>
 					<Box
@@ -204,10 +209,12 @@ const Footer = () => {
 					>
 						<UniversalLogo size={54} />
 						<MUILink href='' target='_blank' rel='noopener noreferrer'>
-							<Typography sx={{ fontSize: '12px' }}>Мапа сайту</Typography>
+							<Typography sx={{ fontSize: '12px' }}>
+								{t('footer.map')}
+							</Typography>
 						</MUILink>
 						<Typography sx={{ fontSize: '12px' }}>
-							© 2006-2019 О сайте
+							{t('footer.about')}
 						</Typography>
 					</Box>
 				</Box>

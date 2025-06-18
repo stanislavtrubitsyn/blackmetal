@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
+import { useTranslation } from 'react-i18next';
 import { NewsItem } from './NewsTypes';
 
 type NewsCardProps = NewsItem;
@@ -82,6 +83,8 @@ export const NewsCard: FC<NewsCardProps> = ({
   date,
   onClick,
 }) => {
+  const { t } = useTranslation();
+  
   return (
     <StyledCard>
       <StyledCardMedia
@@ -144,12 +147,12 @@ export const NewsCard: FC<NewsCardProps> = ({
                 px: 2,
                 mb: 1.2,
                 '&:hover': {
-                  backgroundColor: theme => theme.palette.primary.main,
+                  backgroundColor: (theme: any) => theme.palette.primary.main,
                   color: '#fff'
                 }
               }}
             >
-              Перейти
+              {t('common.go')}
             </StyledButton>
             <Typography 
               variant="caption" 
