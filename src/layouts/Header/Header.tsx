@@ -1,22 +1,24 @@
 import React, { useState } from 'react'
-import { AppBar, Toolbar, Box, IconButton, InputBase, Divider, useTheme } from '@mui/material'
+import { AppBar, Toolbar, Box, Divider, useTheme } from '@mui/material'
 import { UniversalLogo } from '@/components'
-import { SocialLinks } from '@/components'
 import { NavItem } from './components/NavItem'
-import { Search } from './components/Search'
-import SearchIcon from '@mui/icons-material/Search'
 import { BurgerMenu } from './components/BurgerMenu'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useTranslationData } from '@/hooks/useTranslationData'
 import { NavigationData } from './interface'
+import UniversalSearch from '@/components/UniversalSearch'
+import { HeaderTranslation } from '../Header/interface'
 
 const Header = () => {
 	const theme = useTheme()
+
+	// Move all hook calls to the top
 	const { data: navigationData } = useTranslationData<NavigationData>('header')
+	const { data: headerData, loading } = useTranslationData<HeaderTranslation>('header')
+
 	const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
-
 	const handleMouseEnter = (id: string) => {
 		setHoveredItem(id)
 	}
@@ -42,10 +44,9 @@ const Header = () => {
 		event.preventDefault()
 	}
 
-	if (!navigationData) {
+	if (!navigationData || loading || !headerData) {
 		return null
 	}
-
 	return (
 		<AppBar
 			position='static'
@@ -89,10 +90,21 @@ const Header = () => {
 					<UniversalLogo type='icon-text' />
 
 					<Box sx={{ display: { xxs: 'none', sm: 'block' } }}>
-						<Search
+						{/* <Search
 							searchQuery={searchQuery}
 							onSearchChange={handleSearchChange}
 							onSearchSubmit={handleSearchSubmit}
+						/> */}
+						<UniversalSearch
+							placeholderKey={headerData.searchPlaceholder}
+							onSearch={q => {
+								// реализовать переход или фильтрацию
+							}}
+							sx={{
+								border: '1px solid #C7C7C7',
+								width: '375px',
+								height: '50px',
+							}}
 						/>
 					</Box>
 
