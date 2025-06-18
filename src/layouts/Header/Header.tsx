@@ -40,11 +40,10 @@ const Header = () => {
 
 	const handleSearchSubmit = (event: React.FormEvent) => {
 		event.preventDefault()
-		// Обработка поиска
 	}
 
 	if (!navigationData) {
-		return null // Или загрузочный индикатор
+		return null
 	}
 
 	return (
@@ -89,21 +88,23 @@ const Header = () => {
 				>
 					<UniversalLogo type='icon-text' />
 
-					<Search
-						searchQuery={searchQuery}
-						onSearchChange={handleSearchChange}
-						onSearchSubmit={handleSearchSubmit}
-					/>
+					<Box sx={{ display: { xxs: 'none', sm: 'block' } }}>
+						<Search
+							searchQuery={searchQuery}
+							onSearchChange={handleSearchChange}
+							onSearchSubmit={handleSearchSubmit}
+						/>
+					</Box>
 
 					<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+						<LanguageSwitcher />
+
 						<BurgerMenu
 							navItems={navigationData.navItems} // Передаем массив navItems напрямую
 							searchQuery={searchQuery}
 							onSearchChange={handleSearchChange}
 							onSearchSubmit={handleSearchSubmit}
 						/>
-
-						<LanguageSwitcher />
 					</Box>
 				</Box>
 

@@ -17,14 +17,14 @@ interface BurgerMenuProps {
 
 export const BurgerMenu = ({
 	navItems,
-	searchQuery,
+
 	onSearchChange,
 	onSearchSubmit,
 }: BurgerMenuProps) => {
 	const [open, setOpen] = useState(false)
 	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
 	const theme = useTheme()
-
+	const [searchQuery, setSearchQuery] = useState('')
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen)
 		if (!newOpen) {
@@ -37,6 +37,14 @@ export const BurgerMenu = ({
 			...prev,
 			[id]: !prev[id],
 		}))
+	}
+
+	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchQuery(event.target.value)
+	}
+
+	const handleSearchSubmit = (event: React.FormEvent) => {
+		event.preventDefault()
 	}
 
 	const renderMobileNavItems = (items: NavigationData['navItems'], level = 0) => {
@@ -184,8 +192,8 @@ export const BurgerMenu = ({
 				>
 					<Search
 						searchQuery={searchQuery}
-						onSearchChange={onSearchChange}
-						onSearchSubmit={onSearchSubmit}
+						onSearchChange={handleSearchChange}
+						onSearchSubmit={handleSearchSubmit}
 					/>
 				</Box>
 

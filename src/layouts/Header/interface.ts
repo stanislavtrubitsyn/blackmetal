@@ -13,5 +13,4 @@ export interface NavigationData {
 
 export interface HeaderTranslation {
 	searchPlaceholder?: string
-	// можно добавить и другие ключи, если нужно
 }
