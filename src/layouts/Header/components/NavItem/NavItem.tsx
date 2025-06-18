@@ -6,6 +6,7 @@ import { DropdownMenu, NestedDropdownMenu, LineDivider } from '../'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { useTranslation } from 'react-i18next' // Добавляем импорт
+import { useNavigate } from 'react-router-dom'
 
 interface NavItemProps {
 	item: NavItemType
@@ -28,6 +29,7 @@ export const NavItem = ({
 	onSubItemMouseEnter,
 	onSubItemMouseLeave,
 }: NavItemProps) => {
+	const navigate = useNavigate()
 	const { t } = useTranslation() // Добавляем хук перевода
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -44,7 +46,6 @@ export const NavItem = ({
 		return (
 			<Button
 				key={item.id}
-				href={item.href}
 				sx={{
 					overflow: 'hidden',
 					textOverflow: 'ellipsis',
@@ -64,6 +65,7 @@ export const NavItem = ({
 						backgroundColor: { xs: 'rgba(0,0,0,0.05)', sm: 'transparent' },
 					},
 				}}
+				onClick={() => navigate(`${item.href}`)}
 			>
 				{getLabel()} {/* Используем функцию getLabel вместо item.label */}
 			</Button>
@@ -191,7 +193,7 @@ export const NavItem = ({
 														<React.Fragment key={nestedItem.id}>
 															<MenuItem
 																component='a'
-																href={nestedItem.href}
+																onClick={() => navigate(`${nestedItem.href}`)}
 																sx={{
 																	minHeight: '50px',
 																	height: 'auto',
@@ -229,7 +231,6 @@ export const NavItem = ({
 								) : (
 									<MenuItem
 										component='a'
-										href={subItem.href}
 										sx={{
 											minHeight: '50px',
 											height: 'auto',
@@ -240,6 +241,7 @@ export const NavItem = ({
 												color: '#fff',
 											},
 										}}
+										onClick={() => navigate(`${subItem.href}`)}
 									>
 										<Typography
 											fontWeight='bold'
