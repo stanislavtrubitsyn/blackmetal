@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react'
 import {
 	IconButton,
@@ -8,13 +6,13 @@ import {
 	ListItemIcon,
 	ListItemText,
 	Typography,
-	Box,
 	styled,
 } from '@mui/material'
 import { Language as LanguageIcon } from '@mui/icons-material'
 import { GB as EnFlag, UA as UkFlag } from 'country-flag-icons/react/3x2'
 import { useTranslation } from 'react-i18next'
-import { LanguageSwitcherProps, Language } from './interfaces'
+import { LanguageSwitcherProps, Language, LangTranslation } from './interfaces'
+import { useTranslationData } from '@/hooks/useTranslationData'
 
 const MAIN_COLOR = '#2D7A84'
 const HIGHLIGHT_COLOR = 'rgba(45, 122, 132, 0.15)'
@@ -51,13 +49,7 @@ const StyledMenu = styled(Menu)(() => ({
 	},
 }))
 
-const defaultLanguages: Language[] = [
-	{ code: 'en', name: 'English' },
-	{ code: 'ua', name: 'Українська' },
-]
-
 const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
-	languages = defaultLanguages,
 	onLanguageChange,
 	initialLanguage,
 	sx,
@@ -67,7 +59,13 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 	const open = Boolean(anchorEl)
 
-	// Гарантируем правильную инициализацию
+	const { data: langData, loading } = useTranslationData<LangTranslation>('lang')
+	const languages: Language[] =
+		!loading && langData
+			? Object.entries(langData.languages).map(([code, name]) => ({ code, name }))
+			: []
+
+	// безопасный useEffect
 	useEffect(() => {
 		if (initialLanguage && i18n.language !== initialLanguage) {
 			i18n.changeLanguage(initialLanguage)
@@ -90,8 +88,11 @@ const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
 
 	const currentLangCode = i18n.language
 	const currentLangShort =
-		languages.find(l => l.code === currentLangCode)?.code.toUpperCase() ||
+		languages.find(lang => lang.code === currentLangCode)?.code.toUpperCase() ||
 		currentLangCode.toUpperCase()
+
+	// если всё ещё грузится — не рендерим ничего
+	if (loading || !languages.length) return null
 
 	return (
 		<div>

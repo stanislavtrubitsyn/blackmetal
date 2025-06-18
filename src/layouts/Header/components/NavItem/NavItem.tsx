@@ -208,10 +208,14 @@ export const NavItem = ({
 																<Typography
 																	fontWeight='bold'
 																	sx={{
-																		overflow: 'hidden',
-																		textOverflow: 'ellipsis',
-																		whiteSpace: 'normal',
-																		maxWidth: '100%',
+																		minHeight: '50px',
+																		height: 'auto',
+																		py: 1,
+																		color: '#373737',
+																		'&:hover': {
+																			backgroundColor: '#2D7A84',
+																			color: '#fff',
+																		},
 																	}}
 																>
 																	{'labelKey' in nestedItem

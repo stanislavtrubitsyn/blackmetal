@@ -1,24 +1,27 @@
 import React from 'react'
-import { Box, Typography } from '@mui/material'
+import { Box } from '@mui/material'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { UniversalLogoProps } from './LogoInterface'
+import { useTranslation } from 'react-i18next'
 
 const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) => {
 	const navigate = useNavigate()
 	const location = useLocation()
+	const { t } = useTranslation()
 
 	const handleLogoClick = () => {
 		if (location.pathname === '/') {
-			// Если уже на главной - плавный скролл наверх
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
 			})
 		} else {
-			// Если не на главной - переход на главную
 			navigate('/')
 		}
 	}
+
+	// Получаем переведенный текст с HTML-тегами
+	const logoText = t('logo.text')
 
 	return (
 		<Box
@@ -59,17 +62,17 @@ const UniversalLogo: React.FC<UniversalLogoProps> = ({ size, type = 'icon' }) =>
 							width: { xxs: '40px', sm: '60px' },
 						}}
 					/>
-					<Typography
+					{/* Используем dangerouslySetInnerHTML для вставки HTML */}
+					<Box
+						component='span'
+						dangerouslySetInnerHTML={{ __html: logoText }}
 						sx={{
 							fontWeight: 'bold',
 							fontSize: { xxs: '10px', sm: '13px' },
 							lineHeight: 1.2,
 							maxWidth: { xxs: '180px', sm: '100%' },
 						}}
-					>
-						Інститут чорної металургії <br /> ім. З.І. Некрасова <br />
-						Національної академії наук України
-					</Typography>
+					/>
 				</Box>
 			)}
 		</Box>

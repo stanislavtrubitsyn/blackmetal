@@ -1,9 +1,14 @@
-import React from 'react'
 import { Box, Typography } from '@mui/material'
-import DepartmentElement from '@components/Departments/DepartmentElement'
-import data from '@components/Departments/departments.json'
+import DepartmentElement from '@/components/Departments/DepartmentElement'
+import { useTranslationData } from '@/hooks/useTranslationData'
+import { DepartmentsData } from '@/components/Departments/interfaces'
 
 const ScientificDepartmentsPage = () => {
+	const { data } = useTranslationData<DepartmentsData>('departments')
+
+	if (!data) {
+		return null // Или загрузочный индикатор
+	}
 	return (
 		<Box
 			sx={{
@@ -27,7 +32,7 @@ const ScientificDepartmentsPage = () => {
 					},
 				}}
 			>
-				Наукові відділи
+				{data.titles.scientific}
 			</Typography>
 
 			<Box

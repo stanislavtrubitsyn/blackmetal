@@ -17,7 +17,7 @@ import { Search } from '../Search'
 import { useTranslation } from 'react-i18next'
 
 interface BurgerMenuProps {
-	navItems: NavigationData['navItems']
+	navItems: NavigationData['navItems'] // Используем тип из NavigationData
 	searchQuery: string
 	onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 	onSearchSubmit: (event: React.FormEvent) => void
@@ -25,7 +25,7 @@ interface BurgerMenuProps {
 
 export const BurgerMenu = ({
 	navItems,
-	searchQuery,
+
 	onSearchChange,
 	onSearchSubmit,
 }: BurgerMenuProps) => {
@@ -35,7 +35,7 @@ export const BurgerMenu = ({
 		{}
 	)
 	const theme = useTheme()
-
+	const [searchQuery, setSearchQuery] = useState('')
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen)
 		if (!newOpen) {
@@ -48,6 +48,14 @@ export const BurgerMenu = ({
 			...prev,
 			[id]: !prev[id],
 		}))
+	}
+
+	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setSearchQuery(event.target.value)
+	}
+
+	const handleSearchSubmit = (event: React.FormEvent) => {
+		event.preventDefault()
 	}
 
 	const renderMobileNavItems = (
@@ -198,8 +206,8 @@ export const BurgerMenu = ({
 				>
 					<Search
 						searchQuery={searchQuery}
-						onSearchChange={onSearchChange}
-						onSearchSubmit={onSearchSubmit}
+						onSearchChange={handleSearchChange}
+						onSearchSubmit={handleSearchSubmit}
 					/>
 				</Box>
 

@@ -12,3 +12,7 @@ export interface LanguageSwitcherProps {
 	sx?: SxProps
 	iconColor?: string
 }
+
+export interface LangTranslation {
+	languages: Record<string, string>
+}

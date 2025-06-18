@@ -1,4 +1,8 @@
 {
+	"titles": {
+		"scientific": "Наукові відділи",
+		"technical": "Науково-технічні відділи"
+	},
 	"ScientificDepartments": [
 		{
 			"id": 1,
