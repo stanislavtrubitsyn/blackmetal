@@ -37,8 +37,8 @@ const LatestNews = () => {
 				flexDirection: 'column',
 				gap: '40px',
 				flexWrap: 'wrap',
-				mt: 5,
-				ml: 5,
+				my: '30px',
+				ml: '20px',
 			}}
 		>
 			{latestNews.map(item => (

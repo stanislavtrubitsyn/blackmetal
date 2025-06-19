@@ -137,6 +137,12 @@
 		"title": "Силабуси 132",
 		"layout": "MainLayout"
 	},
+	"ContactsPage": {
+		"path": "/contacts",
+		"component": "ContactsPage",
+		"title": "Контакти",
+		"layout": "MainLayout"
+	},
 	"NotFoundPage": {
 		"path": "*",
 		"component": "NotFoundPage",

@@ -2,30 +2,29 @@ import { ReactNode } from 'react'
 import { Header } from '@/layouts'
 import { Footer } from '@/layouts'
 import { Box } from '@mui/material'
+import LatestNews from '@/components/LatestNews'
+import { useLocation } from 'react-router-dom'
+import routes from '@/router/routes.json'
 
 interface MainLayoutProps {
 	children: ReactNode
 }
 
 const MainLayout = ({ children }: MainLayoutProps) => {
+	const { pathname } = useLocation()
+
+	const showLatest =
+		pathname !== routes.HomePage.path && pathname !== routes.ContactsPage.path
+
 	return (
-		<Box
-			sx={{
-				display: 'flex',
-				flexDirection: 'column',
-				minHeight: '100vh',
-			}}
-		>
+		<Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 			<Header />
 			<Box
 				component='main'
-				sx={{
-					flex: 1,
-					width: '100%',
-					m: '0 auto',
-				}}
+				sx={{ display: 'flex', flex: 1, width: '100%', m: '0 auto' }}
 			>
-				{children}
+				{showLatest && <LatestNews />}
+				<Box sx={{ flex: 1 }}>{children}</Box>
 			</Box>
 			<Footer />
 		</Box>

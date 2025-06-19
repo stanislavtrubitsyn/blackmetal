@@ -1,4 +1,3 @@
-// src/layouts/Header/components/BurgerMenu/BurgerMenu.tsx
 import { useState } from 'react'
 import {
 	Box,
@@ -92,7 +91,7 @@ export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
 									color: '#373737',
 								}}
 							>
-								{t(item.label)}
+								{item.label}
 							</Typography>
 						</Box>
 					</Box>
@@ -118,7 +117,7 @@ export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
 								color: '#373737',
 							}}
 						>
-							{t(item.label)}
+							{item.label}
 						</Typography>
 						{item.items?.length && (
 							<Typography sx={{ color: '#373737' }}>
