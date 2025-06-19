@@ -1,11 +1,6 @@
 import { Box, Button, Link as MUILink, Typography } from '@mui/material'
 import { useTranslation } from 'react-i18next'
-
-type DocumentCardProps = {
-	title: string
-	link: string
-	date?: string
-}
+import { DocumentCardProps } from './DocumentCardInterface'
 
 const DocumentCard = ({ title, link, date }: DocumentCardProps) => {
 	const { t } = useTranslation()

@@ -21,7 +21,6 @@ const MainLayout = ({ children }: MainLayoutProps) => {
 				component='main'
 				sx={{
 					flex: 1,
-					maxWidth: '1920px',
 					width: '100%',
 					m: '0 auto',
 				}}

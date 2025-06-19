@@ -10,3 +10,8 @@ export interface PersonCardInterface {
 	description?: string
 	contacts?: Contact[]
 }
+
+export interface PersonCardData {
+	title: string
+	data: PersonCardInterface[]
+}
