@@ -1,0 +1,424 @@
+{
+	"news": [
+		{
+			"id": 1,
+			"title": "International Cooperation",
+			"text": "We are pleased to announce the arrival of new computer equipment that will help improve the quality of education and research work.",
+			"imageUrl": "/blackmetal/news1.png",
+			"date": "18.08.2024"
+		},
+		{
+			"id": 2,
+			"title": "EM-40-01 Equipment",
+			"text": "We are pleased to announce the arrival of new computer equipment that will help improve the quality of education and research work.",
+			"imageUrl": "/blackmetal/news2.png",
+			"date": "18.08.2024"
+		},
+		{
+			"id": 3,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/news3.png",
+			"date": "22.08.2024"
+		},
+		{
+			"id": 4,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/news4.png",
+			"date": "22.08.2024"
+		},
+		{
+			"id": 5,
+			"title": "All-Ukrainian Scientific Conference",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/news5.png",
+			"date": "22.08.2024"
+		},
+		{
+			"id": 6,
+			"title": "Institute Staff in Scientific Committee",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/news6.png",
+			"date": "22.08.2024"
+		},
+		{
+			"id": 7,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "22.08.2023"
+		},
+		{
+			"id": 8,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "22.08.2023"
+		},
+		{
+			"id": 9,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "22.08.2023"
+		},
+		{
+			"id": 10,
+			"title": "Software Update",
+			"text": "All university computers have received updates of specialized software to improve the educational process.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "22.08.2023"
+		},
+		{
+			"id": 11,
+			"title": "Launch of New Online Platform",
+			"text": "A new online platform for distance learning with video conferencing integration has been launched.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "24.08.2023"
+		},
+		{
+			"id": 12,
+			"title": "International IT Conference",
+			"text": "The university will host an international IT conference with leading industry experts invited.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "26.08.2023"
+		},
+		{
+			"id": 13,
+			"title": "Programming Courses Enrollment",
+			"text": "Student enrollment is announced for free Python programming courses.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "28.08.2023"
+		},
+		{
+			"id": 14,
+			"title": "Cybersecurity Webinar",
+			"text": "We invite you to a free webinar on cybersecurity basics and data protection.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "30.08.2023"
+		},
+		{
+			"id": 15,
+			"title": "Laboratory Modernization",
+			"text": "As part of the 'Innovative Education' project, physics and chemistry laboratories are being modernized.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "01.09.2023"
+		},
+		{
+			"id": 16,
+			"title": "Student Library Opening",
+			"text": "A new student library with an updated literature collection was officially opened today.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "03.09.2023"
+		},
+		{
+			"id": 17,
+			"title": "Robotics Science Club Meeting",
+			"text": "A robotics science club meeting is being held, all interested students are invited.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "05.09.2023"
+		},
+		{
+			"id": 18,
+			"title": "Student Startup Competition",
+			"text": "A startup competition is announced: authors of the best projects will receive financial support.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "07.09.2023"
+		},
+		{
+			"id": 19,
+			"title": "University Sports Competition",
+			"text": "The university is hosting annual sports competitions in volleyball and football.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "09.09.2023"
+		},
+		{
+			"id": 20,
+			"title": "New Internship Partner",
+			"text": "A memorandum of cooperation has been signed with a world company for student internships.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "11.09.2023"
+		},
+		{
+			"id": 21,
+			"title": "Lecture from Polish Professor",
+			"text": "A professor from Wroclaw University will be a guest of the university and give an open lecture.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "13.09.2023"
+		},
+		{
+			"id": 22,
+			"title": "Time Management Training",
+			"text": "Free time management and personal effectiveness training has been organized for students.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "15.09.2023"
+		},
+		{
+			"id": 23,
+			"title": "Environmental Campus Action",
+			"text": "We invite you to join the university territory cleanup as part of an environmental campaign.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "17.09.2023"
+		},
+		{
+			"id": 24,
+			"title": "Photo Exhibition Opening",
+			"text": "A student photography exhibition on the theme 'Our University' has been set up in the main building lobby.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "19.09.2023"
+		},
+		{
+			"id": 25,
+			"title": "Online Data Science Courses",
+			"text": "Students will be able to take free online Data Science courses from leading world universities.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "21.09.2023"
+		},
+		{
+			"id": 26,
+			"title": "Student Exchange with Germany",
+			"text": "A student exchange program with Berlin Technical University has been launched for a semester.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "23.09.2023"
+		},
+		{
+			"id": 27,
+			"title": "Open Mic for Students",
+			"text": "We invite all talented students to perform with their musical and poetic works.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "25.09.2023"
+		},
+		{
+			"id": 28,
+			"title": "New Equipment in Library",
+			"text": "Modern workstations with electronic readers and high-speed internet have been installed in the library.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "27.09.2023"
+		},
+		{
+			"id": 29,
+			"title": "Scientific Research Seminar",
+			"text": "Leading scientists will conduct a seminar on modern research methods and technologies.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "29.09.2023"
+		},
+		{
+			"id": 30,
+			"title": "University Career Fair",
+			"text": "Representatives of leading companies will present career opportunities for graduates.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "01.10.2023"
+		},
+		{
+			"id": 31,
+			"title": "Current Trends in Web Development",
+			"text": "Lecture by leading developers on modern technologies and web development tools.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "03.10.2023"
+		},
+		{
+			"id": 32,
+			"title": "Student Environmental Debates",
+			"text": "Student teams from different faculties will participate in debates on climate change.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "05.10.2023"
+		},
+		{
+			"id": 33,
+			"title": "Sports Ground Update",
+			"text": "A new athletics ground with running tracks has been opened on the university territory.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "07.10.2023"
+		},
+		{
+			"id": 34,
+			"title": "Robotics Master Class",
+			"text": "We invite students to a master class on robot design and programming.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "09.10.2023"
+		},
+		{
+			"id": 35,
+			"title": "Scholarship Award Ceremony",
+			"text": "The best students will receive scholarships for academic and scientific achievements.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "11.10.2023"
+		},
+		{
+			"id": 36,
+			"title": "Student Cafe Opening",
+			"text": "A new cafe with student-friendly prices has been opened in the first floor lobby.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "13.10.2023"
+		},
+		{
+			"id": 37,
+			"title": "International Student Conference",
+			"text": "Students from partner universities will present their research projects.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "15.10.2023"
+		},
+		{
+			"id": 38,
+			"title": "Digital Skills Workshop",
+			"text": "A workshop on digital literacy and modern information technologies will be held.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "17.10.2023"
+		},
+		{
+			"id": 39,
+			"title": "University Innovation Day",
+			"text": "Students and teachers will present innovative projects and developments.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "19.10.2023"
+		},
+		{
+			"id": 40,
+			"title": "Cultural Exchange Evening",
+			"text": "An evening of cultural exchange with students from different countries will be held.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "21.10.2023"
+		},
+		{
+			"id": 41,
+			"title": "Scientific Article Competition",
+			"text": "A competition for the best scientific articles among students has been announced.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "23.10.2023"
+		},
+		{
+			"id": 42,
+			"title": "University Theater Performance",
+			"text": "The student theater will present a new performance based on classical literature.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "25.10.2023"
+		},
+		{
+			"id": 43,
+			"title": "Modern Technologies Exhibition",
+			"text": "An exhibition of modern technologies and innovations will be held at the university.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "27.10.2023"
+		},
+		{
+			"id": 44,
+			"title": "Student Leadership Forum",
+			"text": "A forum for student leaders and activists will be held to discuss university development.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "29.10.2023"
+		},
+		{
+			"id": 45,
+			"title": "University Research Day",
+			"text": "Students will present their research projects and scientific achievements.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "31.10.2023"
+		},
+		{
+			"id": 46,
+			"title": "International Cooperation Agreement",
+			"text": "A cooperation agreement has been signed with a leading European university.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "02.11.2023"
+		},
+		{
+			"id": 47,
+			"title": "Student Innovation Hub",
+			"text": "A new innovation hub for student projects and startups has been opened.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "04.11.2023"
+		},
+		{
+			"id": 48,
+			"title": "University Science Festival",
+			"text": "A science festival with interactive exhibits and experiments will be held.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "06.11.2023"
+		},
+		{
+			"id": 49,
+			"title": "Student Entrepreneurship Program",
+			"text": "A program to support student entrepreneurship and business projects has been launched.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "08.11.2023"
+		},
+		{
+			"id": 50,
+			"title": "University Technology Transfer",
+			"text": "A technology transfer center has been established to commercialize university developments.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "10.11.2023"
+		},
+		{
+			"id": 51,
+			"title": "Student Research Grant",
+			"text": "Grants for student research projects in priority areas have been announced.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "12.11.2023"
+		},
+		{
+			"id": 52,
+			"title": "University Innovation Center",
+			"text": "An innovation center for developing and implementing student ideas has been opened.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "14.11.2023"
+		},
+		{
+			"id": 53,
+			"title": "International Student Olympiad",
+			"text": "The university will host an international student olympiad in technical disciplines.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "16.11.2023"
+		},
+		{
+			"id": 54,
+			"title": "University Research Laboratory",
+			"text": "A new research laboratory with modern equipment has been opened for students.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "18.11.2023"
+		},
+		{
+			"id": 55,
+			"title": "Student Scientific Conference",
+			"text": "A student scientific conference with international participation will be held.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "20.11.2023"
+		},
+		{
+			"id": 56,
+			"title": "Scientific Work Competition",
+			"text": "A competition for the best student scientific works with awards and journal publication has been announced.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "22.11.2023"
+		},
+		{
+			"id": 57,
+			"title": "Thematic Movie Evening",
+			"text": "The student film club will show a selection of Ukrainian films with discussion after viewing.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "24.11.2023"
+		},
+		{
+			"id": 58,
+			"title": "Volunteer Project at Orphanage",
+			"text": "Students and teachers joined a charity campaign and visited a local orphanage.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "26.11.2023"
+		},
+		{
+			"id": 59,
+			"title": "Psychological Health Seminar",
+			"text": "University psychologists will conduct a seminar on stress management and relaxation during exams.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "28.11.2023"
+		},
+		{
+			"id": 60,
+			"title": "Chess Club Meeting",
+			"text": "Chess club meetings for beginners and experienced players are held every Thursday at 17:00.",
+			"imageUrl": "/blackmetal/isi.jpg",
+			"date": "30.11.2023"
+		}
+	]
+} 

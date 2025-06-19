@@ -12,5 +12,6 @@ export interface NavigationData {
 }
 
 export interface HeaderTranslation {
-	searchPlaceholder?: string
+	searchPlaceholder: string
+	navItems: NavItem[]
 }

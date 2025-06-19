@@ -1,11 +1,14 @@
 import { FC, useState, useEffect } from 'react';
 import { Grid, CircularProgress, Alert, Box, useTheme, useMediaQuery } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { NewsCard } from './NewsCard';
 import { NewsItem } from './NewsTypes';
 import { Pagination } from '../../../../components/Pagination/Pagination';
-import newsData from './news.json';
+import newsDataUA from '../../../../i18n/locales/ua/news.json';
+import newsDataEN from '../../../../i18n/locales/en/news.json';
 
 export const NewsGrid: FC = () => {
+  const { t, i18n } = useTranslation();
   const [news, setNews] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -21,21 +24,23 @@ export const NewsGrid: FC = () => {
     const loadNews = () => {
       try {
         setTimeout(() => {
-          const loadedNews = newsData.news.map(item => ({
+          const currentNewsData = i18n.language === 'en' ? newsDataEN : newsDataUA;
+          
+          const loadedNews = currentNewsData.news.map(item => ({
             ...item,
-            onClick: () => console.log(`Переход к новости ${item.id}`)
+            onClick: () => console.log(`${t('common.go')} ${item.id}`)
           }));
           setNews(loadedNews);
           setLoading(false);
         }, 1000);
       } catch (err) {
-        setError('Ошибка при загрузке новостей');
+        setError(t('news.error'));
         setLoading(false);
       }
     };
 
     loadNews();
-  }, []);
+  }, [t, i18n.language]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -49,14 +54,6 @@ export const NewsGrid: FC = () => {
       <Box sx={{ display: 'flex', justifyContent: 'center', py: 4, width: '100%' }}>
         <CircularProgress />
       </Box>
-    );
-  }
-
-  if (error) {
-    return (
-      <Alert severity="error" sx={{ mb: 2 }}>
-        {error}
-      </Alert>
     );
   }
 

@@ -106,47 +106,47 @@
 						{
 							"id": "individual-plans",
 							"label": "Індивідуальні плани",
-							"href": "/training/postgraduate/plans"
+							"href": "/blackmetal/training/postgraduate/plans"
 						},
 						{
 							"id": "orders",
 							"label": "Накази",
-							"href": "/training/postgraduate/orders"
+							"href": "/blackmetal/training/postgraduate/orders"
 						},
 						{
 							"id": "regulations",
 							"label": "Правила та положення",
-							"href": "/training/postgraduate/regulations"
+							"href": "/blackmetal/training/postgraduate/regulations"
 						},
 						{
 							"id": "license",
 							"label": "Ліцензія",
-							"href": "/training/postgraduate/license"
+							"href": "/blackmetal/training/postgraduate/license"
 						},
 						{
 							"id": "antiplagiat",
 							"label": "Перевірка антиплагіату",
-							"href": "/training/postgraduate/antiplagiat"
+							"href": "/blackmetal/training/postgraduate/antiplagiat"
 						},
 						{
 							"id": "syllabus-136",
 							"label": "Силабуси 136",
-							"href": "/training/postgraduate/syllabus-136"
+							"href": "/blackmetal/training/postgraduate/syllabus-136"
 						},
 						{
 							"id": "syllabus-132",
 							"label": "Силабуси 132",
-							"href": "/training/postgraduate/syllabus-132"
+							"href": "/blackmetal/training/postgraduate/syllabus-132"
 						},
 						{
 							"id": "stakeholders",
 							"label": "Стейкхолдери",
-							"href": "/training/postgraduate/stakeholders"
+							"href": "/blackmetal/training/postgraduate/stakeholders"
 						},
 						{
 							"id": "accreditation",
 							"label": "Акредитація",
-							"href": "/training/postgraduate/accreditation"
+							"href": "/blackmetal/training/postgraduate/accreditation"
 						}
 					]
 				},

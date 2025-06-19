@@ -1,5 +1,6 @@
 import { Box, Typography, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import React from 'react'
 
 interface LatestNewsElementProps {
@@ -22,6 +23,8 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 	image,
 	link,
 }) => {
+	const { t } = useTranslation();
+
 	return (
 		<Box sx={{ width: 250, display: 'flex', flexDirection: 'column', gap: 1 }}>
 			<Box
@@ -63,7 +66,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 							padding: '4px 16px',
 						}}
 					>
-						Детальніше
+						{t('common.details')}
 					</Button>
 				</Box>
 			</Box>

@@ -8,7 +8,7 @@
 				{
 					"id": "developments",
 					"label": "Key Developments",
-					"href": "/about/developments"
+					"href": "/blackmetal/about/developments"
 				},
 				{
 					"id": "documents",
@@ -39,17 +39,17 @@
 				{
 					"id": "directorate",
 					"label": "Directorate",
-					"href": "/structure/directorate"
+					"href": "/blackmetal/structure/directorate"
 				},
 				{
 					"id": "scientific-departments",
 					"label": "Scientific Departments",
-					"href": "/scientific-departments"
+					"href": "/blackmetal/scientific-departments"
 				},
 				{
 					"id": "technical-departments",
 					"label": "Scientific and Technical Departments",
-					"href": "/technical-departments"
+					"href": "/blackmetal/technical-departments"
 				},
 				{
 					"id": "scientific-councils",
@@ -58,7 +58,7 @@
 						{
 							"id": "main-council",
 							"label": "Scientific Council",
-							"href": "/structure/councils/main"
+							"href": "/blackmetal/structure/councils/main"
 						},
 						{
 							"id": "young-scientists",
@@ -101,52 +101,52 @@
 						{
 							"id": "applicants",
 							"label": "For Applicants",
-							"href": "/training/postgraduate/applicants"
+							"href": "/blackmetal/training/postgraduate/applicants"
 						},
 						{
 							"id": "individual-plans",
 							"label": "Individual Plans",
-							"href": "/training/postgraduate/plans"
+							"href": "/blackmetal/training/postgraduate/plans"
 						},
 						{
 							"id": "orders",
 							"label": "Orders",
-							"href": "/training/postgraduate/orders"
+							"href": "/blackmetal/training/postgraduate/orders"
 						},
 						{
 							"id": "regulations",
 							"label": "Rules and Regulations",
-							"href": "/training/postgraduate/regulations"
+							"href": "/blackmetal/training/postgraduate/regulations"
 						},
 						{
 							"id": "license",
 							"label": "License",
-							"href": "/training/postgraduate/license"
+							"href": "/blackmetal/training/postgraduate/license"
 						},
 						{
 							"id": "antiplagiat",
 							"label": "Plagiarism Check",
-							"href": "/training/postgraduate/antiplagiat"
+							"href": "/blackmetal/training/postgraduate/antiplagiat"
 						},
 						{
 							"id": "syllabus-136",
 							"label": "Syllabi 136",
-							"href": "/training/postgraduate/syllabus-136"
+							"href": "/blackmetal/training/postgraduate/syllabus-136"
 						},
 						{
 							"id": "syllabus-132",
 							"label": "Syllabi 132",
-							"href": "/training/postgraduate/syllabus-132"
+							"href": "/blackmetal/training/postgraduate/syllabus-132"
 						},
 						{
 							"id": "stakeholders",
 							"label": "Stakeholders",
-							"href": "/training/postgraduate/stakeholders"
+							"href": "/blackmetal/training/postgraduate/stakeholders"
 						},
 						{
 							"id": "accreditation",
 							"label": "Accreditation",
-							"href": "/training/postgraduate/accreditation"
+							"href": "/blackmetal/training/postgraduate/accreditation"
 						}
 					]
 				},

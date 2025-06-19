@@ -1,13 +1,10 @@
 import React, { useState } from 'react'
 import { AppBar, Toolbar, Box, Divider, useTheme } from '@mui/material'
-import { UniversalLogo } from '@/components'
+import { UniversalLogo, LanguageSwitcher, UniversalSearch } from '@/components'
 import { NavItem } from './components/NavItem'
 import { BurgerMenu } from './components/BurgerMenu'
-import LanguageSwitcher from '@/components/LanguageSwitcher'
 import { useTranslationData } from '@/hooks/useTranslationData'
-import { NavigationData } from './interface'
-import UniversalSearch from '@/components/UniversalSearch'
-import { HeaderTranslation } from '../Header/interface'
+import { NavigationData, HeaderTranslation } from './interface'
 
 const Header = () => {
 	const theme = useTheme()
