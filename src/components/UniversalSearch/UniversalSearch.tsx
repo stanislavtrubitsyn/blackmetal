@@ -1,6 +1,6 @@
 import React from 'react'
 import { InputBase, IconButton, Box, SxProps, Theme } from '@mui/material'
-import SearchIcon from '../../../public/search.svg'
+import SearchIcon from '/search.svg'
 
 interface UniversalSearchProps {
 	placeholderKey?: string
