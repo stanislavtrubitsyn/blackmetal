@@ -23,7 +23,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 	image,
 	link,
 }) => {
-	const { t } = useTranslation();
+	const { t } = useTranslation()
 
 	return (
 		<Box sx={{ width: 250, display: 'flex', flexDirection: 'column', gap: 1 }}>
@@ -61,12 +61,13 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 						sx={{
 							color: '#fff',
 							borderColor: '#fff',
+							borderRadius: 0,
 							textTransform: 'none',
 							fontSize: 14,
 							padding: '4px 16px',
 						}}
 					>
-						{t('common.details')}
+						{t('buttonNews.go')}
 					</Button>
 				</Box>
 			</Box>
