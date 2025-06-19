@@ -1,6 +1,7 @@
 import { Box, Typography, Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface LatestNewsElementProps {
 	title: string
@@ -22,6 +23,8 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 	image,
 	link,
 }) => {
+	const { t } = useTranslation()
+
 	return (
 		<Box sx={{ width: 250, display: 'flex', flexDirection: 'column', gap: 1 }}>
 			<Box
@@ -58,12 +61,13 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 						sx={{
 							color: '#fff',
 							borderColor: '#fff',
+							borderRadius: 0,
 							textTransform: 'none',
 							fontSize: 14,
 							padding: '4px 16px',
 						}}
 					>
-						Детальніше
+						{t('buttonNews.go')}
 					</Button>
 				</Box>
 			</Box>

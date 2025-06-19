@@ -9,14 +9,9 @@ import {
 	useMediaQuery,
 } from '@mui/material'
 import { NewsCard } from './NewsCard'
-import { NewsItem } from './NewsTypes'
+import { NewsItem, TranslatedNewsData } from './NewsTypes'
 import { Pagination } from '@/components/Pagination/Pagination'
 import { useTranslationData } from '@/hooks/useTranslationData'
-
-interface TranslatedNewsData {
-	newsTitle: string
-	news: NewsItem[]
-}
 
 export const NewsGrid: FC = () => {
 	const { data: translationData, loading, error } = useTranslationData<TranslatedNewsData>('news')

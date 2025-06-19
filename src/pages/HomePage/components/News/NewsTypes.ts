@@ -7,3 +7,7 @@ export interface NewsItem {
 
 	onClick?: () => void
 }
+export interface TranslatedNewsData {
+	newsTitle: string
+	news: NewsItem[]
+}
