@@ -13,7 +13,7 @@ const YoungCouncilPage = () => {
 	return (
 		<Box sx={{ px: '20px', pb: '30px' }}>
 			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'center' }}>
-				<Typography sx={{ fontSize: '25px', fontWeight: 600, lineHeight: 1 }}>
+				<Typography sx={{ fontSize: '36px', fontWeight: 600, lineHeight: 1 }}>
 					{data.title}
 				</Typography>
 			</Box>
