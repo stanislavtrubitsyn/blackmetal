@@ -8,7 +8,7 @@
 				{
 					"id": "developments",
 					"label": "Основні розробки",
-					"href": "/blackmetal/about/developments"
+					"href": "/about/developments"
 				},
 				{
 					"id": "documents",
@@ -39,17 +39,17 @@
 				{
 					"id": "directorate",
 					"label": "Дирекція",
-					"href": "/blackmetal/structure/directorate"
+					"href": "/structure/directorate"
 				},
 				{
 					"id": "scientific-departments",
 					"label": "Наукові відділи",
-					"href": "/blackmetal/scientific-departments"
+					"href": "/scientific-departments"
 				},
 				{
 					"id": "technical-departments",
 					"label": "Науково-технічні відділи",
-					"href": "/blackmetal/technical-departments"
+					"href": "/technical-departments"
 				},
 				{
 					"id": "scientific-councils",
@@ -58,7 +58,7 @@
 						{
 							"id": "main-council",
 							"label": "Вчена рада",
-							"href": "/blackmetal/structure/councils/main"
+							"href": "/structure/councils/main"
 						},
 						{
 							"id": "young-scientists",
@@ -101,7 +101,7 @@
 						{
 							"id": "applicants",
 							"label": "Для вступників",
-							"href": "/blackmetal/training/postgraduate/applicants"
+							"href": "/training/postgraduate/applicants"
 						},
 						{
 							"id": "individual-plans",
