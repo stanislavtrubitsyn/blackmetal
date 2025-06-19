@@ -16,6 +16,7 @@ const Header = () => {
 	const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
+	const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 	const handleMouseEnter = (id: string) => {
 		setHoveredItem(id)
 	}
@@ -86,33 +87,40 @@ const Header = () => {
 				>
 					<UniversalLogo type='icon-text' />
 
-					<Box sx={{ display: { xxs: 'none', sm: 'block' } }}>
-						{/* <Search
-							searchQuery={searchQuery}
-							onSearchChange={handleSearchChange}
-							onSearchSubmit={handleSearchSubmit}
-						/> */}
-						<UniversalSearch
-							placeholderKey={headerData.searchPlaceholder}
-							onSearch={q => {
-								// реализовать переход или фильтрацию
-							}}
-							sx={{
-								border: '1px solid #C7C7C7',
-								width: '375px',
-								height: '50px',
-							}}
-						/>
-					</Box>
-
 					<Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+						<Box
+							sx={{
+								display: { xxs: 'none', sm: 'flex' },
+								alignItems: 'center',
+								gap: '10px',
+								transition: 'all 0.5s ease-in-out',
+							}}
+							onMouseEnter={() => setIsSearchExpanded(true)}
+							onMouseLeave={() => setIsSearchExpanded(false)}
+						>
+							<UniversalSearch
+								placeholderKey={headerData?.searchPlaceholder}
+								onSearch={q => {}}
+								isExpanded={isSearchExpanded}
+								sx={{
+									border: '1px solid',
+									borderColor: isSearchExpanded ? '#C7C7C7' : 'transparent',
+									width: isSearchExpanded ? '375px' : '50px',
+									height: '50px',
+									overflow: 'hidden',
+									transition: 'all 0.5s ease-in-out',
+									pr: 1,
+									'&:hover': {
+										borderColor: '#C7C7C7',
+									},
+								}}
+							/>
+						</Box>
+
 						<LanguageSwitcher />
 
 						<BurgerMenu
 							navItems={navigationData.navItems} // Передаем массив navItems напрямую
-							searchQuery={searchQuery}
-							onSearchChange={handleSearchChange}
-							onSearchSubmit={handleSearchSubmit}
 						/>
 					</Box>
 				</Box>

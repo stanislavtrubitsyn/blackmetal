@@ -20,8 +20,6 @@ const HeaderContainer = styled(Box)({
 	display: 'flex',
 	justifyContent: 'center',
 	alignItems: 'center',
-	maxHeight: '880px',
-	height: '880px',
 })
 
 const HeaderImage = styled('img')({
@@ -101,7 +99,15 @@ export const HeroSection: FC<HeroSectionProps> = ({ image, overlay = true }) => 
 
 	return (
 		<>
-			<HeaderContainer>
+			<HeaderContainer 
+				sx={{
+					height: 'calc(100vh - 165px)', // Вычитаем высоту хедера
+					minHeight: '500px',
+					width: '100%',
+					position: 'relative',
+					marginBottom: 0,
+				}}
+			>
 				{images.map((img, index) => (
 					<HeaderImage
 						key={index}
