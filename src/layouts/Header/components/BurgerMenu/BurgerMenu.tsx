@@ -6,25 +6,23 @@ import CloseIcon from '@mui/icons-material/Close'
 import { NavItem } from '../NavItem'
 import { NavigationData } from '../../interface'
 import { SocialLinks } from '@/components'
-import { Search } from '../Search'
+import { useNavigate } from 'react-router-dom'
+import UniversalSearch from '@/components/UniversalSearch'
+import { useTranslationData } from '@/hooks/useTranslationData'
+import { HeaderTranslation } from '../../interface'
 
 interface BurgerMenuProps {
-	navItems: NavigationData['navItems'] // Используем тип из NavigationData
-	searchQuery: string
-	onSearchChange: (event: React.ChangeEvent<HTMLInputElement>) => void
-	onSearchSubmit: (event: React.FormEvent) => void
+	navItems: NavigationData['navItems']
 }
 
-export const BurgerMenu = ({
-	navItems,
-
-	onSearchChange,
-	onSearchSubmit,
-}: BurgerMenuProps) => {
+export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
 	const [open, setOpen] = useState(false)
 	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
 	const theme = useTheme()
-	const [searchQuery, setSearchQuery] = useState('')
+	const navigate = useNavigate()
+
+	const { data: headerData } = useTranslationData<HeaderTranslation>('header')
+
 	const toggleDrawer = (newOpen: boolean) => () => {
 		setOpen(newOpen)
 		if (!newOpen) {
@@ -39,14 +37,6 @@ export const BurgerMenu = ({
 		}))
 	}
 
-	const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setSearchQuery(event.target.value)
-	}
-
-	const handleSearchSubmit = (event: React.FormEvent) => {
-		event.preventDefault()
-	}
-
 	const renderMobileNavItems = (items: NavigationData['navItems'], level = 0) => {
 		return items.map(item => (
 			<Box
@@ -58,12 +48,16 @@ export const BurgerMenu = ({
 				}}
 			>
 				{item.href ? (
-					<a
-						href={item.href}
-						style={{
+					<Box
+						onClick={() => {
+							navigate(item.href!)
+							setOpen(false)
+						}}
+						sx={{
 							textDecoration: 'none',
 							width: '100%',
 							display: 'block',
+							cursor: 'pointer',
 						}}
 					>
 						<Box
@@ -89,7 +83,7 @@ export const BurgerMenu = ({
 								{item.label}
 							</Typography>
 						</Box>
-					</a>
+					</Box>
 				) : (
 					<Box
 						sx={{
@@ -190,11 +184,17 @@ export const BurgerMenu = ({
 						position: 'relative',
 					}}
 				>
-					<Search
-						searchQuery={searchQuery}
-						onSearchChange={handleSearchChange}
-						onSearchSubmit={handleSearchSubmit}
-					/>
+					{headerData && (
+						<UniversalSearch
+							placeholderKey={headerData.searchPlaceholder}
+							onSearch={q => {}}
+							sx={{
+								border: '1px solid #C7C7C7',
+								width: '100%',
+								height: '50px',
+							}}
+						/>
+					)}
 				</Box>
 
 				<Box
