@@ -3,7 +3,7 @@
 	"navItems": [
 		{
 			"id": "about",
-			"label": "header.about",
+			"label": "Про нас",
 			"items": [
 				{
 					"id": "developments",
