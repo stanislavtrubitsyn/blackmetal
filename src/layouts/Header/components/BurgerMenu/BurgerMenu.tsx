@@ -1,6 +1,12 @@
-// src/layouts/Header/components/BurgerMenu/BurgerMenu.tsx
 import { useState } from 'react'
-import { Box, IconButton, Drawer, useTheme, Typography, Divider } from '@mui/material'
+import {
+	Box,
+	IconButton,
+	Drawer,
+	useTheme,
+	Typography,
+	Divider,
+} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { NavItem } from '../NavItem'
@@ -17,7 +23,9 @@ interface BurgerMenuProps {
 
 export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
 	const [open, setOpen] = useState(false)
-	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
+	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
+		{}
+	)
 	const theme = useTheme()
 	const navigate = useNavigate()
 
@@ -37,7 +45,10 @@ export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
 		}))
 	}
 
-	const renderMobileNavItems = (items: NavigationData['navItems'], level = 0) => {
+	const renderMobileNavItems = (
+		items: NavigationData['navItems'],
+		level = 0
+	) => {
 		return items.map(item => (
 			<Box
 				key={item.id}

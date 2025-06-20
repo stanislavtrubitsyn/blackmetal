@@ -5,6 +5,7 @@ import SearchIcon from '/search.svg'
 interface UniversalSearchProps {
 	placeholderKey?: string
 	onSearch: (query: string) => void
+	onChange?: (query: string) => void
 	sx?: SxProps<Theme>
 	isExpanded?: boolean
 }
@@ -12,6 +13,7 @@ interface UniversalSearchProps {
 const UniversalSearch: React.FC<UniversalSearchProps> = ({
 	placeholderKey,
 	onSearch,
+	onChange,
 	sx,
 	isExpanded = true,
 }) => {
@@ -20,6 +22,12 @@ const UniversalSearch: React.FC<UniversalSearchProps> = ({
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
 		onSearch(query.trim())
+	}
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const newQuery = e.target.value
+		setQuery(newQuery)
+		onChange?.(newQuery)
 	}
 
 	return (
@@ -35,10 +43,11 @@ const UniversalSearch: React.FC<UniversalSearchProps> = ({
 		>
 			<InputBase
 				value={query}
-				onChange={e => setQuery(e.target.value)}
+				onChange={handleChange}
 				placeholder={placeholderKey}
 				sx={{
-					ml: 2,
+					ml: 1,
+					mr: 6,
 					flex: 1,
 					transition: 'all 0.5s ease-in-out',
 					opacity: isExpanded ? 1 : 0,

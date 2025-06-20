@@ -1,16 +1,60 @@
 import { Container, Box, Typography } from '@mui/material';
 import { PresentationPlayer } from '../../components/PresentationPlayer';
-import { useTranslation } from 'react-i18next';
+import { useTranslationData } from '@/hooks/useTranslationData';
+
+interface DevelopmentsData {
+	title: string;
+}
+
+interface NewsData {
+	newsTitle: string;
+}
 
 const DevelopmentsPage = () => {
-	const { t } = useTranslation();
+	const { data } = useTranslationData<DevelopmentsData>('developments');
+	const { data: newsData } = useTranslationData<NewsData>('news');
+
+	if (!data) {
+		return null;
+	}
+
 	return (
 		<Container maxWidth="lg" sx={{ py: 6 }}>
 			<Box>
-				<Typography variant="h4" align="center" sx={{ mb: 4 }}>
-					{t('developments.title')}
+				<Typography
+					variant='h3'
+					fontWeight='bold'
+					sx={{
+						textAlign: 'center',
+						mb: { xs: 3, sm: 4, md: 5 },
+						fontSize: {
+							xxs: '2.5rem',
+							sm: '2.2rem',
+							md: '2.5rem',
+						},
+					}}
+				>
+					{data.title}
 				</Typography>
+				
 				<PresentationPlayer />
+				
+				<Typography
+					variant='h4'
+					fontWeight='bold'
+					sx={{
+						textAlign: 'center',
+						mt: { xs: 4, sm: 5, md: 6 },
+						mb: { xs: 3, sm: 4, md: 5 },
+						fontSize: {
+							xxs: '2rem',
+							sm: '1.8rem',
+							md: '2rem',
+						},
+					}}
+				>
+					{newsData?.newsTitle || 'Latest News'}
+				</Typography>
 			</Box>
 		</Container>
 	);

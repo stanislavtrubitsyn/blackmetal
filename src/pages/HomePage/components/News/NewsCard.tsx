@@ -3,7 +3,7 @@ import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/mate
 import { styled } from '@mui/material/styles'
 import { NewsItem } from './NewsTypes'
 import { useTranslation } from 'react-i18next'
-import { Theme } from '@mui/material/styles' // Добавлено для типизации theme
+import { Theme } from '@mui/material/styles'
 
 type NewsCardProps = NewsItem
 

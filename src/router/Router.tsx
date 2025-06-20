@@ -27,14 +27,12 @@ const Router = () => (
 					return importPage()
 				})
 
-				// Выбираем layout в зависимости от настроек маршрута
 				let Layout
 				if (route.layout === 'HeaderOnlyLayout') {
 					Layout = HeaderOnlyLayout
 				} else if (route.layout === 'MainLayout') {
 					Layout = MainLayout
 				} else {
-					// Без layout - только компонент
 					Layout = ({ children }: { children: React.ReactNode }) => <>{children}</>
 				}
 
