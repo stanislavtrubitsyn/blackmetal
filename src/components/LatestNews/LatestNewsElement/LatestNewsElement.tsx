@@ -24,21 +24,11 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 	link,
 }) => {
 	const { t } = useTranslation()
-
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
 	return (
-		<Box
-			sx={{
-				width: '100%',
-				maxWidth: 300,
-				display: 'flex',
-				flexDirection: 'column',
-				gap: 1,
-				mx: 'auto',
-			}}
-		>
+		<Box sx={{ width: '100%', maxWidth: 300, display: 'flex', flexDirection: 'column', gap: 1, mx: 'auto' }}>
 			<Box
 				sx={{
 					width: '100%',
@@ -95,7 +85,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 					WebkitLineClamp: 2,
 					color: '#2D7A84',
 					textDecoration: 'none',
-					textAlign: isMobile ? 'center' : 'left',
+					textAlign: isMobile ? 'center' : 'left'
 				}}
 			>
 				{title}
@@ -106,7 +96,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 				sx={{
 					...lineClampStyles,
 					WebkitLineClamp: 2,
-					textAlign: isMobile ? 'center' : 'left',
+					textAlign: isMobile ? 'center' : 'left'
 				}}
 			>
 				{description}
