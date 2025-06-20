@@ -14,11 +14,7 @@ import { Pagination } from '@/components/Pagination/Pagination'
 import { useTranslationData } from '@/hooks/useTranslationData'
 
 export const NewsGrid: FC = () => {
-	const {
-		data: translationData,
-		loading,
-		error,
-	} = useTranslationData<TranslatedNewsData>('news')
+	const { data: translationData, loading, error } = useTranslationData<TranslatedNewsData>('news')
 
 	const [news, setNews] = useState<NewsItem[]>([])
 	const [currentPage, setCurrentPage] = useState(1)
@@ -48,21 +44,9 @@ export const NewsGrid: FC = () => {
 
 	if (loading) {
 		return (
-			<Box
-				sx={{ display: 'flex', justifyContent: 'center', py: 4, width: '100%' }}
-			>
+			<Box sx={{ display: 'flex', justifyContent: 'center', py: 4, width: '100%' }}>
 				<CircularProgress />
 			</Box>
-		)
-	}
-
-	if (error || !translationData) {
-		return (
-			<Alert severity='error' sx={{ mb: 2 }}>
-				{error instanceof Error
-					? error.message
-					: String(error ?? 'Помилка завантаження новин')}
-			</Alert>
 		)
 	}
 
@@ -74,7 +58,6 @@ export const NewsGrid: FC = () => {
 				sx={{
 					textAlign: 'center',
 					mb: { xs: 3, sm: 4, md: 5 },
-					// mt: 3,
 					fontSize: {
 						xxs: '2.5rem',
 						sm: '2.2rem',
@@ -82,14 +65,10 @@ export const NewsGrid: FC = () => {
 					},
 				}}
 			>
-				{translationData.newsTitle}
+				{translationData?.newsTitle}
 			</Typography>
 
-			<Grid
-				container
-				spacing={{ xs: 3, sm: 4, md: 5 }}
-				sx={{ mb: { xs: 3, sm: 4, md: 5 } }}
-			>
+			<Grid container spacing={{ xs: 3, sm: 4, md: 5 }} sx={{ mb: { xs: 3, sm: 4, md: 5 } }}>
 				{displayedNews.map((item, idx) => (
 					<Grid
 						item

@@ -1,7 +1,7 @@
-import { Box, Typography, Button } from '@mui/material'
+import { Box, Typography, Button, useTheme, useMediaQuery } from '@mui/material'
 import { Link } from 'react-router-dom'
-import { useTranslation } from 'react-i18next'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface LatestNewsElementProps {
 	title: string
@@ -25,12 +25,25 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 }) => {
 	const { t } = useTranslation()
 
+	const theme = useTheme()
+	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
 	return (
-		<Box sx={{ width: 250, display: 'flex', flexDirection: 'column', gap: 1 }}>
+		<Box
+			sx={{
+				width: '100%',
+				maxWidth: 300,
+				display: 'flex',
+				flexDirection: 'column',
+				gap: 1,
+				mx: 'auto',
+			}}
+		>
 			<Box
 				sx={{
-					width: 250,
-					height: 145,
+					width: '100%',
+					height: 0,
+					paddingBottom: '58%', // Maintains aspect ratio
 					backgroundImage: `url(${image})`,
 					backgroundSize: 'contain',
 					backgroundRepeat: 'no-repeat',
@@ -82,6 +95,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 					WebkitLineClamp: 2,
 					color: '#2D7A84',
 					textDecoration: 'none',
+					textAlign: isMobile ? 'center' : 'left',
 				}}
 			>
 				{title}
@@ -92,6 +106,7 @@ const LatestNewsElement: React.FC<LatestNewsElementProps> = ({
 				sx={{
 					...lineClampStyles,
 					WebkitLineClamp: 2,
+					textAlign: isMobile ? 'center' : 'left',
 				}}
 			>
 				{description}
