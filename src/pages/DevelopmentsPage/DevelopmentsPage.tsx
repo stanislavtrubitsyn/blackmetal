@@ -38,23 +38,6 @@ const DevelopmentsPage = () => {
 				</Typography>
 				
 				<PresentationPlayer />
-				
-				<Typography
-					variant='h4'
-					fontWeight='bold'
-					sx={{
-						textAlign: 'center',
-						mt: { xs: 4, sm: 5, md: 6 },
-						mb: { xs: 3, sm: 4, md: 5 },
-						fontSize: {
-							xxs: '2rem',
-							sm: '1.8rem',
-							md: '2rem',
-						},
-					}}
-				>
-					{newsData?.newsTitle || 'Latest News'}
-				</Typography>
 			</Box>
 		</Container>
 	);

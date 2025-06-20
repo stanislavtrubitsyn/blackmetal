@@ -6,5 +6,6 @@ export { default as PersonCard } from './PersonCard'
 export { default as Header } from '@/layouts/Header'
 export { default as LanguageSwitcher } from './LanguageSwitcher'
 export { default as UniversalSearch } from './UniversalSearch'
+export { default as DocumentTitleSearch } from './DocumentTitleSearch'
 
 // export { default as PresentationPlayer } from './PresentationPlayer'

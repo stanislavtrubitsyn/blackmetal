@@ -1,9 +1,16 @@
 import { FC } from 'react'
-import { Card, CardContent, CardMedia, Typography, Button, Box } from '@mui/material'
+import {
+	Card,
+	CardContent,
+	CardMedia,
+	Typography,
+	Button,
+	Box,
+} from '@mui/material'
 import { styled } from '@mui/material/styles'
 import { NewsItem } from './NewsTypes'
 import { useTranslation } from 'react-i18next'
-import { Theme } from '@mui/material/styles'
+import { Theme } from '@mui/material/styles' 
 
 type NewsCardProps = NewsItem
 
@@ -77,7 +84,13 @@ const StyledButton = styled(Button)(({ theme }: { theme: Theme }) => ({
 	},
 }))
 
-export const NewsCard: FC<NewsCardProps> = ({ title, text, imageUrl, date, onClick }) => {
+export const NewsCard: FC<NewsCardProps> = ({
+	title,
+	text,
+	imageUrl,
+	date,
+	onClick,
+}) => {
 	const { t } = useTranslation()
 
 	return (

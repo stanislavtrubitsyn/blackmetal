@@ -1,25 +1,40 @@
-import { DocumentCard } from '@/components'
-import { Box, Typography } from '@mui/material'
+import { DocumentCard, DocumentTitleSearch } from '@/components'
+import { Box } from '@mui/material'
 import { useTranslationData } from '@/hooks/useTranslationData'
 import { DocumentCardData } from '@/components/DocumentCard/DocumentCardInterface'
 import { DocumentCardAdaptation } from '@/components/DocumentCard/adaptation'
+import { useState } from 'react'
 
 const OrdersPage = () => {
 	const { data } = useTranslationData<DocumentCardData>('orders')
 
+	const [searchQuery, setSearchQuery] = useState('')
+
 	if (!data) {
 		return null
 	}
+
+	const filteredData = data.data.filter(item =>
+		item.title.toLowerCase().includes(searchQuery.toLowerCase())
+	)
+
+	const handleSearchChange = (query: string) => {
+		setSearchQuery(query)
+	}
+
+	const handleSearchSubmit = (query: string) => {
+		setSearchQuery(query.trim())
+	}
 	return (
 		<Box sx={{ px: '20px', pb: '30px' }}>
-			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'center' }}>
-				<Typography sx={{ fontSize: '25px', fontWeight: 600, lineHeight: 1 }}>
-					{data.title}
-				</Typography>
-			</Box>
+			<DocumentTitleSearch
+				title={data.title}
+				onSearchSubmit={handleSearchSubmit}
+				onSearchChange={handleSearchChange}
+			/>
 
 			<Box sx={DocumentCardAdaptation}>
-				{data.data.map((item, index) => (
+				{filteredData.map((item, index) => (
 					<DocumentCard
 						key={index}
 						title={item.title}
