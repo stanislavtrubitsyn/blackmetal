@@ -179,56 +179,44 @@ export const NavItem = ({
 													maxWidth: '100%',
 												}}
 											>
-												{'labelKey' in subItem
-													? t(subItem.label)
-													: subItem.label}
+												{'labelKey' in subItem ? t(subItem.label) : subItem.label}
 											</Typography>
 											<KeyboardArrowRightIcon fontSize='small' />
 										</Box>
 
 										<Fade in={hoveredSubItem === subItem.id} timeout={300}>
 											<NestedDropdownMenu>
-												{subItem.items.map(
-													(nestedItem, nestedIndex, nestedArr) => (
-														<React.Fragment key={nestedItem.id}>
-															<MenuItem
-																component='a'
-																onClick={() => navigate(`${nestedItem.href}`)}
+												{subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
+													<React.Fragment key={nestedItem.id}>
+														<MenuItem
+															component='a'
+															onClick={() => navigate(`${nestedItem.href}`)}
+															sx={{
+																minHeight: '50px',
+																height: 'auto',
+																py: 1,
+																color: '#373737',
+																'&:hover': {
+																	backgroundColor: '#2D7A84',
+																	color: '#fff',
+																},
+															}}
+														>
+															<Typography
+																fontWeight='bold'
 																sx={{
-																	minHeight: '50px',
-																	height: 'auto',
-																	py: 1,
-																	color: '#373737',
-																	'&:hover': {
-																		backgroundColor: '#2D7A84',
-																		color: '#fff',
-																	},
+																	overflow: 'hidden',
+																	textOverflow: 'ellipsis',
+																	whiteSpace: 'normal',
+																	maxWidth: '100%',
 																}}
 															>
-																<Typography
-																	fontWeight='bold'
-																	sx={{
-																		minHeight: '50px',
-																		height: 'auto',
-																		py: 1,
-																		color: '#373737',
-																		'&:hover': {
-																			backgroundColor: '#2D7A84',
-																			color: '#fff',
-																		},
-																	}}
-																>
-																	{'labelKey' in nestedItem
-																		? t(nestedItem.label)
-																		: nestedItem.label}
-																</Typography>
-															</MenuItem>
-															{nestedIndex < nestedArr.length - 1 && (
-																<LineDivider />
-															)}
-														</React.Fragment>
-													)
-												)}
+																{'labelKey' in nestedItem ? t(nestedItem.label) : nestedItem.label}
+															</Typography>
+														</MenuItem>
+														{nestedIndex < nestedArr.length - 1 && <LineDivider />}
+													</React.Fragment>
+												))}
 											</NestedDropdownMenu>
 										</Fade>
 									</Box>
