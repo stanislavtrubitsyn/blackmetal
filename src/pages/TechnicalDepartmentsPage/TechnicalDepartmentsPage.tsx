@@ -12,10 +12,10 @@ const TechnicalDepartmentsPage = () => {
 	return (
 		<Box
 			sx={{
-				width: '100%',
+				// width: '100%',
 				display: 'flex',
 				flexDirection: 'column',
-				alignItems: 'center',
+				// alignItems: 'center',
 				px: { xxs: '20px', xl: '190px' },
 			}}
 		>
@@ -23,7 +23,7 @@ const TechnicalDepartmentsPage = () => {
 				variant='h3'
 				fontWeight='bold'
 				sx={{
-					textAlign: 'center',
+					// textAlign: 'center',
 					mt: 3,
 					fontSize: {
 						xxs: '2.5rem',
