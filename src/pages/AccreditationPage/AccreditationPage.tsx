@@ -2,7 +2,10 @@ import { DocumentCard, DocumentTitleSearch } from '@/components'
 import { Box } from '@mui/material'
 import { useTranslationData } from '@/hooks/useTranslationData'
 import { DocumentCardData } from '@/components/DocumentCard/DocumentCardInterface'
-import { DocumentCardAdaptation } from '@/components/DocumentCard/adaptation'
+import {
+	DocumentCardAdaptation,
+	DocumentCardWrapper,
+} from '@/components/DocumentCard/styles'
 import { useState } from 'react'
 
 const AccreditationPage = () => {
@@ -26,22 +29,24 @@ const AccreditationPage = () => {
 		setSearchQuery(query.trim())
 	}
 	return (
-		<Box sx={{ px: '20px', pb: '30px' }}>
+		<Box sx={DocumentCardWrapper}>
 			<DocumentTitleSearch
 				title={data.title}
 				onSearchSubmit={handleSearchSubmit}
 				onSearchChange={handleSearchChange}
 			/>
 
-			<Box sx={DocumentCardAdaptation}>
-				{filteredData.map((item, index) => (
-					<DocumentCard
-						key={index}
-						title={item.title}
-						link={item.link}
-						date={item.date}
-					/>
-				))}
+			<Box sx={{ maxWidth: '1220px', m: '0px auto' }}>
+				<Box sx={DocumentCardAdaptation}>
+					{filteredData.map((item, index) => (
+						<DocumentCard
+							key={index}
+							title={item.title}
+							link={item.link}
+							date={item.date}
+						/>
+					))}
+				</Box>
 			</Box>
 		</Box>
 	)

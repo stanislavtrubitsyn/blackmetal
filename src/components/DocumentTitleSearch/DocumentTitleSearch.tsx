@@ -20,17 +20,31 @@ export const DocumentTitleSearch = ({
 				py: '30px',
 				display: 'flex',
 				justifyContent: 'space-between',
+				gap: '25px',
 				alignItems: 'center',
+				flexWrap: 'wrap',
 			}}
 		>
-			<Typography sx={{ fontSize: '36px', fontWeight: 600, lineHeight: 1 }}>
+			<Typography
+				sx={{
+					fontSize: '36px',
+					fontWeight: 600,
+					lineHeight: 1,
+					whiteSpace: 'nowrap',
+				}}
+			>
 				{title}
 			</Typography>
 			<UniversalSearch
 				onSearch={onSearchSubmit}
 				onChange={onSearchChange}
 				placeholderKey={t('components.search')}
-				sx={{ width: '250px', p: '5px', border: '1px solid #DFDFDF' }}
+				sx={{
+					width: '250px',
+					p: '5px',
+					border: '1px solid #DFDFDF',
+					bgcolor: '#FFFFFF ',
+				}}
 			/>
 		</Box>
 	)
