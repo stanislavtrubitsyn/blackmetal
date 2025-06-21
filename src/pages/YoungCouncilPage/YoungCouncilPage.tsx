@@ -12,20 +12,22 @@ const YoungCouncilPage = () => {
 	}
 	return (
 		<Box sx={{ px: '20px', pb: '30px' }}>
-			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'center' }}>
+			<Box sx={{ py: '30px', display: 'flex', justifyContent: 'flex-start' }}>
 				<Typography sx={{ fontSize: '36px', fontWeight: 600, lineHeight: 1 }}>
 					{data.title}
 				</Typography>
 			</Box>
-			<Box sx={PersonCardAdaptation}>
-				{data.data.map((item, index) => (
-					<PersonCard
-						key={index}
-						photo={item.photo}
-						position={item.position}
-						name={item.name}
-					/>
-				))}
+			<Box sx={{ maxWidth: '1817px', m: '0px auto' }}>
+				<Box sx={PersonCardAdaptation}>
+					{data.data.map((item, index) => (
+						<PersonCard
+							key={index}
+							photo={item.photo}
+							position={item.position}
+							name={item.name}
+						/>
+					))}
+				</Box>
 			</Box>
 		</Box>
 	)
