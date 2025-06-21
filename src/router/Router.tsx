@@ -7,6 +7,8 @@ import Loader from '@/components/Loader'
 import MainLayout from '@/layouts/MainLayout'
 import HeaderOnlyLayout from '@/layouts/HeaderOnlyLayout/HeaderOnlyLayout'
 
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'))
+
 const pages = import.meta.glob('../pages/**/*.tsx') as Record<
 	string,
 	() => Promise<{ default: React.ComponentType<any> }>
@@ -48,6 +50,7 @@ const Router = () => (
 					/>
 				)
 			})}
+			<Route path="*" element={<NotFoundPage />} />
 		</Routes>
 	</Suspense>
 )
