@@ -13,16 +13,12 @@ interface MainLayoutProps {
 const MainLayout = ({ children }: MainLayoutProps) => {
 	const { pathname } = useLocation()
 
-	const showLatest =
-		pathname !== routes.HomePage.path && pathname !== routes.ContactsPage.path
+	const showLatest = pathname !== routes.HomePage.path && pathname !== routes.ContactsPage.path
 
 	return (
 		<Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
 			<Header />
-			<Box
-				component='main'
-				sx={{ display: 'flex', flex: 1, width: '100%', m: '0 auto' }}
-			>
+			<Box component='main' sx={{ display: 'flex', flex: 1, width: '100%', m: '0 auto' }}>
 				{showLatest && <LatestNews />}
 				<Box sx={{ flex: 1 }}>{children}</Box>
 			</Box>
