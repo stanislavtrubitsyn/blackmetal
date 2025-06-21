@@ -8,6 +8,8 @@ interface UniversalSearchProps {
 	onChange?: (query: string) => void
 	sx?: SxProps<Theme>
 	isExpanded?: boolean
+	onFocus?: () => void
+	onBlur?: () => void
 }
 
 const UniversalSearch: React.FC<UniversalSearchProps> = ({
@@ -16,6 +18,8 @@ const UniversalSearch: React.FC<UniversalSearchProps> = ({
 	onChange,
 	sx,
 	isExpanded = true,
+	onFocus,
+	onBlur,
 }) => {
 	const [query, setQuery] = React.useState('')
 
@@ -45,6 +49,8 @@ const UniversalSearch: React.FC<UniversalSearchProps> = ({
 				value={query}
 				onChange={handleChange}
 				placeholder={placeholderKey}
+				onFocus={onFocus}
+				onBlur={onBlur}
 				sx={{
 					ml: 1,
 					mr: 6,

@@ -17,6 +17,8 @@ const Header = () => {
 	const [hoveredSubItem, setHoveredSubItem] = useState<string | null>(null)
 	const [searchQuery, setSearchQuery] = useState('')
 	const [isSearchExpanded, setIsSearchExpanded] = useState(false)
+	const [searchFocused, setSearchFocused] = useState(false)
+
 	const handleMouseEnter = (id: string) => {
 		setHoveredItem(id)
 	}
@@ -45,6 +47,7 @@ const Header = () => {
 	if (!navigationData || loading || !headerData) {
 		return null
 	}
+
 	return (
 		<AppBar
 			position='static'
@@ -73,6 +76,7 @@ const Header = () => {
 					width: '90%',
 					height: { xxs: 'auto', sm: '140px' },
 					gap: { xxs: 2, sm: 0 },
+					p: '0px !important',
 				}}
 			>
 				<Box
@@ -96,12 +100,25 @@ const Header = () => {
 								transition: 'all 0.5s ease-in-out',
 							}}
 							onMouseEnter={() => setIsSearchExpanded(true)}
-							onMouseLeave={() => setIsSearchExpanded(false)}
+							onMouseLeave={() => {
+								if (!searchFocused) {
+									setIsSearchExpanded(false)
+								}
+							}}
+							tabIndex={-1}
 						>
 							<UniversalSearch
 								placeholderKey={headerData?.searchPlaceholder}
-								onSearch={q => {}}
+								onSearch={() => {}}
 								isExpanded={isSearchExpanded}
+								onFocus={() => {
+									setSearchFocused(true)
+									setIsSearchExpanded(true)
+								}}
+								onBlur={() => {
+									setSearchFocused(false)
+									setIsSearchExpanded(false)
+								}}
 								sx={{
 									border: '1px solid',
 									borderColor: isSearchExpanded ? '#C7C7C7' : 'transparent',
@@ -119,9 +136,7 @@ const Header = () => {
 
 						<LanguageSwitcher />
 
-						<BurgerMenu
-							navItems={navigationData.navItems} // Передаем массив navItems напрямую
-						/>
+						<BurgerMenu navItems={navigationData.navItems} />
 					</Box>
 				</Box>
 

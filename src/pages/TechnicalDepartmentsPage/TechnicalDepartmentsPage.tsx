@@ -26,7 +26,7 @@ const TechnicalDepartmentsPage = () => {
 					// textAlign: 'center',
 					mt: 3,
 					fontSize: {
-						xxs: '2.5rem',
+						xxs: '1.65rem',
 						sm: '2.2rem',
 						md: '2.5rem',
 					},
