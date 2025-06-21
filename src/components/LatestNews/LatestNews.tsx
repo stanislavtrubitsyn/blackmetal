@@ -69,12 +69,11 @@ const LatestNews = () => {
 								link={`/news/${latestNews[activeStep].id}`}
 							/>
 
-							{/* Навигационные кнопки */}
 							<IconButton
 								size='small'
 								sx={{
 									position: 'absolute',
-									left: -30,
+									left: -50,
 									top: '50%',
 									transform: 'translateY(-50%)',
 									backgroundColor: 'white',
@@ -96,7 +95,7 @@ const LatestNews = () => {
 								size='small'
 								sx={{
 									position: 'absolute',
-									right: -30,
+									right: -50,
 									top: '50%',
 									transform: 'translateY(-50%)',
 									backgroundColor: 'white',
@@ -116,7 +115,6 @@ const LatestNews = () => {
 						</Box>
 					)}
 
-					{/* Индикаторы */}
 					<Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
 						{latestNews.map((_, index) => (
 							<Box
@@ -140,7 +138,6 @@ const LatestNews = () => {
 		)
 	}
 
-	// Десктоп и планшеты - текущий дизайн
 	return (
 		<Box
 			sx={{
