@@ -142,122 +142,133 @@ export const NavItem = ({
           {getLabel()} {/* Используем функцию getLabel вместо item.label */}
         </Button>
 
-        <Fade in={isOpen} timeout={300}>
-          <DropdownMenu>
-            {item.items.map((subItem, index, arr) => (
-              <React.Fragment key={subItem.id}>
-                {subItem.items?.length ? (
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      minHeight: '50px',
-                      height: 'auto',
-                      py: 1,
-                      '&:hover': {
-                        backgroundColor: '#2D7A84',
-                        color: '#fff',
-                      },
-                    }}
-                    onMouseEnter={() => onSubItemMouseEnter(subItem.id)}
-                    onMouseLeave={onSubItemMouseLeave}
-                  >
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        width: '100%',
-                        height: '100%',
-                        px: 2,
-                      }}
-                    >
-                      <Typography
-                        fontWeight='bold'
-                        sx={{
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
-                          whiteSpace: 'normal',
-                          maxWidth: '100%',
-                        }}
-                      >
-                        {'labelKey' in subItem ? t(subItem.label) : subItem.label}
-                      </Typography>
-                      <KeyboardArrowRightIcon fontSize='small' />
-                    </Box>
+				<Fade in={isOpen} timeout={300}>
+					<DropdownMenu>
+						{item.items.map((subItem, index, arr) => (
+							<React.Fragment key={subItem.id}>
+								{subItem.items?.length ? (
+									<Box
+										sx={{
+											position: 'relative',
+											minHeight: '50px',
+											height: 'auto',
+											py: 1,
+											'&:hover': {
+												backgroundColor: '#2D7A84',
+												color: '#fff',
+											},
+										}}
+										onMouseEnter={() => onSubItemMouseEnter(subItem.id)}
+										onMouseLeave={onSubItemMouseLeave}
+									>
+										<Box
+											sx={{
+												display: 'flex',
+												justifyContent: 'space-between',
+												alignItems: 'center',
+												width: '100%',
+												height: '100%',
+												px: 2,
+											}}
+										>
+											<Typography
+												fontWeight='bold'
+												sx={{
+													overflow: 'hidden',
+													textOverflow: 'ellipsis',
+													whiteSpace: 'normal',
+													maxWidth: '100%',
+												}}
+											>
+												{'labelKey' in subItem
+													? t(subItem.label)
+													: subItem.label}
+											</Typography>
+											<KeyboardArrowRightIcon fontSize='small' />
+										</Box>
 
-
-                    <Fade in={hoveredSubItem === subItem.id} timeout={300}>
-                      <NestedDropdownMenu>
-                        {subItem.items.map((nestedItem, nestedIndex, nestedArr) => (
-                          <React.Fragment key={nestedItem.id}>
-                            <MenuItem
-                              component='a'
-                              onClick={() => navigate(`${nestedItem.href}`)}
-                              sx={{
-                                minHeight: '50px',
-                                height: 'auto',
-                                py: 1,
-                                color: '#373737',
-                                '&:hover': {
-                                  backgroundColor: '#2D7A84',
-                                  color: '#fff',
-                                },
-                              }}
-                            >
-                              <Typography
-                                fontWeight='bold'
-                                sx={{
-                                  overflow: 'hidden',
-                                  textOverflow: 'ellipsis',
-                                  whiteSpace: 'normal',
-                                  maxWidth: '100%',
-                                }}
-                              >
-                                {'labelKey' in nestedItem ? t(nestedItem.label) : nestedItem.label}
-                              </Typography>
-                            </MenuItem>
-                            {nestedIndex < nestedArr.length - 1 && <LineDivider />}
-                          </React.Fragment>
-                        ))}
-                      </NestedDropdownMenu>
-                    </Fade>
-                  </Box>
-                ) : (
-                  <MenuItem
-                    component='a'
-                    sx={{
-                      minHeight: '50px',
-                      height: 'auto',
-                      py: 1,
-                      color: '#373737',
-                      '&:hover': {
-                        backgroundColor: '#2D7A84',
-                        color: '#fff',
-                      },
-                    }}
-                    onClick={() => navigate(`${subItem.href}`)}
-                  >
-                    <Typography
-                      fontWeight='bold'
-                      sx={{
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'normal',
-                        maxWidth: '100%',
-                      }}
-                    >
-                      {t(subItem.label)}
-                    </Typography>
-                  </MenuItem>
-                )}
-                {index < arr.length - 1 && <LineDivider />}
-              </React.Fragment>
-            ))}
-          </DropdownMenu>
-        </Fade>
-      </Box>
-    )
-  }
+										<Fade in={hoveredSubItem === subItem.id} timeout={300}>
+											<NestedDropdownMenu>
+												{subItem.items.map(
+													(nestedItem, nestedIndex, nestedArr) => (
+														<React.Fragment key={nestedItem.id}>
+															<MenuItem
+																component='a'
+																onClick={() => navigate(`${nestedItem.href}`)}
+																sx={{
+																	minHeight: '50px',
+																	height: 'auto',
+																	py: 1,
+																	color: '#373737',
+																	'&:hover': {
+																		backgroundColor: '#2D7A84',
+																		color: '#fff',
+																	},
+																}}
+															>
+																<Typography
+																	fontWeight='bold'
+																	sx={{
+																		minHeight: '50px',
+																		height: 'auto',
+																		py: 1,
+																		color: '#373737',
+																		'&:hover': {
+																			backgroundColor: '#2D7A84',
+																			color: '#fff',
+																		},
+																	}}
+																>
+																	{'labelKey' in nestedItem
+																		? t(nestedItem.label)
+																		: nestedItem.label}
+																</Typography>
+															</MenuItem>
+															{nestedIndex < nestedArr.length - 1 && (
+																<LineDivider />
+															)}
+														</React.Fragment>
+													)
+												)}
+											</NestedDropdownMenu>
+										</Fade>
+									</Box>
+								) : (
+									<MenuItem
+										component='a'
+										sx={{
+											minHeight: '50px',
+											height: 'auto',
+											py: 1,
+											color: '#373737',
+											'&:hover': {
+												backgroundColor: '#2D7A84',
+												color: '#fff',
+											},
+										}}
+										onClick={() => navigate(`${subItem.href}`)}
+									>
+										<Typography
+											fontWeight='bold'
+											sx={{
+												overflow: 'hidden',
+												textOverflow: 'ellipsis',
+												whiteSpace: 'normal',
+												maxWidth: '100%',
+											}}
+										>
+											{t(subItem.label)}
+										</Typography>
+									</MenuItem>
+								)}
+								{index < arr.length - 1 && <LineDivider />}
+							</React.Fragment>
+						))}
+					</DropdownMenu>
+				</Fade>
+			</Box>
+		)
+	}
 
   return null
 }

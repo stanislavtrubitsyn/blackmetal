@@ -5,10 +5,7 @@ import { useTranslation } from 'react-i18next'
 import LatestNewsElement from './LatestNewsElement'
 
 import { useTranslationData } from '@/hooks/useTranslationData'
-import {
-	NewsItem,
-	TranslatedNewsData,
-} from '@pages/HomePage/components/News/NewsTypes'
+import { NewsItem, TranslatedNewsData } from '@pages/HomePage/components/News/NewsTypes'
 
 const parseDate = (dateString: string) => {
 	const [day, month, year] = dateString.split('.')
@@ -19,33 +16,32 @@ const LatestNews = () => {
 	const { i18n } = useTranslation()
 	const [latestNews, setLatestNews] = useState<NewsItem[]>([])
 	const { data: newsData } = useTranslationData<TranslatedNewsData>('news')
+
 	const [activeStep, setActiveStep] = useState(0)
-	
+
 	const theme = useTheme()
 	const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
 	useEffect(() => {
 		if (newsData?.news) {
 			const sorted = [...newsData.news]
-				.sort(
-					(a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime()
-				)
+				.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime())
 				.slice(0, 4)
 			setLatestNews(sorted)
 		}
 	}, [newsData])
 
 	const handleNext = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep + 1)
+		setActiveStep(prevActiveStep => prevActiveStep + 1)
 	}
 
 	const handleBack = () => {
-		setActiveStep((prevActiveStep) => prevActiveStep - 1)
+		setActiveStep(prevActiveStep => prevActiveStep - 1)
 	}
 
 	if (isMobile) {
 		return (
-			<Box 
+			<Box
 				sx={{
 					width: '100%',
 					backgroundColor: '#f8f9fa',
@@ -53,7 +49,7 @@ const LatestNews = () => {
 					py: 3,
 					display: 'flex',
 					flexDirection: 'column',
-					alignItems: 'center'
+					alignItems: 'center',
 				}}
 			>
 				<Box
@@ -61,7 +57,7 @@ const LatestNews = () => {
 						width: '100%',
 						maxWidth: 320,
 						position: 'relative',
-						px: 2
+						px: 2,
 					}}
 				>
 					{latestNews.length > 0 && (
@@ -72,10 +68,10 @@ const LatestNews = () => {
 								image={latestNews[activeStep].imageUrl}
 								link={`/news/${latestNews[activeStep].id}`}
 							/>
-							
+
 							{/* Навигационные кнопки */}
 							<IconButton
-								size="small"
+								size='small'
 								sx={{
 									position: 'absolute',
 									left: -30,
@@ -88,16 +84,16 @@ const LatestNews = () => {
 									},
 									zIndex: 2,
 									width: 32,
-									height: 32
+									height: 32,
 								}}
 								onClick={handleBack}
 								disabled={activeStep === 0}
 							>
 								<KeyboardArrowLeft />
 							</IconButton>
-							
+
 							<IconButton
-								size="small"
+								size='small'
 								sx={{
 									position: 'absolute',
 									right: -30,
@@ -110,7 +106,7 @@ const LatestNews = () => {
 									},
 									zIndex: 2,
 									width: 32,
-									height: 32
+									height: 32,
 								}}
 								onClick={handleNext}
 								disabled={activeStep === latestNews.length - 1}
@@ -119,7 +115,7 @@ const LatestNews = () => {
 							</IconButton>
 						</Box>
 					)}
-					
+
 					{/* Индикаторы */}
 					<Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
 						{latestNews.map((_, index) => (
@@ -130,12 +126,11 @@ const LatestNews = () => {
 									width: 8,
 									height: 8,
 									borderRadius: '50%',
-									backgroundColor: index === activeStep 
-										? theme.palette.primary.main 
-										: 'rgba(0, 0, 0, 0.2)',
+									backgroundColor:
+										index === activeStep ? theme.palette.primary.main : 'rgba(0, 0, 0, 0.2)',
 									mx: 0.5,
 									cursor: 'pointer',
-									transition: 'all 0.2s'
+									transition: 'all 0.2s',
 								}}
 							/>
 						))}

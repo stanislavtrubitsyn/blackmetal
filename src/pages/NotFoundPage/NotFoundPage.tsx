@@ -1,7 +1,11 @@
-import { Typography, Box, Container } from '@mui/material'
+import { Typography, Box, Container, Button } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import backgroundImage from '../../assets/images/1.jpg'
 
 const NotFoundPage = () => {
+	const { t } = useTranslation()
+
 	return (
 		<Box
 			sx={{
@@ -64,8 +68,33 @@ const NotFoundPage = () => {
 						textShadow: '1px 1px 2px rgba(0,0,0,0.5)'
 					}}
 				>
-					Страница не найдена
+					{t('notFound.title')}
 				</Typography>
+				<Button
+					component={Link}
+					to="/"
+					variant="contained"
+					sx={{
+						backgroundColor: 'rgba(255, 255, 255, 0.2)',
+						color: '#fff',
+						border: '1px solid rgba(255, 255, 255, 0.3)',
+						padding: '12px 24px',
+						fontSize: '1.1rem',
+						fontWeight: 500,
+						textTransform: 'none',
+						borderRadius: '10px',
+						backdropFilter: 'blur(10px)',
+						'&:hover': {
+							backgroundColor: 'rgba(255, 255, 255, 0.3)',
+							border: '1px solid rgba(255, 255, 255, 0.5)',
+							transform: 'translateY(-2px)',
+							boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+						},
+						transition: 'all 0.3s ease',
+					}}
+				>
+					{t('notFound.backButton')}
+				</Button>
 			</Container>
 		</Box>
 	)

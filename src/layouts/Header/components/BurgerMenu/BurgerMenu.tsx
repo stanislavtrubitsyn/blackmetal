@@ -16,10 +16,12 @@ interface BurgerMenuProps {
 }
 
 export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
-  const [open, setOpen] = useState(false)
-  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({})
-  const theme = useTheme()
-  const navigate = useNavigate()
+	const [open, setOpen] = useState(false)
+	const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>(
+		{}
+	)
+	const theme = useTheme()
+	const navigate = useNavigate()
 
   const { data: headerData } = useTranslationData<HeaderTranslation>('header')
 
@@ -37,84 +39,87 @@ export const BurgerMenu = ({ navItems }: BurgerMenuProps) => {
     }))
   }
 
-  const renderMobileNavItems = (items: NavigationData['navItems'], level = 0) => {
-    return items.map(item => (
-      <Box
-        key={item.id}
-        sx={{
-          width: '100%',
-          pl: level * 2,
-          borderLeft: level > 0 ? `2px solid ${theme.palette.divider}` : 'none',
-        }}
-      >
-        {item.href ? (
-          <Box
-            onClick={() => {
-              navigate(item.href!)
-              setOpen(false)
-            }}
-            sx={{
-              textDecoration: 'none',
-              width: '100%',
-              display: 'block',
-              cursor: 'pointer',
-            }}
-          >
-            <Box
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                width: '100%',
-                py: 1.5,
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'rgba(0,0,0,0.05)',
-                },
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: '1.2rem',
-                  fontWeight: 'bold',
-                  color: '#373737',
-                }}
-              >
-                {item.label}
-              </Typography>
-            </Box>
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              py: 1.5,
-              cursor: 'pointer',
-              '&:hover': {
-                backgroundColor: 'rgba(0,0,0,0.05)',
-              },
-            }}
-            onClick={() => item.items?.length && toggleItem(item.id)}
-          >
-            <Typography
-              sx={{
-                fontSize: '1.2rem',
-                fontWeight: 'bold',
-                color: '#373737',
-              }}
-            >
-              {item.label}
-            </Typography>
-            {item.items?.length && (
-              <Typography sx={{ color: '#373737' }}>
-                {expandedItems[item.id] ? '−' : '+'}
-              </Typography>
-            )}
-          </Box>
-        )}
+	const renderMobileNavItems = (
+		items: NavigationData['navItems'],
+		level = 0
+	) => {
+		return items.map(item => (
+			<Box
+				key={item.id}
+				sx={{
+					width: '100%',
+					pl: level * 2,
+					borderLeft: level > 0 ? `2px solid ${theme.palette.divider}` : 'none',
+				}}
+			>
+				{item.href ? (
+					<Box
+						onClick={() => {
+							navigate(item.href!)
+							setOpen(false)
+						}}
+						sx={{
+							textDecoration: 'none',
+							width: '100%',
+							display: 'block',
+							cursor: 'pointer',
+						}}
+					>
+						<Box
+							sx={{
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'space-between',
+								width: '100%',
+								py: 1.5,
+								cursor: 'pointer',
+								'&:hover': {
+									backgroundColor: 'rgba(0,0,0,0.05)',
+								},
+							}}
+						>
+							<Typography
+								sx={{
+									fontSize: '1.2rem',
+									fontWeight: 'bold',
+									color: '#373737',
+								}}
+							>
+								{item.label}
+							</Typography>
+						</Box>
+					</Box>
+				) : (
+					<Box
+						sx={{
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'space-between',
+							width: '100%',
+							py: 1.5,
+							cursor: 'pointer',
+							'&:hover': {
+								backgroundColor: 'rgba(0,0,0,0.05)',
+							},
+						}}
+						onClick={() => item.items?.length && toggleItem(item.id)}
+					>
+						<Typography
+							sx={{
+								fontSize: '1.2rem',
+								fontWeight: 'bold',
+								color: '#373737',
+							}}
+						>
+							{item.label}
+						</Typography>
+						{item.items?.length && (
+							<Typography sx={{ color: '#373737' }}>
+								{expandedItems[item.id] ? '−' : '+'}
+							</Typography>
+						)}
+					</Box>
+				)}
 
         {item.items?.length && expandedItems[item.id] && (
           <Box
